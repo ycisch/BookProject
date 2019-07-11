@@ -1,4 +1,24 @@
 package com.nuc.service;
 
+import com.nuc.entiy.Admin;
+import com.nuc.entiy.User;
+
+import java.util.List;
+
 public interface AdminService {
+    /**
+     * 管理员功能描述
+     */
+
+    //管理员登录功能
+    public Admin login(Admin admin);
+
+    //个人信息查看
+    public Admin getUser(Admin admin);
+
+    //个人信息修改
+    public Admin updateUser(Admin admin);
+
+    //查看所有用户
+    public List<User> listUser();
 }
