@@ -4,10 +4,10 @@ public class Book {
     private int bookid;
     private String bookName;
     private String bookAuthor;
-    private String info;
-    private int stock;
-    private int styleId;
-    private int style;
+    private String bookInfo;
+    private int bookNum;
+    private int bookStyleId;
+    private float bookMoney;
 
     public int getBookid() {
         return bookid;
@@ -33,35 +33,35 @@ public class Book {
         this.bookAuthor = bookAuthor;
     }
 
-    public String getInfo() {
-        return info;
+    public String getBookInfo() {
+        return bookInfo;
     }
 
-    public void setInfo(String info) {
-        this.info = info;
+    public void setBookInfo(String bookInfo) {
+        this.bookInfo = bookInfo;
     }
 
-    public int getStock() {
-        return stock;
+    public int getBookNum() {
+        return bookNum;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void setBookNum(int bookNum) {
+        this.bookNum = bookNum;
     }
 
-    public int getStyleId() {
-        return styleId;
+    public int getBookStyleId() {
+        return bookStyleId;
     }
 
-    public void setStyleId(int styleId) {
-        this.styleId = styleId;
+    public void setBookStyleId(int bookStyleId) {
+        this.bookStyleId = bookStyleId;
     }
 
-    public int getStyle() {
-        return style;
+    public float getBookMoney() {
+        return bookMoney;
     }
 
-    public void setStyle(int style) {
-        this.style = style;
+    public void setBookMoney(float bookMoney) {
+        this.bookMoney = bookMoney;
     }
 }
