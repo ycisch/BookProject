@@ -10,7 +10,7 @@ import java.util.List;
 public interface ShopService {
 
     //购物车功能
-    //查看所有购物信息
+    //查看所有购物信息123123123123
     public List<Shop> listShop();
 
     //用户添加商品到购物车
