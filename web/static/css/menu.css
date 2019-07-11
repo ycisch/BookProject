@@ -1,0 +1,302 @@
+*{
+	margin: auto;
+}
+
+ul{
+	list-style: none;
+}
+li{
+	display: inline-block;
+}
+
+.top-footer-style ul{
+	margin-left: -30px;
+	list-style: none;
+	color:#a29696 ;
+	position: relative;
+}
+
+h4{
+	color: black;
+}
+
+.top-footer-style ul li{
+	
+	
+	font-size: 16px;
+	display: inline-block;
+	
+	padding-right: 5px;
+	
+	border-right-color: #a29696;
+	/*border-right-style: solid;*/
+	/*border-right-width: 1.5px;*/
+	
+}
+
+a{
+	font-size: 12px;
+	color: #5f5757;
+	text-decoration: none;
+}
+
+.top{
+	height: 100px;
+	/* background: green; */
+}
+
+.top-text{
+	width: 200px;
+	height: 50px;
+	/* background: red; */
+	float: left;
+	
+	/* 设置外边距 */
+	margin-top: 20px;
+	margin-left: 100px;
+}
+.top-text span{
+	display: block;
+	
+	/* 设置字体大小 */
+	font-size: 30px;
+	font-family: "楷体";
+	
+	padding: 10px;
+	text-align: center;
+}
+
+.top-serach{
+	width: 450px;
+	height: 50px;
+	float: left;
+	/* background: black; */
+	
+	/* 设置搜索框外边距 */
+	margin-left: 200px;
+	margin-top: 20px;
+}
+
+.top-serach-form{
+	padding: 10px 0 0 10px;
+}
+
+.input1{
+	float: left;
+}
+
+input{
+	border-color: red;
+	border-width: 2px;
+	width: 350px;
+	height: 40px;
+	box-sizing: border-box;
+}
+
+.btn{
+	position: absolute;
+	left: 860px;
+	top:30px;
+	width: 50px;
+	background: red;
+}
+
+.serach{
+	
+	/* 字体 */
+	
+	color: white;
+	font-size: 16px;
+	text-align: center;
+	line-height: 30px;
+	
+	height: 31px;
+	width: 50px;
+	background:#e43c3f;
+	float: left;
+	box-sizing: border-box;
+}
+
+
+.top-info{
+	margin-left: 100px;
+	margin-top: 30px;
+	width: 300px;
+	height: 50px;
+	float: left;
+	/* background: blue; */
+}
+
+.top-info-1{
+	
+	background: #f7f7f7;
+	text-align: center;
+	
+	padding-top: 5px;
+	width: 100px;
+	height: 30px;
+	float: left;
+}
+
+.top-info-2{
+	background: #f7f7f7;
+	text-align: center;
+	
+	padding-top: 5px;
+	width: 100px;
+	height: 30px;
+	float: left;
+	margin-left: 20px;
+	position: relative;
+}
+
+.top-info-21{
+	background: #f7f7f7;
+	text-align: center;
+	
+	display: none;
+	
+	width: 200px;
+	float: left;
+	position: absolute;
+	top: 40px;
+}
+
+.top:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+		
+.top-footer{
+	height: 52px;
+	background: #ff2832;
+}
+
+.top-footer-text{
+	color: white;
+	
+	position: relative;
+	padding:10px 10px 15px 10px;
+	margin-left: 200px;
+	font-size: 20px;
+	float: left;
+}
+
+.top-footer-style{
+
+	/*z-index: 100;*/
+
+	/*display: none;*/
+	color: #000000;
+	position:absolute;
+	background: #f7f7f7;
+	width: 200px;
+	/*height: 500px;*/
+	top:55px;
+	left:0px;
+	border-radius: 4px 4px 0 0;
+}
+
+/*.top-footer-text:hover{*/
+	/*color: black;*/
+	/**/
+	/*background: #c83232;*/
+	/**/
+/*}*/
+
+.top-footer-ul{
+	margin-left: 50px;
+	/* background: gray; */
+	float: left;
+}
+
+.top-footer-ul a{
+	font-size: 20px;
+	text-decoration: none;
+	display: block;
+	float: left;
+	
+	color: white;
+	padding:10px 10px 15px 10px;
+	
+}
+.top-footer-ul a:hover{
+	background: #c83232;
+}
+
+.top-h1{
+	border-radius: 4px 4px 0 0;
+
+
+	line-height: 34px;
+	font-family: "Microsoft Yahei";
+	font-size: 18px;
+	text-align: center;
+	background: #487a6f;
+	color: #fff;
+
+}
+.top-footer-p{
+
+	padding: 2px;
+
+	/*margin-right: px;*/
+	font-size: 16px;
+	color: #487a6f;
+	font-weight: bold;
+	border-bottom-style: dotted;
+	border-bottom-width: 1px;
+	border-bottom-color: black;
+}
+
+/*设置浮动框*/
+.top-footer-style-dp{
+	z-index: 10;
+
+	display: none;
+
+	font-size: 12px;
+
+	background: #f7f7f7;
+	width: 700px;
+	height: 450px;
+	position: absolute;
+	left: 200px;
+	top: 0px;
+}
+
+.top-footer-style-dp span{
+	color: #487a6f;
+	/*background: #91DB4B;*/
+	font-size: 16px;
+	float: left;
+
+	margin: 20px;
+}
+
+.top-footer-style-dp ul{
+	float: left;
+}
+
+.top-footer-style-dp li{
+	margin: 10px;
+	margin-top: 20px;
+
+	border-right-color: #aaaaaa;
+	border-right-style: dotted;
+	border-right-width: 1px;
+	float: left;
+}
+
+.top-footer-style-dp1{
+	z-index: 10;
+	display: none;
+	background: blue;
+	width: 300px;
+	height: 200px;
+	position: absolute;
+	left: 200px;
+	top: 150px;
+}
+
