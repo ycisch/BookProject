@@ -15,10 +15,10 @@ public class ShopDaoImpl implements ShopDao {
 
     BaseDao baseDao = new BaseDao();
     @Override
-    public List<Shop> listShop() {
+    public List<Shop> listShop(User user) {
         ResultSet rs = null;
         String sql = "select * from shop";
-//        rs =
+        rs = baseDao.executeQuery(sql);
         return null;
     }
 
