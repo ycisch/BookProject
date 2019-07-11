@@ -6,14 +6,13 @@ import java.sql.*;
 
 public class BaseDao {
 
-    String driver = "com.mysql.jdbc.Driver";
-    String username = "root";
-    String password = "123456";
-    String url = "jdbc:mysql://localhost:3306/bookshop?useUnicode=true&characterEncoding=utf8";
-    Connection conn = null;
+    static String driver = "com.mysql.jdbc.Driver";
+    static String username = "root";
+    static String password = "123456";
+    static String url = "jdbc:mysql://localhost:3306/bookshop?useUnicode=true&characterEncoding=utf8";
+    static Connection conn = null;
 
-    public Connection getConn(){
-
+    static {
         try {
             Class.forName(driver);
             conn = DriverManager.getConnection(url,username,password);
@@ -22,7 +21,6 @@ public class BaseDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return conn;
     }
 
     /**
