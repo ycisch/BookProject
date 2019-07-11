@@ -6,7 +6,7 @@ public class Book {
     private String bookAuthor;
     private String bookInfo;
     private int bookNum;
-    private int bookStyleId;
+    private String bookStyle;
     private float bookMoney;
 
     public int getBookid() {
@@ -49,12 +49,12 @@ public class Book {
         this.bookNum = bookNum;
     }
 
-    public int getBookStyleId() {
-        return bookStyleId;
+    public String getBookStyle() {
+        return bookStyle;
     }
 
-    public void setBookStyleId(int bookStyleId) {
-        this.bookStyleId = bookStyleId;
+    public void setBookStyle(String bookStyle) {
+        this.bookStyle = bookStyle;
     }
 
     public float getBookMoney() {
