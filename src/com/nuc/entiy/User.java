@@ -22,6 +22,31 @@ public class User {
     private String address;
     private String phone;
     private float money;
+    private String img;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", money=" + money +
+                ", img='" + img + '\'' +
+                ", list_shop=" + list_shop +
+                ", list_order=" + list_order +
+                '}';
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
 
     private List<Shop> list_shop;
     private List<Order> list_order;
@@ -98,18 +123,4 @@ public class User {
         this.list_order = list_order;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", money='" + money + '\'' +
-                ", list_shop=" + list_shop +
-                ", list_order=" + list_order +
-                '}';
-    }
 }

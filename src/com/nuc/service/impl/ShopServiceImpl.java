@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ShopServiceImpl implements ShopService {
     @Override
-    public List<Shop> listShop() {
+    public List<Shop> listShop(User user) {
         return null;
     }
 

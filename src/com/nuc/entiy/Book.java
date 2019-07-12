@@ -8,6 +8,29 @@ public class Book {
     private int bookNum;
     private String bookStyle;
     private float bookMoney;
+    private String bookimg;
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bookid=" + bookid +
+                ", bookName='" + bookName + '\'' +
+                ", bookAuthor='" + bookAuthor + '\'' +
+                ", bookInfo='" + bookInfo + '\'' +
+                ", bookNum=" + bookNum +
+                ", bookStyle='" + bookStyle + '\'' +
+                ", bookMoney=" + bookMoney +
+                ", bookimg='" + bookimg + '\'' +
+                '}';
+    }
+
+    public String getBookimg() {
+        return bookimg;
+    }
+
+    public void setBookimg(String bookimg) {
+        this.bookimg = bookimg;
+    }
 
     public int getBookid() {
         return bookid;

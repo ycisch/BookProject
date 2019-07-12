@@ -5,6 +5,15 @@ public class Admin {
     private String adminName;
     private String adminPwd;
 
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "adminId=" + adminId +
+                ", adminName='" + adminName + '\'' +
+                ", adminPwd='" + adminPwd + '\'' +
+                '}';
+    }
+
     public int getAdminId() {
         return adminId;
     }
