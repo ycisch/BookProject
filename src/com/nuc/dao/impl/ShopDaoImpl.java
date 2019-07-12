@@ -114,6 +114,7 @@ public class ShopDaoImpl implements ShopDao {
                 Object params2[] = {user.getId()};
                 if(baseDao.executeUpdate(sql1,params2) >= 1){
                     baseDao.commit();
+                    user.setMoney(user.getMoney()-sum);
                     return true;
                 }
                 baseDao.runback();
