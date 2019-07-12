@@ -1,5 +1,7 @@
 package com.nuc.service.impl;
 
+import com.nuc.dao.ShopDao;
+import com.nuc.dao.impl.ShopDaoImpl;
 import com.nuc.entiy.Book;
 import com.nuc.entiy.Shop;
 import com.nuc.entiy.User;
@@ -9,29 +11,30 @@ import java.util.Date;
 import java.util.List;
 
 public class ShopServiceImpl implements ShopService {
+    ShopDao shopDao = new ShopDaoImpl();
+
+    @Override
+    public List<Shop> listShop(User user) {
+        return shopDao.listShop(user);
+    }
 
     @Override
     public boolean addShop(Book book, User user) {
-        return false;
+        return shopDao.addShop(book,user);
     }
 
     @Override
     public boolean deleteShop(Shop shop, User user) {
-        return false;
+        return shopDao.deleteShop(shop,user);
     }
 
     @Override
     public boolean updateShop(Shop shop, User user) {
-        return false;
+        return shopDao.updateShop(shop,user);
     }
 
     @Override
     public boolean sumMoney(User user) {
-        return false;
-    }
-
-    @Override
-    public List<Shop> listShop() {
-        return null;
+        return shopDao.sumMoney(user);
     }
 }

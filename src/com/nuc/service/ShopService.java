@@ -11,7 +11,7 @@ public interface ShopService {
 
     //购物车功能
     //查看所有购物信息123123123123
-    public List<Shop> listShop();
+    public List<Shop> listShop(User user);
 
     //用户添加商品到购物车
     public boolean addShop(Book book,User user);
