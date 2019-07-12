@@ -19,7 +19,7 @@ public class ShopServlet extends javax.servlet.http.HttpServlet {
         }
     }
 /*
-* wawawawawa
+* wawawawawawqweqwewqe5956592562
 *
 * */
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
