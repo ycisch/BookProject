@@ -1,29 +1,21 @@
 package com.nuc;
 
-import com.nuc.util.BaseDao;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import com.nuc.dao.impl.ShopDaoImpl;
+import com.nuc.entiy.Shop;
+import com.nuc.entiy.User;
 
 public class test {
-
-
-
-
     public static void main(String[] args) {
-        BaseDao baseDao = new BaseDao();
-        Connection connection = baseDao.getConn();
-        String s = "select * from book";
-        ResultSet rs = baseDao.executeQuery(s);
-        try {
-            while (rs.next()){
-                System.out.println(rs.getString(2));
-                System.out.println(rs.getString(3));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
+        ShopDaoImpl shopDao = new ShopDaoImpl();
+        Shop shop = new Shop();
+        User user = new User();
+        shop.setShopId(1);
+        shop.setBookId(2);
+        shop.setUserId(1);
+        shop.setNum(12);
+        user.setId(1);
+        //shopDao.deleteShop(shop,user);
+        user.setMoney(123.0f);
+        System.out.println(shopDao.sumMoney(user));
     }
 }

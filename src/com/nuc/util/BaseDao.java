@@ -16,6 +16,7 @@ public class BaseDao {
         try {
             Class.forName(driver);
             conn = DriverManager.getConnection(url,username,password);
+            conn.setAutoCommit(false);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -31,7 +32,7 @@ public class BaseDao {
      *         参数数组
      * @return 执行结果
      */
-    public int executeUpdate(String sql,Object...params){
+    public int executeUpdate(String sql,Object...params) {
         int result=0;
         PreparedStatement pstmt=null;
         try {
@@ -69,6 +70,25 @@ public class BaseDao {
             e.printStackTrace();
         }
         return  rs;
+    }
+
+
+    public void runback(){
+        //事务回滚
+        try {
+            conn.rollback();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void commit(){
+        //事务提交
+        try {
+            conn.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }
