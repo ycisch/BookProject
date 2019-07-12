@@ -89,7 +89,7 @@
 	|	  admin.jsp
 	|─static
 	|	  ├─css	
-    |	  |		省略
+    	|	  |		省略
 	|	  ├─img	
 	|	  |		省略
 	|	  ├─js	
