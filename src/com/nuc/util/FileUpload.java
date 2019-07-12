@@ -15,6 +15,7 @@ import java.util.List;
 public class FileUpload {
 
     public static String getFileUpload(String uploadFilePath, HttpServletRequest request){
+        String path_ans = "";
         String uploadFileName=""; //上传的文件名
         String fieldName=""; //表单字段元素的name属性值
         boolean isMultipart= ServletFileUpload.isMultipartContent(request);
@@ -52,6 +53,7 @@ public class FileUpload {
                                 File fullFile=new File(item.getName());
                                 System.out.println(fullFile.getName());
                                 File saveFile=new File(uploadFilePath,fullFile.getName());
+                                path_ans = saveFile.getPath();
                                 item.write(saveFile);
                                 uploadFileName=fullFile.getName();
                                 //System.out.println("上传成功后的文件名是："+uploadFileName);
@@ -66,7 +68,7 @@ public class FileUpload {
                 e.printStackTrace();
             }
         }
-        return  uploadFilePath+uploadFileName;
+        return  path_ans;
     }
 
 }

@@ -7,33 +7,47 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>后台管理-华轩书海商城</title>
     <link rel="stylesheet" href="../static/css/admin.css">
-    <script src="../static/js/jquery-1.11.3.min.js"></script>
+    <script src="../static/js/jquery-3.4.1.js"></script>
     <script src="../static/js/admin.js"></script>
-    <!-- <script>
-        $(document).ready(function(){
+    <script>
+        $(function () {
+            $(".btn2").click(function () {
+                console.log("@@@@");
+                var formData = new FormData(document.getElementById("tf"));
+                // var file = $(".file1")[0].files[0];
+                // formData.append("nfile",file);
+                // console.log(formData);
+                $.ajax({
+                    "url":"../BookServlet",
+                    "type": "post",
+                    "data": formData,
+                    "dataType": "text",
+                    processData:false,
+                    contentType:false,
+                    "success":callback
+                });
 
-            $("#admin").mouseover(function () {
-                $("#books").css({"display":"block"});
-            });
-            $("#admin").mouseout(function () {
-                $("#admin ul").css({"display":"none"});
-            });
+                function callback(data) {
+                    console.log(data+"@@@@");
+                    $(".img1").show();
+                    $(".img1").css({"background":"url("+data+")"})
+                }
+            })
+        })
+    </script>
 
-			$("#booklist").click(function () {
-			    /* $("#books").css({"display":"none"}); */
-				$("#userList").css({"display":"block"});
-				$("#userList").siblings().css({"display":"none"});
-			});
-
-
-        });
-    </script> -->
+    <style>
+        .img1{
+            display: none;
+            width: 150px;
+            height: 150px;
+        }
+    </style>
 </head>
 <body>
 
@@ -219,16 +233,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <form action="">
-                                <th>上传展示图片：</th>
-                                <td colspan="2">
-                                    <img src="../static/img/book/1.jpg">
-                                </td>
-                                <td>
-                                    <input type="file" name="bookImg" id="file">
-                                    <input type="submit" value="上 传 图 片" name="upload" id="upload">
-                                </td>
-                            </form>
+
                         </tr>
                         <tr>
                             <td colspan="4">
@@ -237,6 +242,16 @@
 
                         </tr>
                     </table>
+                </form>
+                <form action="" enctype="multipart/form-data" method="post" id="tf">
+                    <th>上传展示图片：</th>
+                    <td colspan="2">
+                        <div class="img1"></div>
+                    </td>
+                    <td>
+                        <p>选择图片：<input class="file1" type="file" name="nfile"> </p>
+                        <p><input class="btn2" type="button" value="提交"></p>
+                    </td>
                 </form>
             </div>
 

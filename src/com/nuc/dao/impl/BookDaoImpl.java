@@ -86,11 +86,21 @@ public class BookDaoImpl implements BookDao {
     //按条件查询图书
     @Override
     public List<Book> listBookKey(Book book) {
+        BaseDao baseDao = new BaseDao();
         List<Book> bookList = new ArrayList<Book>();
         ResultSet resultSet = null;
-        String sql = "select * from book where bookname=?";
-        BaseDao baseDao = new BaseDao();
-        resultSet = baseDao.executeQuery(sql,book.getBookName());
+
+        //条件判断
+        if(book.getBookStyle().equals("name")){
+            String sql = "select * from book where bookname=?";
+            resultSet = baseDao.executeQuery(sql,book.getBookName());
+        }else if(book.getBookStyle().equals("id")){
+            String sql = "select * from book where bookid=?";
+            resultSet = baseDao.executeQuery(sql,book.getBookid());
+        }else if(book.getBookStyle().equals("style")){
+            String sql = "select * from book where bookstyle=?";
+            resultSet = baseDao.executeQuery(sql,book.getBookName());
+        }
         Book keybook = null;
         try{
             while (resultSet.next()){

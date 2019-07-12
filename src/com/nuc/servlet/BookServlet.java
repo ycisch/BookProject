@@ -3,8 +3,10 @@ package com.nuc.servlet;
 import com.nuc.entiy.Book;
 import com.nuc.service.BookService;
 import com.nuc.service.impl.BookServiceImpl;
+import com.nuc.util.FileUpload;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,5 +88,21 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
             request.getRequestDispatcher("system/menu.jsp").forward(request,response);  //跳回首页
 
         }
+
+
+        response.setContentType("text/html;charset=utf-8");
+        System.out.println(request.getParameter("name"));
+        String s = FileUpload.getFileUpload(request.getSession().getServletContext().getRealPath("upload/"),request);
+        System.out.println(s);
+        s = s.replaceAll("\\\\", "/");
+        System.out.println(s);
+        int index = s.indexOf('_');
+        s = s.substring(index+13,s.length());
+        s = ".."+s;
+        System.out.println(s);
+        PrintWriter out=response.getWriter();
+        out.print(s);
+        out.flush();
+        out.close();
     }
 }
