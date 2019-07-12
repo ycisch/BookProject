@@ -283,7 +283,7 @@ table,th,td{
     height: 50px;
 }
 
-#sikp{
+.sikp{
     /* width: 80%; */
     text-align: center;
     margin-top: 10px;
@@ -295,14 +295,14 @@ table,th,td{
     left: 800px;
 }
 
-#sikp p{
+.sikp p{
     margin: 0 auto;
     border:1px solid #DFDFDF;
     padding: 0 10px ;
 
 }
 
-#sikp a{
+.sikp a{
     text-decoration: none;
     color: #32a0d6;
 }

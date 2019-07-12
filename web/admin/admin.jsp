@@ -124,7 +124,7 @@
                         <td class="delete"><span>删除</span></td>
                     </tr>
                 </table>
-                <div id="sikp">
+                <div class="sikp">
                     <p>
                         <a href="#"><span>首页</span></a>
                         &nbsp;|&nbsp;
@@ -166,7 +166,7 @@
                         <td class="phone">12365414635</td>
                     </tr>
                 </table>
-                <div id="sikp">
+                <div id="sikp1">
                     <p>
                         <a href="#"><span>首页</span></a>
                         &nbsp;|&nbsp;
@@ -318,7 +318,7 @@
                         </form>
                     </li>
                 </ul>
-                <div id="sikp">
+                <div class="sikp">
                     <p>
                         <a href="#"><span>首页</span></a>
                         &nbsp;|&nbsp;
@@ -334,7 +334,7 @@
             </div>
         </div>
 
-        <!-- <div id="sikp">
+        <%--<div id="sikp">
             <p>
                 <a href="#"><span>首页</span></a>
                 &nbsp;|&nbsp;
@@ -346,7 +346,7 @@
                 &nbsp;|&nbsp;
                 <a></a><span>总共页</span>
             </p>
-        </div> -->
+        </div>--%>
 
 
     </div>
