@@ -30,7 +30,7 @@ public class ShopServiceImpl implements ShopService {
     }
 
     @Override
-    public boolean sumMoney(User user, Date date) {
+    public boolean sumMoney(User user) {
         return false;
     }
 }
