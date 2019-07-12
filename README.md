@@ -19,17 +19,6 @@
 ├─database file
 │      bookshop.sql
 │
-├─demonstration_picture
-│      SMS-ClassInfo-view.PNG
-│      SMS-GradeInfo-view.PNG
-│      SMS-Login-view.PNG
-│      SMS-ModifyPwd-view.PNG
-│      SMS-Student-permission.PNG
-│      SMS-StudentInfo-view.PNG
-│      SMS-Teacher-permission.PNG
-│      SMS-TeacherInfo-view.PNG
-│      SSM-AdminInfo-view.PNG
-│      SSM-Main-view.PNG
 │
 └─src
 |    │  
