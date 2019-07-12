@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class BookDaoImpl implements BookDao {
     @Override
@@ -28,6 +29,7 @@ public class BookDaoImpl implements BookDao {
                 book.setBookMoney(resultSet.getFloat("bookmoney"));
                 book.setBookNum(resultSet.getInt("booknum"));
                 book.setBookStyle(resultSet.getString("bookstyle"));
+                book.setBookimg(resultSet.getString("bookimg"));
                 bookList.add(book);
             }
         }catch (SQLException e){
@@ -40,30 +42,67 @@ public class BookDaoImpl implements BookDao {
     public boolean updateBook(Book book) {
         boolean result = false;
         String sql = "update book " +
-                "set(bookname,bookauthor,bookinfo,bookmoney,booknum,bookstyle,bookimg)" +
-                " = (select ?,?,?,?,?,?,?)" +
+                "set bookname=?,bookauthor=?,bookinfo=?,bookmoney=?,booknum=?,bookstyle=?,bookimg=? " +
                 "where bookid=?";
         BaseDao baseDao =new BaseDao();
         if (0!=baseDao.executeUpdate(sql,book.getBookName(),book.getBookAuthor(),book.getBookInfo(),book.getBookMoney(),book.getBookNum(),book.getBookStyle(),book.getBookimg(),book.getBookid())){
             baseDao.commit();
             result = true;
         }
-        System.out.println(result);
         return result;
     }
 
     @Override
     public boolean deleteBook(Book book) {
-        return false;
+        boolean result = false;
+        String sql = "delete from book where bookid=?";
+        BaseDao baseDao = new BaseDao();
+        if (0!=baseDao.executeUpdate(sql,book.getBookid())){
+            baseDao.commit();
+            result = true;
+        }
+        return result;
     }
 
     @Override
     public boolean addBook(Book book) {
-        return false;
+        boolean result = false;
+        String sql = "insert into book (bookid,bookname,bookauthor,bookinfo,bookmoney,booknum,bookstyle,bookimg) values(?,?,?,?,?,?,?,?)";
+        BaseDao baseDao = new BaseDao();
+        if (0!=baseDao.executeUpdate(sql,book.getBookid(),book.getBookName(),book.getBookAuthor(),book.getBookInfo(),book.getBookMoney(),book.getBookNum(),book.getBookStyle(),book.getBookimg())){
+            baseDao.commit();
+            result = true;
+        }
+        return result;
     }
 
     @Override
     public List<Book> listBookKey(Book book) {
-        return null;
+        List<Book> bookList = new ArrayList<Book>();
+        ResultSet resultSet = null;
+        String sql = "select * from book where bookname=?";
+        BaseDao baseDao = new BaseDao();
+        resultSet = baseDao.executeQuery(sql,book.getBookName());
+        Book keybook = null;
+        try{
+            while (resultSet.next()){
+                keybook = new Book();
+                keybook.setBookid(resultSet.getInt("bookid"));
+                keybook.setBookName(resultSet.getString("bookname"));
+                keybook.setBookAuthor(resultSet.getString("bookauthor"));
+                keybook.setBookInfo(resultSet.getString("bookinfo"));
+                keybook.setBookMoney(resultSet.getFloat("bookmoney"));
+                keybook.setBookNum(resultSet.getInt("booknum"));
+                keybook.setBookStyle(resultSet.getString("bookstyle"));
+                keybook.setBookimg(resultSet.getString("bookimg"));
+                bookList.add(keybook);
+
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
+        return bookList;
     }
 }
