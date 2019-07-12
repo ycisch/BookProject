@@ -15,6 +15,10 @@ body{
 	font-family: "楷体";
 }
 
+#header p a{
+	text-decoration: none;
+}
+
 #header p em{
 	color: red;
 }

@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookServiceImpl implements BookService {
+
+    //查看所有图书
     @Override
     public List<Book> listBook() {
         List<Book> booklist = new ArrayList<Book>();
@@ -18,6 +20,7 @@ public class BookServiceImpl implements BookService {
         return booklist;
     }
 
+    //修改图书
     @Override
     public boolean updateBook(Book book) {
         boolean result = false;
@@ -26,6 +29,7 @@ public class BookServiceImpl implements BookService {
         return false;
     }
 
+    //删除图书
     @Override
     public boolean deleteBook(Book book) {
         boolean result = false;
@@ -34,6 +38,7 @@ public class BookServiceImpl implements BookService {
         return result;
     }
 
+    //添加图书
     @Override
     public boolean addBook(Book book) {
         boolean result = false;
@@ -42,6 +47,7 @@ public class BookServiceImpl implements BookService {
         return result;
     }
 
+    //按条件查询图书
     @Override
     public List<Book> listBookKey(Book book) {
         List<Book> bookList = new ArrayList<Book>();

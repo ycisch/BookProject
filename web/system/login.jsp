@@ -16,8 +16,10 @@
 <body>
 <div id="header">
     <p>
-        <em>四川省成都市</em>
-        <span>-----华轩书海商城</span>
+        <a href="menu.jsp">
+            <em>四川省成都市</em>
+            <span>-----华轩书海商城</span>
+        </a>
     </p>
 </div>
 <div id="main">
@@ -38,7 +40,7 @@
 
         <div id="login_footer">
             <a href="" id="forget">忘记密码？</a>
-            <a href="regist.html" id="skip_regist">注册</a>
+            <a href="regist.jsp" id="skip_regist">注册</a>
         </div>
     </div>
 </div>
