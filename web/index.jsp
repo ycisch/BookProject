@@ -12,6 +12,11 @@
   </head>
   <body>
   $END$
-  <a href="system/menu.jsp">asdasd</a>
+  <a href="AdminServlet">asdasd</a>
+  <form action="AdminServlet" enctype="multipart/form-data" method="post">
+    <p>姓名：<input type="text" name="user"> </p>
+    <p>选择图片：<input type="file" name="nfile"> </p>
+    <p><input type="submit" value="提交"></p>
+  </form>
   </body>
 </html>

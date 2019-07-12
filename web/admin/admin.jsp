@@ -166,7 +166,7 @@
                         <td class="phone">12365414635</td>
                     </tr>
                 </table>
-                <div id="sikp1">
+                <div id="sikp">
                     <p>
                         <a href="#"><span>首页</span></a>
                         &nbsp;|&nbsp;

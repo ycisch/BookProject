@@ -110,7 +110,7 @@ public class ShopDaoImpl implements ShopDao {
             int num1 = baseDao.executeUpdate(sql1,params1);
             //System.out.println(num1);
             if(num1 >= 1){
-                sql1 = "delete from shop where userid1 = ?";
+                sql1 = "delete from shop where userid = ?";
                 Object params2[] = {user.getId()};
                 if(baseDao.executeUpdate(sql1,params2) >= 1){
                     baseDao.commit();
