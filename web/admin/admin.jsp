@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -166,7 +167,7 @@
                         <td class="phone">12365414635</td>
                     </tr>
                 </table>
-                <div id="sikp">
+                <div class="sikp">
                     <p>
                         <a href="#"><span>首页</span></a>
                         &nbsp;|&nbsp;
@@ -186,27 +187,27 @@
                     <table>
                         <tr>
                             <th>书名：</th>
-                            <td><input type="text" name="bookName"></td>
+                            <td colspan="3"><input type="text" name="bookName"></td>
                         </tr>
                         <tr>
                             <th>作者：</th>
-                            <td><input type="text" name="bookAuthor"></td>
+                            <td colspan="3"><input type="text" name="bookAuthor"></td>
                         </tr>
                         <tr>
                             <th>简介：</th>
-                            <td><textarea name="bookInfo"></textarea></td>
+                            <td colspan="3"><textarea name="bookInfo"></textarea></td>
                         </tr>
                         <tr>
                             <th>价格：</th>
-                            <td><input type="text" name="bookMoney"></td>
+                            <td colspan="3"><input type="text" name="bookMoney"></td>
                         </tr>
                         <tr>
                             <th>库存：</th>
-                            <td><input type="text" name="bookNum"></td>
+                            <td colspan="3"><input type="text" name="bookNum"></td>
                         </tr>
                         <tr>
                             <th>种类：</th>
-                            <td>
+                            <td colspan="3">
                                 <select name="bookStyle">
                                     <option value="1">文学</option>
                                     <option value="2">社科</option>
@@ -218,7 +219,19 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2">
+                            <form action="">
+                                <th>上传展示图片：</th>
+                                <td colspan="2">
+                                    <img src="../static/img/book/1.jpg">
+                                </td>
+                                <td>
+                                    <input type="file" name="bookImg" id="file">
+                                    <input type="submit" value="上 传 图 片" name="upload" id="upload">
+                                </td>
+                            </form>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
                                 <input type="submit" value="添       加">
                             </td>
 
@@ -333,27 +346,11 @@
                 </div>
             </div>
         </div>
-
-        <%--<div id="sikp">
-            <p>
-                <a href="#"><span>首页</span></a>
-                &nbsp;|&nbsp;
-                <a href="#"><span>下一页</span></a>
-                &nbsp;|&nbsp;
-                <a href="#"><span>尾页</span></a>
-                &nbsp;|&nbsp;
-                <a></a><span>当前第页</span>
-                &nbsp;|&nbsp;
-                <a></a><span>总共页</span>
-            </p>
-        </div>--%>
-
-
     </div>
-
     <div id="copyright">
         &copy;2019 Test 版权所有   203搞事大队
     </div>
 </div>
 </body>
 </html>
+
