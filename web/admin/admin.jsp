@@ -186,28 +186,28 @@
                     <table>
                         <tr>
                             <th>书名：</th>
-                            <td><input type="text"></td>
+                            <td><input type="text" name="bookName"></td>
                         </tr>
                         <tr>
                             <th>作者：</th>
-                            <td><input type="text"></td>
+                            <td><input type="text" name="bookAuthor"></td>
                         </tr>
                         <tr>
                             <th>简介：</th>
-                            <td><textarea></textarea></td>
+                            <td><textarea name="bookInfo"></textarea></td>
                         </tr>
                         <tr>
                             <th>价格：</th>
-                            <td><input type="text"></td>
+                            <td><input type="text" name="bookMoney"></td>
                         </tr>
                         <tr>
                             <th>库存：</th>
-                            <td><input type="text"></td>
+                            <td><input type="text" name="bookNum"></td>
                         </tr>
                         <tr>
                             <th>种类：</th>
                             <td>
-                                <select>
+                                <select name="bookStyle">
                                     <option value="1">文学</option>
                                     <option value="2">社科</option>
                                     <option value="3">经管</option>

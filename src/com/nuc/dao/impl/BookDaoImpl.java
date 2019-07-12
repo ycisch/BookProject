@@ -3,6 +3,7 @@ package com.nuc.dao.impl;
 import com.nuc.dao.BookDao;
 import com.nuc.entiy.Book;
 import com.nuc.util.BaseDao;
+import com.nuc.util.DatabaseUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -35,6 +36,8 @@ public class BookDaoImpl implements BookDao {
             }
         }catch (SQLException e){
             e.printStackTrace();
+        }finally {
+            DatabaseUtil.closeAll(null,null,resultSet);
         }
         return bookList;
     }
@@ -101,10 +104,11 @@ public class BookDaoImpl implements BookDao {
                 keybook.setBookStyle(resultSet.getString("bookstyle"));
                 keybook.setBookimg(resultSet.getString("bookimg"));
                 bookList.add(keybook);
-
             }
         }catch (SQLException e){
             e.printStackTrace();
+        }finally {
+            DatabaseUtil.closeAll(null,null,resultSet);
         }
         return bookList;
     }
