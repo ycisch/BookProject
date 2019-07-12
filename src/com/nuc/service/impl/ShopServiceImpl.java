@@ -9,10 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 public class ShopServiceImpl implements ShopService {
-    @Override
-    public List<Shop> listShop(User user) {
-        return null;
-    }
 
     @Override
     public boolean addShop(Book book, User user) {
@@ -32,5 +28,10 @@ public class ShopServiceImpl implements ShopService {
     @Override
     public boolean sumMoney(User user) {
         return false;
+    }
+
+    @Override
+    public List<Shop> listShop() {
+        return null;
     }
 }
