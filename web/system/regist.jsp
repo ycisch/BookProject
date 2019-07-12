@@ -15,8 +15,11 @@
 <body>
 <div id="header">
     <p>
-        <em>四川省成都市</em>
-        <span>-----华轩书海商城</span>
+        <a href="menu.jsp">
+            <em>四川省成都市</em>
+            <span>-----华轩书海商城</span>
+        </a>
+
     </p>
 </div>
 <div id="main">
@@ -36,7 +39,7 @@
         </div>
 
         <div id="regist_footer">
-            <a href="login.html" id="skip_login">已有账号？登录</a>
+            <a href="login.jsp" id="skip_login">已有账号？登录</a>
         </div>
     </div>
 </div>

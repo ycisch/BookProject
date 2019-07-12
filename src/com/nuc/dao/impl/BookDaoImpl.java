@@ -8,9 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class BookDaoImpl implements BookDao {
+
+    //查看所有图书
     @Override
     public List<Book> listBook() {
         List<Book> bookList = new ArrayList<Book>();
@@ -38,6 +39,7 @@ public class BookDaoImpl implements BookDao {
         return bookList;
     }
 
+    //修改图书
     @Override
     public boolean updateBook(Book book) {
         boolean result = false;
@@ -52,6 +54,7 @@ public class BookDaoImpl implements BookDao {
         return result;
     }
 
+    //删除图书
     @Override
     public boolean deleteBook(Book book) {
         boolean result = false;
@@ -64,6 +67,7 @@ public class BookDaoImpl implements BookDao {
         return result;
     }
 
+    //添加图书
     @Override
     public boolean addBook(Book book) {
         boolean result = false;
@@ -76,6 +80,7 @@ public class BookDaoImpl implements BookDao {
         return result;
     }
 
+    //按条件查询图书
     @Override
     public List<Book> listBookKey(Book book) {
         List<Book> bookList = new ArrayList<Book>();
@@ -101,8 +106,6 @@ public class BookDaoImpl implements BookDao {
         }catch (SQLException e){
             e.printStackTrace();
         }
-
-
         return bookList;
     }
 }
