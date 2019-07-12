@@ -6,33 +6,48 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="en">
+
+<html>
 <head>
     <meta charset="UTF-8">
     <title>后台管理-华轩书海商城</title>
     <link rel="stylesheet" href="../static/css/admin.css">
-    <script src="../static/js/jquery-1.11.3.min.js"></script>
+    <script src="../static/js/jquery-3.4.1.js"></script>
     <script src="../static/js/admin.js"></script>
-    <!-- <script>
-        $(document).ready(function(){
+    <script>
+        $(function () {
+            $(".btn2").click(function () {
+                console.log("@@@@");
+                var formData = new FormData(document.getElementById("tf"));
+                // var file = $(".file1")[0].files[0];
+                // formData.append("nfile",file);
+                // console.log(formData);
+                $.ajax({
+                    "url":"../BookServlet",
+                    "type": "post",
+                    "data": formData,
+                    "dataType": "text",
+                    processData:false,
+                    contentType:false,
+                    "success":callback
+                });
 
-            $("#admin").mouseover(function () {
-                $("#books").css({"display":"block"});
-            });
-            $("#admin").mouseout(function () {
-                $("#admin ul").css({"display":"none"});
-            });
+                function callback(data) {
+                    console.log(data+"@@@@");
+                    $(".img1").show();
+                    $(".img1").css({"background":"url("+data+")"})
+                }
+            })
+        })
+    </script>
 
-			$("#booklist").click(function () {
-			    /* $("#books").css({"display":"none"}); */
-				$("#userList").css({"display":"block"});
-				$("#userList").siblings().css({"display":"none"});
-			});
-
-
-        });
-    </script> -->
+    <style>
+        .img1{
+            display: none;
+            width: 150px;
+            height: 150px;
+        }
+    </style>
 </head>
 <body>
 
@@ -166,7 +181,7 @@
                         <td class="phone">12365414635</td>
                     </tr>
                 </table>
-                <div id="sikp">
+                <div class="sikp">
                     <p>
                         <a href="#"><span>首页</span></a>
                         &nbsp;|&nbsp;
@@ -186,28 +201,28 @@
                     <table>
                         <tr>
                             <th>书名：</th>
-                            <td><input type="text"></td>
+                            <td colspan="3"><input type="text" name="bookName"></td>
                         </tr>
                         <tr>
                             <th>作者：</th>
-                            <td><input type="text"></td>
+                            <td colspan="3"><input type="text" name="bookAuthor"></td>
                         </tr>
                         <tr>
                             <th>简介：</th>
-                            <td><textarea></textarea></td>
+                            <td colspan="3"><textarea name="bookInfo"></textarea></td>
                         </tr>
                         <tr>
                             <th>价格：</th>
-                            <td><input type="text"></td>
+                            <td colspan="3"><input type="text" name="bookMoney"></td>
                         </tr>
                         <tr>
                             <th>库存：</th>
-                            <td><input type="text"></td>
+                            <td colspan="3"><input type="text" name="bookNum"></td>
                         </tr>
                         <tr>
                             <th>种类：</th>
-                            <td>
-                                <select>
+                            <td colspan="3">
+                                <select name="bookStyle">
                                     <option value="1">文学</option>
                                     <option value="2">社科</option>
                                     <option value="3">经管</option>
@@ -218,12 +233,25 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2">
+
+                        </tr>
+                        <tr>
+                            <td colspan="4">
                                 <input type="submit" value="添       加">
                             </td>
 
                         </tr>
                     </table>
+                </form>
+                <form action="" enctype="multipart/form-data" method="post" id="tf">
+                    <th>上传展示图片：</th>
+                    <td colspan="2">
+                        <div class="img1"></div>
+                    </td>
+                    <td>
+                        <p>选择图片：<input class="file1" type="file" name="nfile"> </p>
+                        <p><input class="btn2" type="button" value="提交"></p>
+                    </td>
                 </form>
             </div>
 
@@ -333,27 +361,11 @@
                 </div>
             </div>
         </div>
-
-        <%--<div id="sikp">
-            <p>
-                <a href="#"><span>首页</span></a>
-                &nbsp;|&nbsp;
-                <a href="#"><span>下一页</span></a>
-                &nbsp;|&nbsp;
-                <a href="#"><span>尾页</span></a>
-                &nbsp;|&nbsp;
-                <a></a><span>当前第页</span>
-                &nbsp;|&nbsp;
-                <a></a><span>总共页</span>
-            </p>
-        </div>--%>
-
-
     </div>
-
     <div id="copyright">
         &copy;2019 Test 版权所有   203搞事大队
     </div>
 </div>
 </body>
 </html>
+

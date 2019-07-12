@@ -3,6 +3,7 @@ package com.nuc.dao.impl;
 import com.nuc.dao.BookDao;
 import com.nuc.entiy.Book;
 import com.nuc.util.BaseDao;
+import com.nuc.util.DatabaseUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -35,6 +36,8 @@ public class BookDaoImpl implements BookDao {
             }
         }catch (SQLException e){
             e.printStackTrace();
+        }finally {
+            DatabaseUtil.closeAll(null,null,resultSet);
         }
         return bookList;
     }
@@ -83,11 +86,21 @@ public class BookDaoImpl implements BookDao {
     //按条件查询图书
     @Override
     public List<Book> listBookKey(Book book) {
+        BaseDao baseDao = new BaseDao();
         List<Book> bookList = new ArrayList<Book>();
         ResultSet resultSet = null;
-        String sql = "select * from book where bookname=?";
-        BaseDao baseDao = new BaseDao();
-        resultSet = baseDao.executeQuery(sql,book.getBookName());
+
+        //条件判断
+        if(book.getBookStyle().equals("name")){
+            String sql = "select * from book where bookname=?";
+            resultSet = baseDao.executeQuery(sql,book.getBookName());
+        }else if(book.getBookStyle().equals("id")){
+            String sql = "select * from book where bookid=?";
+            resultSet = baseDao.executeQuery(sql,book.getBookid());
+        }else if(book.getBookStyle().equals("style")){
+            String sql = "select * from book where bookstyle=?";
+            resultSet = baseDao.executeQuery(sql,book.getBookName());
+        }
         Book keybook = null;
         try{
             while (resultSet.next()){
@@ -101,10 +114,11 @@ public class BookDaoImpl implements BookDao {
                 keybook.setBookStyle(resultSet.getString("bookstyle"));
                 keybook.setBookimg(resultSet.getString("bookimg"));
                 bookList.add(keybook);
-
             }
         }catch (SQLException e){
             e.printStackTrace();
+        }finally {
+            DatabaseUtil.closeAll(null,null,resultSet);
         }
         return bookList;
     }
