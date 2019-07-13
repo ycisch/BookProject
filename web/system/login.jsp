@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <title>登录-华轩书海商城</title>
-    <link href="../static/css/login.css" rel="stylesheet" >
+    <link href="${pageContext.request.contextPath}/static/css/login.css" rel="stylesheet" >
 
 </head>
 <body>

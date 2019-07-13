@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>订单</title>
-    <link rel="stylesheet" href="../static/css/order.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/order.css">
 </head>
 <body>
 <form class="order" >

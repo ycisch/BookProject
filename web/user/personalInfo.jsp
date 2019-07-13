@@ -9,8 +9,8 @@
 <html>
 <head>
     <title>我的华轩信息</title>
-    <link rel="stylesheet" href="../static/css/personaInfo.css">
-    <script src="../static/js/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/personaInfo.css">
+    <script src="${pageContext.request.contextPath}/static/js/jquery-1.11.3.min.js"></script>
 </head>
 <body>
 <div class="perinfo">

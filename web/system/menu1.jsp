@@ -15,9 +15,37 @@
     <link href="${pageContext.request.contextPath}/static/css/footer.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/static/css/center.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/static/css/style1.css" rel="stylesheet" type="text/css">
-    <script src="${pageContext.request.contextPath}/static/js/jquery-1.11.3.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/jquery-3.4.1.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/menu.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/menu1.js"></script>
+
+    <script>
+        $(function () {
+            $(".btn_brand_prev").click(function () {
+                console.log("asdasd");
+                var num = ${page.currPageNo};
+                var style = ${style};
+                num = num - 1;
+                if(num <= 0) num = 1;
+                console.log(num);
+
+                location.href="BookServlet?opr=keyList&style="+style+"&page="+num;
+            });
+
+            $(".btn_brand_next").click(function () {
+                var num = ${page.currPageNo};
+                if(num <= 0) num = 1;
+                var style = ${style};
+                num += 1;
+                // console.log(num);
+                if(num >= ${page.totalPageCout}) {
+
+                    num = num = ${page.totalPageCout};;
+                }
+                location.href="BookServlet?opr=keyList&style="+style+"&page="+num;
+            })
+        })
+    </script>
 </head>
 <body>
 <div class="top">
@@ -48,7 +76,16 @@
     </div>
     <div class="top-footer-ul">
         <a href="#">首页</a>
-        <a href="#">文学频道</a>
+        <c:choose>
+            <c:when test="${type==2}">
+                <a href="#" class="type_a">文学频道</a>
+            </c:when>
+            <c:otherwise>
+                <a href="#">文学频道</a>
+            </c:otherwise>
+        </c:choose>
+
+
         <a href="#">社科频道</a>
         <a href="#">经管频道</a>
         <a href="#">少儿频道</a>
@@ -74,6 +111,13 @@
                 </form>
             </li>
         </c:forEach>
+
+
+
+<%--        设置左右按钮--%>
+        <div class="btn_brand_prev" type="rollpre"></div>
+        <div class="btn_brand_next" type="rollnext"></div>
+
 <%--        <li>--%>
 <%--            <img src="../static/img/book/1.jpg">--%>
 <%--            <p><a href="#">当当全国独家 中华</a></p>--%>
