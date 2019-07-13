@@ -125,7 +125,8 @@ h4{
 dl{
     margin-left: 20px;
     width: 300px;
-    background: -webkit-linear-gradient(#fcfcfc,#dedede);
+    /*background: -webkit-linear-gradient(#fcfcfc,#dedede);*/
+    background: -webkit-linear-gradient(white,DarkGray);
     border:1px solid #DFDFDF;
 }
 
@@ -171,8 +172,8 @@ dd:hover{
     width: 1200px;
     height: 80%;
     /* border: 1px solid red; */
-    position: fixed;
-    left: 400px;
+    position: relative;
+    left: 80px;
 
 
 }
@@ -280,6 +281,10 @@ table,th,td{
     margin-top: 20px;
 }
 
+.btn{
+    width: 150px;
+
+}
 
 #inserts textarea{
     width: 300px;
@@ -310,27 +315,23 @@ table,th,td{
     width: 100px;
 }
 
-
-/* #onlines table{
-	margin: 10px auto;
-} */
-
 .sikp{
-    /* width: 80%; */
     text-align: center;
     margin-top: 10px;
-    /* border:1px solid #DFDFDF; */
+    border:1px solid #DFDFDF;
     line-height: 30px;
     /* display: block; */
-    position: fixed;
-    top: 800px;
-    left: 800px;
+    position: absolute;
+    top: 745px;
+    left: 420px;
 }
 
 .sikp p{
     margin: 0 auto;
     border:1px solid #DFDFDF;
     padding: 0 10px ;
+    line-height: 30px;
+    height: 30px;
 
 }
 
@@ -344,16 +345,5 @@ table,th,td{
     clear: left;
     text-align: center;
     position: relative;
-    top: 425px;
+    top: 70px;
 }
-
-/* #main{
-	width: 1000px;
-	border: 1px solid red;
-} */
-
-
-
-/* div{
-	border: 1px solid red;
-}*/
