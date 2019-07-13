@@ -201,11 +201,18 @@ dd:hover{
     cursor: pointer;
 }
 
-#books,#users,#onlines,#inserts{
+#users,#onlines,#inserts{
     width: 1150px;
     height: 700px;
     border:1px solid #DFDFDF;
     display: none;
+}
+
+#books{
+    width: 1150px;
+    height: 700px;
+    border:1px solid #DFDFDF;
+    display: block;
 }
 
 #origin{
