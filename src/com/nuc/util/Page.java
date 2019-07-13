@@ -7,11 +7,11 @@ public class Page {
     //总页数
     private  int totalPageCout=0;
     //页面大小，即每页显示记录数
-    private int pageSize=5;
+    private int pageSize=12;
     //总记录数
     private int totalCount=0;
     //当前页码
-    private int currPageNo=1;
+    private int currPageNo=0;
 
     public int getTotalPageCout() {
         return totalPageCout;
@@ -55,5 +55,15 @@ public class Page {
         if (currPageNo>0) {
             this.currPageNo = currPageNo;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Page{" +
+                "totalPageCout=" + totalPageCout +
+                ", pageSize=" + pageSize +
+                ", totalCount=" + totalCount +
+                ", currPageNo=" + currPageNo +
+                '}';
     }
 }

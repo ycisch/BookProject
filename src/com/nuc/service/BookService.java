@@ -1,6 +1,7 @@
 package com.nuc.service;
 
 import com.nuc.entiy.Book;
+import com.nuc.util.Page;
 
 import java.util.List;
 
@@ -23,5 +24,8 @@ public interface BookService {
     public boolean addBook(Book book);
 
     //按条件查询图书
-    public List<Book> listBookKey(Book book);
+    public List<Book> listBookKey(Book book, Page page);
+
+    //查询所有书籍总数
+    public int sumBook(Book book);
 }

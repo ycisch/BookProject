@@ -4,6 +4,7 @@ import com.nuc.entiy.Book;
 import com.nuc.service.BookService;
 import com.nuc.service.impl.BookServiceImpl;
 import com.nuc.util.FileUpload;
+import com.nuc.util.Page;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,6 +20,7 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
+
         BookService bookService = new BookServiceImpl();
         Book book = null;
         List<Book> bookList = new ArrayList<Book>();
@@ -83,13 +85,18 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
 
         }else if ("keyList".equals(opr)){                                           /*按条件查找图书*/
 
+            //分页条件设置
+            int currPageNo = Integer.parseInt(request.getParameter("page"));
+            Page page = new Page();
+            page.setCurrPageNo((currPageNo-1));
             book = new Book();
             book.setBookStyle("style");
             book.setBookName(request.getParameter("style"));//取得查询条件
-            bookList = bookService.listBookKey(book);                                       //查询所有放到bookList
-            for (Book book1: bookList) {
-                System.out.println(book1);
-            }
+            page.setTotalCount(bookService.sumBook(book));
+            bookList = bookService.listBookKey(book,page);                                       //查询所有放到bookList
+            request.setAttribute("type",book.getBookStyle());
+            request.setAttribute("style",book.getBookName());
+            request.setAttribute("page",page);
             request.setAttribute("bookList",bookList);                             //存放所有图书到request
             request.getRequestDispatcher("system/menu1.jsp").forward(request,response);
 //            response.sendRedirect("./system/menu1.jsp");

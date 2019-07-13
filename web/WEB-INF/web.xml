@@ -3,6 +3,23 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+
+
+    <!--创建过滤器-->
+    <filter>
+        <filter-name>Login</filter-name>
+        <filter-class>com.nuc.Filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Login</filter-name>
+        <url-pattern>/</url-pattern>
+    </filter-mapping>
+
+    <!--监听器-->
+    <listener>
+        <listener-class>com.nuc.Listener.ServletContentListenerDemo</listener-class>
+    </listener>
+
     <servlet>
         <servlet-name>UserServlet</servlet-name>
         <servlet-class>com.nuc.servlet.UserServlet</servlet-class>

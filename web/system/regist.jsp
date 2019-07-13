@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <title>注册-华轩书海商城</title>
-    <link rel="stylesheet" href="../static/css/regist.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/regist.css">
 </head>
 <body>
 <div id="header">

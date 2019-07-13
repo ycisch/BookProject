@@ -96,6 +96,7 @@
 
 
 .center1{
+    position: relative;
     width: 1150px;
     margin:20px auto;
     /*background: green;*/
