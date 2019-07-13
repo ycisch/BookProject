@@ -413,7 +413,7 @@
     </div>
     <div class="top-footer-ul">
         <a href="#">首页</a>
-        <a href="../BookServlet?opr=keyList&style=2">文学频道</a>
+        <a href="../BookServlet?opr=keyList&style=2&page=1">文学频道</a>
         <a href="#">社科频道</a>
         <a href="#">经管频道</a>
         <a href="#">少儿频道</a>

@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>华轩个人中心</title>
-    <link rel="stylesheet" href="../static/css/personalCenter.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/personalCenter.css">
 </head>
 <body>
 <div class="father">

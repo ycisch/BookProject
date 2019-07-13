@@ -6,6 +6,7 @@ import com.nuc.entiy.Book;
 import com.nuc.service.BookService;
 import com.nuc.util.BaseDao;
 import com.nuc.util.DatabaseUtil;
+import com.nuc.util.Page;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,10 +51,16 @@ public class BookServiceImpl implements BookService {
 
     //按条件查询图书
     @Override
-    public List<Book> listBookKey(Book book) {
+    public List<Book> listBookKey(Book book, Page page) {
         List<Book> bookList = new ArrayList<Book>();
         BookDao bookDao = new BookDaoImpl();
-        bookList = bookDao.listBookKey(book);
+        bookList = bookDao.listBookKey(book,page);
         return bookList;
+    }
+
+    @Override
+    public int sumBook(Book book) {
+        BookDao bookDao = new BookDaoImpl();
+        return bookDao.sumBook(book);
     }
 }

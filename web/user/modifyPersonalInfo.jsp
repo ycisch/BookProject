@@ -9,9 +9,9 @@
 <html>
 <head>
     <title>修改我的信息</title>
-    <link rel="stylesheet" href="../static/css/modifyPersonalInfo.css">
-    <script src="../static/js/jquery-1.11.3.min.js"></script>
-    <script src="../static/js/modifyPersonal.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/modifyPersonalInfo.css">
+    <script src="${pageContext.request.contextPath}/static/js/jquery-1.11.3.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/modifyPersonal.js"></script>
 </head>
 <body>
 <div class="modPersonalInfo">

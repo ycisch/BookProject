@@ -12,6 +12,7 @@ public class BaseDao {
     static String url = "jdbc:mysql://localhost:3306/bookshop?serverTimezone=UTC&characterEncoding=utf-8";
     static Connection conn = null;
 
+
     static {
         try {
             Class.forName(driver);
