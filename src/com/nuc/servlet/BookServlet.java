@@ -27,17 +27,16 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
         if ("welcome".equals(opr)) {                                                  /*首页展示图书*/
 
             bookList = bookService.listBook();                                              //查询所有放到bookList
-            request.setAttribute("bookList","bookList");                             //存放所有图书到request
+            request.setAttribute("bookList",bookList);                             //存放所有图书到request
             request.getRequestDispatcher("system/menu.jsp").forward(request,response);  //跳回首页
 
         }else if ("list".equals(opr)){                                               /*后台所有展示图书*/
 
             bookList = bookService.listBook();                                              //查询所有放到bookList
-            request.setAttribute("bookList","bookList");                             //存放所有图书到request
+            request.setAttribute("bookList",bookList);                             //存放所有图书到request
             request.getRequestDispatcher("admin/admin.jsp").forward(request,response);  //跳回后台页面
 
-        }
-        else if ("update".equals(opr)){                                            /*更新图书*/
+        }else if ("update".equals(opr)){                                            /*更新图书*/
 
             book = (Book) request.getAttribute("book");                                 //获取需要修改的图书对象
             if (bookService.updateBook(book)){                                             //执行修改并判断是否修改成功
@@ -46,7 +45,7 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
                 request.setAttribute("message","修改失败！");
             }
             bookList = bookService.listBook();                                              //查询所有放到bookList
-            request.setAttribute("bookList","bookList");                             //存放所有图书到request
+            request.setAttribute("bookList",bookList);                             //存放所有图书到request
             request.getRequestDispatcher("admin/admin.jsp").forward(request,response);  //跳回后台页面
 
         } else if ("add".equals(opr)) {                                             /*添加图书*/

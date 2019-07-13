@@ -27,14 +27,16 @@
         <div id="regist_main">
             <div id="regist_header">注册</div>
             <div id="regist_form">
-                <p>账号：<input type="text" name="username" id="username"></p>
-                <p>密码：<input type="password" name="password" id="password"></p>
-                <p>邮箱：<input type="text" name="email" id="email"></p>
-                <p>地址：<input type="text" name="address" id="address"></p>
-                <p>电话：<input type="text" name="phone" id="phone"></p>
-                <p>
-                    <input type="submit" name="regist" id="regist_button" value="注           册"/>
-                </p>
+                <form>
+                    <p>账号：<input type="text" name="username" id="username"></p>
+                    <p>密码：<input type="password" name="password" id="password"></p>
+                    <p>邮箱：<input type="text" name="email" id="email"></p>
+                    <p>地址：<input type="text" name="address" id="address"></p>
+                    <p>电话：<input type="text" name="phone" id="phone"></p>
+                    <p>
+                        <input type="submit" name="regist" id="regist_button" value="注           册"/>
+                    </p>
+                </form>
             </div>
         </div>
 
