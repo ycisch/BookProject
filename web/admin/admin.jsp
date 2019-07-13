@@ -15,7 +15,7 @@
         <script src="../static/js/admin.js"></script>
         <script>
             $(function () {
-                $(".btn2").click(function () {
+                $(".btn").click(function () {
                     console.log("@@@@");
                     var formData = new FormData(document.getElementById("tf"));
                     // var file = $(".file1")[0].files[0];
@@ -233,7 +233,7 @@
                             </form>
                             <tr>
                                 <form action="" enctype="multipart/form-data" method="post" id="tf">
-                                    <th>上传展示图片：</th>
+                                    <th>图书展示预览：</th>
                                     <td colspan="2">
                                         <div class="img1"></div>
                                     </td>
