@@ -52,6 +52,13 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
 
             book = new Book();
             book.setBookid(Integer.parseInt(request.getParameter("bookId")));
+            book.setBookName(request.getParameter("bookName"));
+            book.setBookAuthor(request.getParameter("bookAuthor"));
+            book.setBookInfo(request.getParameter("bookInfo"));
+            book.setBookMoney(Integer.parseInt(request.getParameter("bookMoney")));
+            book.setBookNum(Integer.parseInt(request.getParameter("bookNum")));
+            book.setBookStyle(request.getParameter("bookStyle"));
+            book.setBookimg(request.getParameter("bookImg"));
             if (bookService.addBook(book)){                                                //执行添加并判断是否添加成功
                 request.setAttribute("message","添加成功！");
             }else {
@@ -65,12 +72,7 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
 
             book = new Book();
             book.setBookid(Integer.parseInt(request.getParameter("bookId")));
-            book.setBookName(request.getParameter("bookName"));
-            book.setBookAuthor(request.getParameter("bookAuthor"));
-            book.setBookInfo(request.getParameter("bookInfo"));
-            book.setBookMoney(Integer.parseInt(request.getParameter("bookMoney")));
-            book.setBookNum(Integer.parseInt(request.getParameter("bookNum")));
-            book.setBookStyle(request.getParameter("bookStyle"));
+
 
             if (bookService.deleteBook(book)){                                              //执行删除并判断是否删除成功
                 request.setAttribute("message","删除成功！");

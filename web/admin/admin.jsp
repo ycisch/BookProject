@@ -103,9 +103,9 @@
             <div id="display">
                 <h1>图书列表</h1>
                 <div>
-                    <div id="origin">
+                    <%--<div id="origin">
 
-                    </div>
+                    </div>--%>
                     <div id="users">
                         <table>
                             <tr>
@@ -201,6 +201,10 @@
                         <table>
                             <form action="../BookServlet?opr=add" id="form" method="post">
                                 <tr>
+                                    <th>书号：</th>
+                                    <td colspan="3"><input type="text" name="bookId"></td>
+                                </tr>
+                                <tr>
                                     <th>书名：</th>
                                     <td colspan="3"><input type="text" name="bookName"></td>
                                 </tr>
@@ -258,7 +262,7 @@
                     <div id="books">
                         <ul>
                             <li>
-                                <img src="../static/img/book/1.jpg">
+                                <img src="${pageContext.request.contextPath}/static/img/book/1.jpg">
                                 <p><a href="#">当当全国独家 中华</a></p>
                                 <span>中华经典诗词分级诵</span>
                                 <p style="color: #cc3300">¥165.60</p>
@@ -269,7 +273,7 @@
                                 </form>
                             </li>
                             <li>
-                                <img src="../static/img/book/2.jpg">
+                                <img src="${pageContext.request.contextPath}/static/img/book/2.jpg">
                                 <p><a href="#">北京女子图鉴（一直</a></p>
                                 <span>王欣</span>
                                 <p style="color: #cc3300">¥42.00</p>
@@ -280,7 +284,7 @@
                                 </form>
                             </li>
                             <li>
-                                <img src="../static/img/book/3.jpg">
+                                <img src="${pageContext.request.contextPath}/static/img/book/3.jpg">
                                 <p><a href="#">穿过历史线，吃透小</a></p>
                                 <span>王芳</span>
                                 <p style="color: #cc3300">¥164.00</p>
@@ -291,7 +295,7 @@
                                 </form>
                             </li>
                             <li>
-                                <img src="../static/img/book/4.jpg">
+                                <img src="${pageContext.request.contextPath}/static/img/book/4.jpg">
                                 <p><a href="#">当当全国独家 中华</a></p>
                                 <span>中华经典诗词分级诵</span>
                                 <p style="color: #cc3300">¥165.60</p>
@@ -302,7 +306,7 @@
                                 </form>
                             </li>
                             <li>
-                                <img src="../static/img/book/5.jpg">
+                                <img src="${pageContext.request.contextPath}/static/img/book/5.jpg">
                                 <p><a href="#">自在成长：所有经</a></p>
                                 <span>李子勋</span>
                                 <p style="color: #cc3300">¥39.80</p>
@@ -313,7 +317,7 @@
                                 </form>
                             </li>
                             <li>
-                                <img src="../static/img/book/6.jpg">
+                                <img src="${pageContext.request.contextPath}/static/img/book/6.jpg">
                                 <p><a href="#">女孩成长不烦恼（套</a></p>
                                 <span>刷刷</span>
                                 <p style="color: #cc3300">¥302.40</p>
@@ -324,7 +328,7 @@
                                 </form>
                             </li>
                             <li>
-                                <img src="../static/img/book/7.jpg">
+                                <img src="${pageContext.request.contextPath}/static/img/book/7.jpg">
                                 <p><a href="#">名侦探柯南的科学之</a></p>
                                 <span>(日)青山刚昌/著,(日)</span>
                                 <p style="color: #cc3300">¥144.00</p>
@@ -335,7 +339,7 @@
                                 </form>
                             </li>
                             <li>
-                                <img src="../static/img/book/8.jpg">
+                                <img src="${pageContext.request.contextPath}/static/img/book/8.jpg">
                                 <p><a href="#">高效人士的问题解决</a></p>
                                 <span>（日）森秀明</span>
                                 <p style="color: #cc3300">¥15.99</p>

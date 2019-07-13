@@ -212,14 +212,14 @@ dd:hover{
     width: 1150px;
     height: 700px;
     border:1px solid #DFDFDF;
-    display: block;
+
 }
 
-#origin{
+/*#origin{
     width: 1150px;
     height: 700px;
     border:1px solid #DFDFDF;
-}
+}*/
 
 #users{
     display: none;
