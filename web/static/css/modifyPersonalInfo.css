@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.modPersonalInfo{
+    position:absolute;
+    top:20%;
+    left: 35%;
+    font-size: 18px;
+    border: 1px solid darkgrey;
+    width: 600px;
+    height: 450px;
+    border-radius: 3px;
+    background-color: white;
+}
+.newPersonal{
+    background-color: #ececec;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    text-indent: 1em;
+    border-bottom: 1px solid #dfdfdf;
+}
+.newPersonal_from{
+    height: 220px;
+    width: 550px;
+    margin: 10px auto;;
+    padding-left: 60px;
+}
+.newPersonal_from p{
+    line-height: 55px;
+}
+#username,#password,#email,#address,#phone,#money{
+    height: 30px;
+    width: 400px;
+    border-radius: 5px;
+    background-color: darkgrey;
+}
+#modify_button{
+    color: white;
+    background: -webkit-linear-gradient(#627f9c,#153759);
+    font-size: 20px;
+    border-radius: 8px;
+    padding: 10px 50px;
+    margin-top: 10px;
+    margin-left: 95px;
+    width: 300px;
+    cursor: pointer;
+}

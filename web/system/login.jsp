@@ -27,14 +27,16 @@
         <div id="login_main">
             <div id="login_header">登录</div>
             <div id="login_form">
-                <p>账号：<span id="nameerror"></span></p>
-                <p><input type="text" name="username" id="username"></p>
-                <p>密码：<span id="pwderror"></span></p>
-                <p><input type="password" name="password" id="password"></p>
-                <p>
-                    <input type="checkbox" name="save" class="login_save"/><span class="login_save">记住我！！！</span>
-                    <input type="submit" name="login" id="login_button" value="登录"/>
-                </p>
+                <form>
+                    <p>账号：<span id="nameerror"></span></p>
+                    <p><input type="text" name="username" id="username"></p>
+                    <p>密码：<span id="pwderror"></span></p>
+                    <p><input type="password" name="password" id="password"></p>
+                    <p>
+                        <input type="checkbox" name="save" class="login_save"/><span class="login_save">记住我！！！</span>
+                        <input type="submit" name="login" id="login_button" value="登录"/>
+                    </p>
+                </form>
             </div>
         </div>
 

@@ -10,9 +10,9 @@
     <head>
         <meta charset="UTF-8">
         <title>后台管理-华轩书海商城</title>
-        <link rel="stylesheet" href="../static/css/admin.css">
-        <script src="../static/js/jquery-1.11.3.min.js"></script>
-        <script src="../static/js/admin.js"></script>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin.css">
+        <script src="${pageContext.request.contextPath}/static/js/jquery-1.11.3.min.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/admin.js"></script>
         <script>
             $(function () {
                 $(".btn").click(function () {
@@ -21,6 +21,7 @@
                     // var file = $(".file1")[0].files[0];
                     // formData.append("nfile",file);
                     // console.log(formData);
+
                     $.ajax({
                         "url":"../BookServlet",
                         "type": "post",
@@ -34,7 +35,9 @@
                     function callback(data) {
                         console.log(data+"@@@@");
                         $(".img1").show();
-                        $(".img1").css({"background":"url("+data+")"})
+                        $(".img1").css({"background":"url("+data+")"});
+                        alert(data);
+                        $("#img_data").val(data);
                     }
                 })
             })
@@ -196,7 +199,7 @@
 
                     <div id="inserts">
                         <table>
-                            <form action="https://www.baidu.com/" id="form">
+                            <form action="../BookServlet?opr=add" id="form" method="post">
                                 <tr>
                                     <th>书名：</th>
                                     <td colspan="3"><input type="text" name="bookName"></td>
@@ -230,6 +233,7 @@
                                         </select>
                                     </td>
                                 </tr>
+                                <input type="hidden" name="bookImg" id="img_data" value="">
                             </form>
                             <tr>
                                 <form action="" enctype="multipart/form-data" method="post" id="tf">
