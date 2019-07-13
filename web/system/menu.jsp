@@ -10,13 +10,13 @@
 <head>
     <meta charset="utf-8">
     <title></title>
-    <link href="../static/css/menu.css" rel="stylesheet"/>
-    <link href="../static/css/footer.css" rel="stylesheet"/>
-    <link href="../static/css/center.css" rel="stylesheet"/>
-    <link href="../static/css/style1.css" rel="stylesheet" type="text/css">
-    <script src="../static/js/jquery-1.11.3.min.js"></script>
-    <script src="../static/js/menu.js"></script>
-    <script src="../static/js/menu1.js"></script>
+    <link href="${pageContext.request.contextPath}/static/css/menu.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/static/css/footer.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/static/css/center.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/static/css/style1.css" rel="stylesheet" type="text/css">
+    <script src="${pageContext.request.contextPath}/static/js/jquery-1.11.3.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/menu.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/menu1.js"></script>
 </head>
 <body>
 <div class="top">
@@ -413,7 +413,7 @@
     </div>
     <div class="top-footer-ul">
         <a href="#">首页</a>
-        <a href="#">文学频道</a>
+        <a href="../BookServlet?opr=keyList&style=2">文学频道</a>
         <a href="#">社科频道</a>
         <a href="#">经管频道</a>
         <a href="#">少儿频道</a>

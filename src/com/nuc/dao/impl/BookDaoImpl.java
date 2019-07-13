@@ -112,7 +112,9 @@ public class BookDaoImpl implements BookDao {
                 keybook.setBookMoney(resultSet.getFloat("bookmoney"));
                 keybook.setBookNum(resultSet.getInt("booknum"));
                 keybook.setBookStyle(resultSet.getString("bookstyle"));
-                keybook.setBookimg(resultSet.getString("bookimg"));
+                String name = resultSet.getString("bookimg");
+                name = name.substring(2,name.length());
+                keybook.setBookimg(name);
                 bookList.add(keybook);
             }
         }catch (SQLException e){

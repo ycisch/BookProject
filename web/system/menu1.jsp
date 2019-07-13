@@ -6,17 +6,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="utf-8">
     <title></title>
-    <link href="../static/css/menu.css" rel="stylesheet"/>
-    <link href="../static/css/footer.css" rel="stylesheet"/>
-    <link href="../static/css/center.css" rel="stylesheet"/>
-    <link href="../static/css/style1.css" rel="stylesheet" type="text/css">
-    <script src="../static/js/jquery-1.11.3.min.js"></script>
-    <script src="../static/js/menu.js"></script>
-    <script src="../static/js/menu1.js"></script>
+    <link href="${pageContext.request.contextPath}/static/css/menu.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/static/css/footer.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/static/css/center.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/static/css/style1.css" rel="stylesheet" type="text/css">
+    <script src="${pageContext.request.contextPath}/static/js/jquery-1.11.3.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/menu.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/menu1.js"></script>
 </head>
 <body>
 <div class="top">
@@ -61,86 +62,98 @@
 <div class="center1">
     <h2>文学频道</h2>
     <ul>
-        <li>
-            <img src="../static/img/book/1.jpg">
-            <p><a href="#">当当全国独家 中华</a></p>
-            <span>中华经典诗词分级诵</span>
-            <p style="color: #cc3300">¥165.60</p>
-            <form>
-                <input type="hidden">
-                <input type="button" value="添加到购物车" class="btn1">
-            </form>
-        </li>
-        <li>
-            <img src="../static/img/book/2.jpg">
-            <p><a href="#">北京女子图鉴（一直</a></p>
-            <span>王欣</span>
-            <p style="color: #cc3300">¥42.00</p>
-            <form>
-                <input type="hidden">
-                <input type="button" value="添加到购物车" class="btn1">
-            </form>
-        </li>
-        <li>
-            <img src="../static/img/book/3.jpg">
-            <p><a href="#">穿过历史线，吃透小</a></p>
-            <span>王芳</span>
-            <p style="color: #cc3300">¥164.00</p>
-            <form>
-                <input type="hidden">
-                <input type="button" value="添加到购物车" class="btn1">
-            </form>
-        </li>
-        <li>
-            <img src="../static/img/book/4.jpg">
-            <p><a href="#">当当全国独家 中华</a></p>
-            <span>中华经典诗词分级诵</span>
-            <p style="color: #cc3300">¥165.60</p>
-            <form>
-                <input type="hidden">
-                <input type="button" value="添加到购物车" class="btn1">
-            </form>
-        </li>
-        <li>
-            <img src="../static/img/book/5.jpg">
-            <p><a href="#">自在成长：所有经</a></p>
-            <span>李子勋</span>
-            <p style="color: #cc3300">¥39.80</p>
-            <form>
-                <input type="hidden">
-                <input type="button" value="添加到购物车" class="btn1">
-            </form>
-        </li>
-        <li>
-            <img src="../static/img/book/6.jpg">
-            <p><a href="#">女孩成长不烦恼（套</a></p>
-            <span>刷刷</span>
-            <p style="color: #cc3300">¥302.40</p>
-            <form>
-                <input type="hidden">
-                <input type="button" value="添加到购物车" class="btn1">
-            </form>
-        </li>
-        <li>
-            <img src="../static/img/book/7.jpg">
-            <p><a href="#">名侦探柯南的科学之</a></p>
-            <span>(日)青山刚昌/著,(日)</span>
-            <p style="color: #cc3300">¥144.00/p>
-            <form>
-                <input type="hidden">
-                <input type="button" value="添加到购物车" class="btn1">
-            </form>
-        </li>
-        <li>
-            <img src="../static/img/book/8.jpg">
-            <p><a href="#">高效人士的问题解决</a></p>
-            <span>（日）森秀明</span>
-            <p style="color: #cc3300">¥15.99</p>
-            <form>
-                <input type="hidden">
-                <input type="button" value="添加到购物车" class="btn1">
-            </form>
-        </li>
+        <c:forEach items="${requestScope.bookList}" var="bookList">
+            <li>
+                <img src="${pageContext.request.contextPath}${bookList.bookimg}">
+                <p><a href="#">${bookList.bookName}</a></p>
+                <span>${bookList.bookAuthor}</span>
+                <p style="color: #cc3300">¥<span>${bookList.bookMoney}</span></p>
+                <form>
+                    <input type="hidden" value="${bookList.bookid}">
+                    <input type="button" value="添加到购物车" class="btn1">
+                </form>
+            </li>
+        </c:forEach>
+<%--        <li>--%>
+<%--            <img src="../static/img/book/1.jpg">--%>
+<%--            <p><a href="#">当当全国独家 中华</a></p>--%>
+<%--            <span>中华经典诗词分级诵</span>--%>
+<%--            <p style="color: #cc3300">¥165.60</p>--%>
+<%--            <form>--%>
+<%--                <input type="hidden">--%>
+<%--                <input type="button" value="添加到购物车" class="btn1">--%>
+<%--            </form>--%>
+<%--        </li>--%>
+<%--        <li>--%>
+<%--            <img src="../static/img/book/2.jpg">--%>
+<%--            <p><a href="#">北京女子图鉴（一直</a></p>--%>
+<%--            <span>王欣</span>--%>
+<%--            <p style="color: #cc3300">¥42.00</p>--%>
+<%--            <form>--%>
+<%--                <input type="hidden">--%>
+<%--                <input type="button" value="添加到购物车" class="btn1">--%>
+<%--            </form>--%>
+<%--        </li>--%>
+<%--        <li>--%>
+<%--            <img src="../static/img/book/3.jpg">--%>
+<%--            <p><a href="#">穿过历史线，吃透小</a></p>--%>
+<%--            <span>王芳</span>--%>
+<%--            <p style="color: #cc3300">¥164.00</p>--%>
+<%--            <form>--%>
+<%--                <input type="hidden">--%>
+<%--                <input type="button" value="添加到购物车" class="btn1">--%>
+<%--            </form>--%>
+<%--        </li>--%>
+<%--        <li>--%>
+<%--            <img src="../static/img/book/4.jpg">--%>
+<%--            <p><a href="#">当当全国独家 中华</a></p>--%>
+<%--            <span>中华经典诗词分级诵</span>--%>
+<%--            <p style="color: #cc3300">¥165.60</p>--%>
+<%--            <form>--%>
+<%--                <input type="hidden">--%>
+<%--                <input type="button" value="添加到购物车" class="btn1">--%>
+<%--            </form>--%>
+<%--        </li>--%>
+<%--        <li>--%>
+<%--            <img src="../static/img/book/5.jpg">--%>
+<%--            <p><a href="#">自在成长：所有经</a></p>--%>
+<%--            <span>李子勋</span>--%>
+<%--            <p style="color: #cc3300">¥39.80</p>--%>
+<%--            <form>--%>
+<%--                <input type="hidden">--%>
+<%--                <input type="button" value="添加到购物车" class="btn1">--%>
+<%--            </form>--%>
+<%--        </li>--%>
+<%--        <li>--%>
+<%--            <img src="../static/img/book/6.jpg">--%>
+<%--            <p><a href="#">女孩成长不烦恼（套</a></p>--%>
+<%--            <span>刷刷</span>--%>
+<%--            <p style="color: #cc3300">¥302.40</p>--%>
+<%--            <form>--%>
+<%--                <input type="hidden">--%>
+<%--                <input type="button" value="添加到购物车" class="btn1">--%>
+<%--            </form>--%>
+<%--        </li>--%>
+<%--        <li>--%>
+<%--            <img src="../static/img/book/7.jpg">--%>
+<%--            <p><a href="#">名侦探柯南的科学之</a></p>--%>
+<%--            <span>(日)青山刚昌/著,(日)</span>--%>
+<%--            <p style="color: #cc3300">¥144.00/p>--%>
+<%--            <form>--%>
+<%--                <input type="hidden">--%>
+<%--                <input type="button" value="添加到购物车" class="btn1">--%>
+<%--            </form>--%>
+<%--        </li>--%>
+<%--        <li>--%>
+<%--            <img src="../static/img/book/8.jpg">--%>
+<%--            <p><a href="#">高效人士的问题解决</a></p>--%>
+<%--            <span>（日）森秀明</span>--%>
+<%--            <p style="color: #cc3300">¥15.99</p>--%>
+<%--            <form>--%>
+<%--                <input type="hidden">--%>
+<%--                <input type="button" value="添加到购物车" class="btn1">--%>
+<%--            </form>--%>
+<%--        </li>--%>
     </ul>
 </div>
 <div class="footer">

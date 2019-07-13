@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class BaseDao {
 
-    static String driver = "com.mysql.cj.jdbc.Driver";
+    static String driver = "com.mysql.jdbc.Driver";
     static String username = "root";
     static String password = "123456";
     static String url = "jdbc:mysql://localhost:3306/bookshop?serverTimezone=UTC&characterEncoding=utf-8";
