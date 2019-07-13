@@ -1,0 +1,25 @@
+#order{
+    width: 85%;
+    background: #ccc;
+    margin: 10px auto;
+    border-collapse: collapse;/*border-collapse:collapse合并内外边距(去除表格单元格默认的2个像素内外边距*/
+}
+#title th{
+    font-weight: bold;
+}
+th,td {
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+th {
+    background: #eee;
+    font-weight: normal;
+}
+tr {
+    background: #fff;
+}
+tr:hover {
+    background: #cc0;
+}
