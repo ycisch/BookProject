@@ -23,7 +23,7 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
 
         BookService bookService = new BookServiceImpl();
         Book book = null;
-        List<Book> bookList = new ArrayList<Book>();
+        List<Book> bookList = new ArrayList<>();
         String opr = request.getParameter("opr");
         System.out.println(request.getParameter("style"));
         if ("welcome".equals(opr)) {                                                  /*首页展示图书*/

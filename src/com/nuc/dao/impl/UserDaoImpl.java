@@ -14,11 +14,17 @@ public class UserDaoImpl implements UserDao {
         BaseDao baseDao = new BaseDao();
         String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
         ResultSet rs = baseDao.executeQuery(sql, user.getUsername(), user.getPassword());
-        try {
-            if (rs.next())
-                baseDao.commit();
+        try{
+            while (rs.next()){
+                user.setId(rs.getInt(1));
+                user.setEmail(rs.getString(4));
+                user.setAddress(rs.getString(5));
+                user.setPhone(rs.getString(6));
+                user.setMoney(rs.getFloat(7));
+                user.setImg(rs.getString(8));
                 return user;
-        } catch (SQLException e) {
+            }
+        }catch (SQLException e){
             e.printStackTrace();
         }
         return null;
@@ -28,20 +34,10 @@ public class UserDaoImpl implements UserDao {
     public boolean regist(User user) {
         BaseDao baseDao = new BaseDao();
         String sql = "INSERT INTO user " +
-                "(username,password,email,address,phone,money,img)" +
-                "VALUES (?,?,?,?,?,?,?)";
-        String sql1 = "SELECT * FROM user WHERE username=?";
-        ResultSet rs = baseDao.executeQuery(sql1, user.getUsername());
-        try {
-            if (rs.next())
-            {
-                System.out.println("用户名已存在");
-                return false;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        int result = baseDao.executeUpdate(sql,user.getUsername(),user.getPassword(),user.getEmail(),user.getAddress(),user.getPhone(),user.getMoney(),user.getImg());
+                "(username,password,email,address,phone)" +
+                "VALUES (?,?,?,?,?)";
+
+        int result = baseDao.executeUpdate(sql,user.getUsername(),user.getPassword(),user.getEmail(),user.getAddress(),user.getPhone());
         baseDao.commit();
         return result > 0;
     }
@@ -72,8 +68,8 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User updateUser(User user) {
         BaseDao baseDao = new BaseDao();
-        String sql = "UPDATE user SET username=?, password=?, email=?, address=?, phone=?, money=?, img=? WHERE (id=?)";
-        int result = baseDao.executeUpdate(sql, user.getUsername(), user.getPassword(), user.getEmail(), user.getAddress(), user.getPhone(), user.getMoney(), user.getImg(), user.getId());
+        String sql = "UPDATE user SET username=?, password=?, email=?, address=?, phone=? WHERE (id=?)";
+        int result = baseDao.executeUpdate(sql, user.getUsername(), user.getPassword(), user.getEmail(), user.getAddress(), user.getPhone(), user.getId());
         baseDao.commit();
         return result > 0 ? user : null;
     }
