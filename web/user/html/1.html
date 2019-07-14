@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../static/js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<div class="demo">
+    <ul id="list">
+        <li><label><input type="checkbox" value="1"> 1.时间都去哪儿了</label></li>
+        <li><label><input type="checkbox" value="2"> 2.海阔天空</label></li>
+        <li><label><input type="checkbox" value="3"> 3.真的爱你</label></li>
+        <li><label><input type="checkbox" value="4"> 4.不再犹豫</label></li>
+        <li><label><input type="checkbox" value="5"> 5.光辉岁月</label></li>
+        <li><label><input type="checkbox" value="6"> 6.喜欢妳</label></li>
+    </ul>
+    <input type="checkbox" id="all">
+    <input type="button" value="全选" class="btn" id="selectAll">
+    <input type="button" value="全不选" class="btn" id="unSelect">
+    <input type="button" value="反选" class="btn" id="reverse">
+    <input type="button" value="获得选中的所有值" class="btn" id="getValue">
+</div>
+<script>
+    $(function () {
+        //全选或全不选
+        $("#all").click(function(){
+            if(this.checked){
+                $("#list :checkbox").prop("checked", true);
+            }else{
+                $("#list :checkbox").prop("checked", false);
+            }
+        });
+        //全选
+        $("#selectAll").click(function () {
+            $("#list :checkbox,#all").prop("checked", true);
+        });
+        //全不选
+        $("#unSelect").click(function () {
+            $("#list :checkbox,#all").prop("checked", false);
+        });
+        //反选
+        $("#reverse").click(function () {
+            $("#list :checkbox").each(function () {
+                $(this).prop("checked", !$(this).prop("checked"));
+            });
+            allchk();
+        });
+
+        //设置全选复选框
+        $("#list :checkbox").click(function(){
+            allchk();
+        });
+
+        //获取选中选项的值
+        $("#getValue").click(function(){
+            var valArr = new Array;
+            $("#list :checkbox[checked]").each(function(i){
+                valArr[i] = $(this).val();
+            });
+            var vals = valArr.join(',');//转换为逗号隔开的字符串
+            alert(vals);
+        });
+    });
+    function allchk(){
+        var chknum = $("#list :checkbox").length;//选项总个数
+        var chk = 0;
+        $("#list :checkbox").each(function () {
+            if($(this).prop("checked")==true){
+                chk++;
+            }
+        });
+        if(chknum==chk){//全选
+            $("#all").prop("checked",true);
+        }else{//不全选
+            $("#all").prop("checked",false);
+        }
+    }
+</script>
+</body>
+</html>
