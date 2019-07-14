@@ -25,24 +25,26 @@
                 console.log("asdasd");
                 var num = ${page.currPageNo};
                 var style = ${style};
+                var styl1 =${style1};
                 num = num - 1;
                 if(num <= 0) num = 1;
                 console.log(num);
 
-                location.href="BookServlet?opr=keyList&style="+style+"&page="+num;
+                location.href="BookServlet?opr=keyList&style1="+style1+"&style="+style+"&page="+num;
             });
 
             $(".btn_brand_next").click(function () {
                 var num = ${page.currPageNo};
                 if(num <= 0) num = 1;
                 var style = ${style};
+                var styl1 =${style1};
                 num += 1;
                 // console.log(num);
                 if(num >= ${page.totalPageCout}) {
 
                     num = num = ${page.totalPageCout};;
                 }
-                location.href="BookServlet?opr=keyList&style="+style+"&page="+num;
+                location.href="BookServlet?opr=keyList&style1="+style1+"&style="+style+"&page="+num;
             })
         })
     </script>
@@ -77,7 +79,7 @@
     <div class="top-footer-ul">
         <a href="#">首页</a>
         <c:choose>
-            <c:when test="${type==2}">
+            <c:when test="${requestScope.style=='2'}">
                 <a href="#" class="type_a">文学频道</a>
             </c:when>
             <c:otherwise>
@@ -105,9 +107,10 @@
                 <p><a href="#">${bookList.bookName}</a></p>
                 <span>${bookList.bookAuthor}</span>
                 <p style="color: #cc3300">¥<span>${bookList.bookMoney}</span></p>
-                <form>
-                    <input type="hidden" value="${bookList.bookid}">
-                    <input type="button" value="添加到购物车" class="btn1">
+                <form action="ShopServlet" method="post">
+                    <input type="hidden" name="opr" value="add">
+                    <input type="hidden" name="bookid" value="${bookList.bookid}">
+                    <input type="submit" value="添加到购物车" class="btn1">
                 </form>
             </li>
         </c:forEach>

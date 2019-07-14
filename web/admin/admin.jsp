@@ -96,6 +96,7 @@
                     <hr/>
 
                     <dt>图书管理</dt>
+                    <dd><span id="bookStyle">添加样式</span></dd>
                     <dd><span id="bookList">查询图书</span></dd>
                     <dd><span id="insertBook">添加图书</span></dd>
                 </dl>
