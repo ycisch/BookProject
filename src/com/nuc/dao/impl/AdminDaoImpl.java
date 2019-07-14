@@ -9,7 +9,6 @@ import com.nuc.util.Page;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class AdminDaoImpl implements AdminDao {
@@ -19,10 +18,11 @@ public class AdminDaoImpl implements AdminDao {
         String sql = "SELECT * FROM admin WHERE adminname=? AND adminpwd=?";
         ResultSet rs = baseDao.executeQuery(sql, admin.getAdminName(), admin.getAdminPwd());
         try {
-            if (rs.next())
-                baseDao.commit();
+            while (rs.next()){
+                admin.setAdminId(rs.getInt(1));
                 return admin;
-        } catch (SQLException e) {
+            }
+        }catch (SQLException e){
             e.printStackTrace();
         }
         return null;
@@ -50,8 +50,8 @@ public class AdminDaoImpl implements AdminDao {
     @Override
     public Admin updateUser(Admin admin) {
         BaseDao baseDao = new BaseDao();
-        String sql = "UPDATE admin SET adminname=?, adminpwd=?";
-        int result = baseDao.executeUpdate(sql, admin.getAdminName(), admin.getAdminPwd());
+        String sql = "UPDATE admin SET adminname=?, adminpwd=? WHERE adminid=?";
+        int result = baseDao.executeUpdate(sql, admin.getAdminName(), admin.getAdminPwd(), admin.getAdminId());
         baseDao.commit();
         return result > 0 ? admin : null;
     }
@@ -59,7 +59,6 @@ public class AdminDaoImpl implements AdminDao {
     @Override
     public List<User> listUser() {
         BaseDao baseDao = new BaseDao();
-        Page page = new Page();
         String sql = "SELECT * FROM user";
         List<User> list = new ArrayList<>();
         ResultSet rs = baseDao.executeQuery(sql);

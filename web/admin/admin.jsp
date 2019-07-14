@@ -63,7 +63,7 @@
                     <li>
                         <a href="#">
                             <i id="home"></i>
-                            个人信息
+                            <a href="AdminServlet？opr=show&adminid=">个人信息</a>
                         </a>
                     </li>
                     <li>
