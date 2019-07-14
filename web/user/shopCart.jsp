@@ -16,8 +16,10 @@
     <div class="shop">
     <div class="title"><h1>购物车</h1><span onclick="close_plan()">关闭</span></div>
     <div class="cartList">
-        <ul>
-
+        <ul >
+            <li id="first">
+                <input type="checkbox" id="all" value="allBookID">全选
+            </li>
             <li>商品图片</li>
             <li>商品信息</li>
             <li>单价</li>
@@ -25,26 +27,90 @@
             <li>总价</li>
             <li>操作</li>
         </ul>
-        <ul>
-            <li><img src="../static/img/book/2.jpg"></li>
-            <li>北京女子</li>
-            <li>￥<input type="text" name="price" value="21.90"></li>
-            <li><input type="button" name="minus" value="-" onclick="minus(0);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(0);"></li>
-            <li id="price0">￥21.90</li>
-            <li><p onclick="collection();">移入收藏</p><p onclick="del(this);">删除</p></li>
-        </ul>
-        <ul>
-            <li><img src="../static/img/book/4.jpg"></li>
-            <li>自在成长</li>
-            <li>￥<input type="text" name="price" value="49.99"></li>
-            <li><input type="button" name="minus" value="-" onclick="minus(1);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(1);"></li>
-            <li id="price1">￥49.99</li>
-            <li><p onclick="collection();">移入收藏</p><p onclick="del(this);">删除</p></li>
-        </ul>
-        <ol>
-            <li id="allPrice">商品总计:<span></span></li>
-            <li><span >结算</span></li>
-        </ol>
+        <div class="box">
+            <div class="list">
+                <ul>
+                    <li>
+                        <input type="checkbox" value="bookID">
+                    </li>
+                    <li><img src="../../static/img/book/2.jpg"></li>
+                    <li>北京女子</li>
+                    <li>￥<input type="text" name="price" value="21.90"></li>
+                    <li><input type="button" name="minus" value="-" onclick="minus(0);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(0);"></li>
+                    <li id="price0">￥21.90</li>
+                    <li><p onclick="collection();">移入收藏</p><p onclick="del(this);">删除</p></li>
+                </ul>
+            </div>
+            <div class="list">
+                <ul>
+                    <li>
+                        <input type="checkbox" value="bookID">
+                    </li>
+                    <li><img src="../../static/img/book/4.jpg"></li>
+                    <li>自在成长</li>
+                    <li>￥<input type="text" name="price" value="49.99"></li>
+                    <li><input type="button" name="minus" value="-" onclick="minus(1);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(1);"></li>
+                    <li id="price1">￥49.99</li>
+                    <li><p onclick="collection();">移入收藏</p><p onclick="del(this);">删除</p></li>
+                </ul>
+            </div>
+            <div class="list">
+                <ul>
+                    <li>
+                        <input type="checkbox"value="bookID">
+                    </li>
+                    <li><img src="../../static/img/book/2.jpg"></li>
+                    <li>北京女子</li>
+                    <li>￥<input type="text" name="price" value="21.90"></li>
+                    <li><input type="button" name="minus" value="-" onclick="minus(2);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(2);"></li>
+                    <li id="price2">￥21.90</li>
+                    <li><p onclick="collection();">移入收藏</p><p onclick="del(this);">删除</p></li>
+                </ul>
+            </div>
+            <div class="list">
+                <ul>
+                    <li>
+                        <input type="checkbox" value="bookID">
+                    </li>
+                    <li><img src="../../static/img/book/4.jpg"></li>
+                    <li>自在成长</li>
+                    <li>￥<input type="text" name="price" value="49.99"></li>
+                    <li><input type="button" name="minus" value="-" onclick="minus(3);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(3);"></li>
+                    <li id="price3">￥49.99</li>
+                    <li><p onclick="collection();">移入收藏</p><p onclick="del(this);">删除</p></li>
+                </ul>
+            </div>
+            <div class="list">
+                <ul>
+                    <li>
+                        <input type="checkbox" value="bookID">
+                    </li>
+                    <li><img src="../../static/img/book/2.jpg"></li>
+                    <li>北京女子</li>
+                    <li>￥<input type="text" name="price" value="21.90"></li>
+                    <li><input type="button" name="minus" value="-" onclick="minus(0);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(0);"></li>
+                    <li id="price4">￥21.90</li>
+                    <li><p onclick="collection();">移入收藏</p><p onclick="del(this);">删除</p></li>
+                </ul>
+            </div>
+            <div class="list">
+                <ul>
+                    <li>
+                        <input type="checkbox" value="bookID">
+                    </li>
+                    <li><img src="../../static/img/book/4.jpg"></li>
+                    <li>自在成长</li>
+                    <li>￥<input type="text" name="price" value="49.99"></li>
+                    <li><input type="button" name="minus" value="-" onclick="minus(1);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(1);"></li>
+                    <li id="price5">￥49.99</li>
+                    <li><p onclick="collection();">移入收藏</p><p onclick="del(this);">删除</p></li>
+                </ul>
+            </div>
+            <ol>
+                <li id="allPrice">商品总计:<span></span></li>
+                <li><span >结算</span></li>
+            </ol>
+        </div>
     </div>
     </div>
     <script src="../static/js/shopCart.js"></script>
