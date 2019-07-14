@@ -90,11 +90,11 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
             Page page = new Page();
             page.setCurrPageNo((currPageNo-1));
             book = new Book();
-            book.setBookStyle("style");
+            book.setBookStyle(request.getParameter("style1"));
             book.setBookName(request.getParameter("style"));//取得查询条件
             page.setTotalCount(bookService.sumBook(book));
             bookList = bookService.listBookKey(book,page);                                       //查询所有放到bookList
-            request.setAttribute("type",book.getBookStyle());
+            request.setAttribute("style1",book.getBookStyle());
             request.setAttribute("style",book.getBookName());
             request.setAttribute("page",page);
             request.setAttribute("bookList",bookList);                             //存放所有图书到request

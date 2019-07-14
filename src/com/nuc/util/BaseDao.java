@@ -59,6 +59,7 @@ public class BaseDao {
      * @return  查询结果集
      */
     public ResultSet executeQuery(String sql, Object...params){
+        //System.out.println(sql);
         PreparedStatement pstmt=null;
         ResultSet rs=null;
         try {

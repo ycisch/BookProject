@@ -24,9 +24,9 @@
         <span>华轩书海商城</span>
     </div>
     <div class="top-serach">
-        <form class="top-serach-form">
+        <form action="BookServlet?opr=keyList&style1=name&page=1" class="top-serach-form" method="post">
             <div class="input1">
-                <input type="text" placeholder="我喜欢你，像风走了八万里" />
+                <input type="text" name="style" placeholder="我喜欢你，像风走了八万里" />
                 <input class="btn" type="button" value="搜索">
             </div>
         </form>
@@ -413,15 +413,15 @@
     </div>
     <div class="top-footer-ul">
         <a href="#">首页</a>
-        <a href="../BookServlet?opr=keyList&style=2&page=1">文学频道</a>
-        <a href="#">社科频道</a>
-        <a href="#">经管频道</a>
-        <a href="#">少儿频道</a>
-        <a href="#">生活频道</a>
-        <a href="#">科技频道</a>
-        <a href="#">音像</a>
-        <a href="#">百货</a>
-        <a href="#">电子书</a>
+        <a href="../BookServlet?opr=keyList&style1=style&style=2&page=1">文学频道</a>
+        <a href="../BookServlet?opr=keyList&style1=style&style=3&page=1">社科频道</a>
+        <a href="../BookServlet?opr=keyList&style1=style&style=4&page=1">经管频道</a>
+        <a href="../BookServlet?opr=keyList&style1=style&style=5&page=1">少儿频道</a>
+        <a href="../BookServlet?opr=keyList&style1=style&style=6&page=1">生活频道</a>
+        <a href="../BookServlet?opr=keyList&style1=style&style=7&page=1">科技频道</a>
+        <a href="../BookServlet?opr=keyList&style1=style&style=8&page=1">音像</a>
+        <a href="../BookServlet?opr=keyList&style1=style&style=9&page=1">百货</a>
+        <a href="../BookServlet?opr=keyList&style1=style&style=10&page=1">电子书</a>
     </div>
 </div>
 <div class="center">
