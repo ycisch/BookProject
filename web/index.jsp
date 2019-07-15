@@ -10,7 +10,7 @@
   <head>
     <title>$Title$</title>
     <script>
-        window.location = 'AdminServlet?opr=123';
+        window.location = '${pageContext.request.contextPath}/system/menu.jsp';
     </script>
   </head>
   <body>

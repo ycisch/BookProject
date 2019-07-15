@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -42,8 +43,34 @@ public class ShopDaoImpl implements ShopDao {
     @Override
     public boolean addShop(Book book, User user) {
         ResultSet rs = null;
-        String sql = "insert into shop(bookid,userid,num) values(?,?,?)";
-        Object params[] = {book.getBookid(),user.getId(),1};
+        int num = 1,id = 0;
+        String sql1 = "select * from shop where bookid = ? and userid=?";
+        String sql="";
+        Object params[] = null;
+        System.out.println(book.getBookid()+"   "+user.getId());
+        rs = baseDao.executeQuery(sql1,book.getBookid(),user.getId());
+        baseDao.commit();
+        //System.out.println(rs);
+
+        try {
+            while(rs.next()){
+                num = rs.getInt(4);
+                id = rs.getInt(1);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        if(id !=0){
+            //System.out.println(num+"  "+id);
+            rs = null;
+            if(book.getBookNum() == 1) sql = "update shop set num=num+1 where shopid=?";
+            else sql = "update shop set num=num-1 where shopid=?";
+            params = new Object[]{id};
+        }
+        else{
+            sql = "insert into shop(bookid,userid,num) values(?,?,?)";
+            params = new Object[]{book.getBookid(), user.getId(), num};
+        }
         int num1 = baseDao.executeUpdate(sql,params);
         if(num1 >= 1){
             baseDao.commit();
@@ -91,10 +118,11 @@ public class ShopDaoImpl implements ShopDao {
     }
 
     @Override
-    public boolean sumMoney(User user) {
+    public boolean sumMoney(User user,String ids[]) {
         int sum = 0;
-        String sql = "select sum(num) as money from shop where userid = ?";
+        String sql = "select sum(num*b.bookmoney) as money from shop s,book b where userid = ? and b.bookid = s.bookid";
         Object params[] = {user.getId()};
+        System.out.println(Arrays.toString(params));
         ResultSet rs = baseDao.executeQuery(sql,params);
         try {
             if(rs == null){
@@ -103,21 +131,29 @@ public class ShopDaoImpl implements ShopDao {
             while (rs.next()){
                 sum = rs.getInt(1);
             }
+            //System.out.println(sum+"@@@@"+user.getMoney());
             if(user.getMoney() < sum) return false;
 
+            //System.out.println(sum+"!!!");
             String sql1 = "update user set money = money - ? where id = ?";
             Object params1[] = {sum,user.getId()};
             int num1 = baseDao.executeUpdate(sql1,params1);
             //System.out.println(num1);
             if(num1 >= 1){
-                sql1 = "delete from shop where userid = ?";
-                Object params2[] = {user.getId()};
-                if(baseDao.executeUpdate(sql1,params2) >= 1){
-                    baseDao.commit();
-                    user.setMoney(user.getMoney()-sum);
-                    return true;
+                //System.out.println(Arrays.toString(ids));
+                for (int i = 0; i < ids.length; i++){
+                    sql1 = "delete from shop where userid = ? and shopid = ?";
+                    Object params2[] = {user.getId(),ids[i]};
+                    if(baseDao.executeUpdate(sql1,params2) >= 1){
+                        baseDao.commit();
+
+                    }
+                    else{
+                        baseDao.runback();
+                        return true;
+                    }
                 }
-                baseDao.runback();
+                user.setMoney(user.getMoney()-sum);
             }
         } catch (SQLException e) {
             e.printStackTrace();

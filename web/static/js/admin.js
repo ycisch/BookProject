@@ -7,8 +7,8 @@ $(document).ready(function(){
     });
 
 
-    $("#userList").click(function () {
-        /* $("#books").css({"display":"none"}); */
+/*    $("#userList").click(function () {
+        /!* $("#books").css({"display":"none"}); *!/
         $("#users").css({"display":"block"});
         $("#users").siblings().css({"display":"none"});
         $("#display h1").html("用户列表");
@@ -31,6 +31,12 @@ $(document).ready(function(){
         $("#inserts").siblings().css({"display":"none"});
         $("#display h1").html("添加图书");
     });
+
+    $(".btn1").click(function () {
+        $("#update").css({"display":"block"});
+        $("#update").siblings().css({"display":"none"});
+        $("#display h1").html("修改图书");
+    });*/
 
 
 

@@ -5,6 +5,7 @@ import com.nuc.entiy.User;
 import com.nuc.service.AdminService;
 import com.nuc.service.impl.AdmainServiceImpl;
 import com.nuc.util.FileUpload;
+import com.nuc.util.Page;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class AdminServlet extends javax.servlet.http.HttpServlet {
         if ("login".equals(opr)){       //管理员登录
             admin.setAdminName(request.getParameter("adminname"));
             admin.setAdminPwd(request.getParameter("adminpwd"));
+            System.out.println(admin);
             admin = service.login(admin);
             request.getSession().setAttribute("admin",admin);
             request.getRequestDispatcher("admin/admin.jsp").forward(request,response);
@@ -48,9 +50,20 @@ public class AdminServlet extends javax.servlet.http.HttpServlet {
             request.setAttribute("admin",admin);
             request.getRequestDispatcher("admin/admin.jsp").forward(request,response);
         }else if ("list".equals(opr)){      //展示所有用户信息
-            userList = service.listUser();
+            Page page = new Page();
+            int currPageNo = Integer.parseInt(request.getParameter("currPageNo"));
+            page.setTotalCount(service.userCount());
+            int num = page.getTotalPageCout();
+            if(currPageNo <= 1) currPageNo=1;
+            if(currPageNo >= num) currPageNo = num;
+            page.setCurrPageNo(currPageNo);
+
+            userList = service.listUser(page);
+
+
             request.setAttribute("userList",userList);
-            request.getRequestDispatcher("admin/admin.jsp").forward(request,response);
+            request.setAttribute("page",page);
+            request.getRequestDispatcher("admin/admin_userlist.jsp").forward(request,response);
         }
     }
 }

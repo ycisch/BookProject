@@ -40,7 +40,7 @@ public class FileUpload {
                         fieldName=item.getFieldName();//表单字段的name属性
                         if(fieldName.equals("user")){
                             //输出表单字段的值
-                           // System.out.println(item.getString("utf-8")+"上传了文件！");
+                            // System.out.println(item.getString("utf-8")+"上传了文件！");
                         }
                     }else {  //文件表单字段
                         String fileName=item.getName();
