@@ -17,6 +17,25 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public List<Order> listOrder(User user) {
+        String sql = "select * from order where userid = ?";
+        Object params[] = {user.getId()};
+        ResultSet rs = baseDao.executeQuery(sql,params);
+        List<Order> list = new ArrayList<>();
+        baseDao.commit();
+        try{
+            while (rs.next()){
+                Order order = new Order();
+                order.setBookId(rs.getInt(1));
+                order.setBookId(rs.getInt(2));
+                order.setBooknum(rs.getInt(3));
+                order.setMoney(rs.getFloat(4));
+                order.setUserId(rs.getInt(5));
+                order.setCtdate(rs.getDate(6));
+                list.add(order);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return null;
     }
 

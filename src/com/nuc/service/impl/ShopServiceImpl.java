@@ -34,7 +34,7 @@ public class ShopServiceImpl implements ShopService {
     }
 
     @Override
-    public boolean sumMoney(User user) {
-        return shopDao.sumMoney(user);
+    public boolean sumMoney(User user,String ids[]) {
+        return shopDao.sumMoney(user,ids);
     }
 }
