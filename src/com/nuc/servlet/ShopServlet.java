@@ -41,9 +41,9 @@ public class ShopServlet extends javax.servlet.http.HttpServlet {
             shop.setShopId(Integer.parseInt(request.getParameter("shopid")));
             shopService.updateShop(shop,user);
         }else if(opr == "sum"){
-
+            String ids[] = null;
             //点击清算之后
-            shopService.sumMoney(user);
+            shopService.sumMoney(user,ids);
 
         }else  if(opr == "add1"){
             book.setBookNum(1);

@@ -13,10 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "PayServlet")
 public class PayServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,9 +27,10 @@ public class PayServlet extends HttpServlet {
         alipayRequest.setNotifyUrl(AlipayConfig.notify_url);
 
         //商户订单号，商户网站订单系统中唯一订单号，必填
-        String out_trade_no = "20181037";
+        System.out.println(request.getParameter("WIDout_trade_no")+"@@@@"+request.getParameter("WIDtotal_amount"));
+        String out_trade_no = request.getParameter("WIDout_trade_no");
         //付款金额，必填
-        String total_amount = "9999";
+        String total_amount = request.getParameter("WIDtotal_amount");
         //订单名称，必填
         String subject = "支付宝测试";
         //商品描述，可空

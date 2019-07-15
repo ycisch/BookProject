@@ -1,4 +1,4 @@
-﻿package com.nuc.util;
+package com.nuc.util;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -27,10 +27,10 @@ public class AlipayConfig {
     public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwiM2EpCygM+gXM42YNA6d1WKjdfPSVjy+VkSvoG9s7Kn7lzgsaTnBHwgzVyLoCUBICQ3iMhhUmk6/8pQs5RAW2HVGjPqdJBpSizWvrUs9Jpjuzb8sZIfmvU35VU6Bk2aEy8x41vO/tyK6UY42P3MA7fCZVt4KN3FK9FQkTvI/2WBSVAy/BmBqcc+YbrJ7vPkzpLD0faSe9M49E3IH5qQAVIsout9iw2fZIbKlLXfFhG1Ji57y59QrCg4PMHRrACwWcbw5xR44dkuP/gXiI5ZdT+KJot/Y7vq2kp5nygPuzepxy+H84PBxIRWM4OBMCA5nkka+VZfFBHrBO0NF0qreQIDAQAB";
 
 	// 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String notify_url = "http://localhost:8080/alipay.trade.page.pay-JAVA-UTF-8/notify_url.jsp";
+	public static String notify_url = "http://localhost:8080/TestPro_war_exploded/notify_url.jsp";
 
 	// 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String return_url = "http://localhost:8080/alipay.trade.page.pay-JAVA-UTF-8/return_url.jsp";
+	public static String return_url = "http://localhost:8080/TestPro_war_exploded/success.jsp";
 
 	// 签名方式
 	public static String sign_type = "RSA2";
@@ -42,7 +42,7 @@ public class AlipayConfig {
 	public static String gatewayUrl = "https://openapi.alipaydev.com/gateway.do";
 	
 	// 支付宝网关
-	public static String log_path = "C:\\";
+	public static String log_path = "G:\\";
 
 
 //↑↑↑↑↑↑↑↑↑↑请在这里配置您的基本信息↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑

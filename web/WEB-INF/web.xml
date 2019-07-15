@@ -60,7 +60,14 @@
         <servlet-name>ShopServlet</servlet-name>
         <url-pattern>/ShopServlet</url-pattern>
     </servlet-mapping>
-    
+    <servlet>
+        <servlet-name>PayServlet</servlet-name>
+        <servlet-class>com.nuc.servlet.PayServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PayServlet</servlet-name>
+        <url-pattern>/PayServlet</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
