@@ -63,7 +63,7 @@
                     <li>
                         <a href="#">
                             <i id="home"></i>
-                            <a href="AdminServlet？opr=show&adminid=">个人信息</a>
+                            <a href="${pageContext.request.contextPath}/AdminServlet?opr=show">个人信息</a>
                         </a>
                     </li>
                     <li>
@@ -90,7 +90,7 @@
                                 <hr/> -->
 
                     <dt>用户管理</dt>
-                    <dd><span id="userList">用户列表</span></dd>
+                    <dd><span id="userList"><a href="${pageContext.request.contextPath}/AdminServlet?opr=list">用户列表</a></span></dd>
                     <dd><span id="onlineList">在线用户</span></dd>
 
                     <hr/>

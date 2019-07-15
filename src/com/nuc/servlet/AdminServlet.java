@@ -35,7 +35,7 @@ public class AdminServlet extends javax.servlet.http.HttpServlet {
             admin = service.getUser(admin);
             request.setAttribute("admin",admin);
             request.getRequestDispatcher("admin/admin.jsp").forward(request,response);
-        }else if ("update".equals(opr)){
+        }else if ("update".equals(opr)){        //修改管理员信息
             admin = (Admin) request.getSession().getAttribute("admin");
             admin.setAdminId(Integer.parseInt(request.getParameter("adminid")));
             admin.setAdminName(request.getParameter("adminname"));
@@ -47,7 +47,7 @@ public class AdminServlet extends javax.servlet.http.HttpServlet {
                 request.setAttribute("message","修改失败");
             request.setAttribute("admin",admin);
             request.getRequestDispatcher("admin/admin.jsp").forward(request,response);
-        }else if ("list".equals(opr)){
+        }else if ("list".equals(opr)){      //展示所有用户信息
             userList = service.listUser();
             request.setAttribute("userList",userList);
             request.getRequestDispatcher("admin/admin.jsp").forward(request,response);

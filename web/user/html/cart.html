@@ -9,7 +9,7 @@
 <body>
 <form action="#" method="post">
 <div class="shop">
-    <div class="title"><h1>购物车</h1><span onclick="close_plan()">关闭</span></div>
+    <div class="title"><h1>购物车</h1><span id="close">关闭</span></div>
     <div class="cartList">
         <ul >
             <li id="first">
@@ -33,7 +33,7 @@
                 <li>￥<input type="text" name="price" value="21.90"></li>
                 <li><input type="button" name="minus" value="-" onclick="minus(0);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(0);"></li>
                 <li id="price0">￥21.90</li>
-                <li><p onclick="collection();">移入收藏</p><p onclick="del(this);">删除</p></li>
+                <li><p class="collection">移入收藏</p><p onclick="del(this);">删除</p></li>
             </ul>
         </div>
             <div class="list">
@@ -46,7 +46,7 @@
                 <li>￥<input type="text" name="price" value="49.99"></li>
                 <li><input type="button" name="minus" value="-" onclick="minus(1);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(1);"></li>
                 <li id="price1">￥49.99</li>
-                <li><p onclick="collection();">移入收藏</p><p onclick="del(this);">删除</p></li>
+                <li><p class="collection">移入收藏</p><p onclick="del(this);">删除</p></li>
             </ul>
         </div>
         <div class="list">
@@ -59,7 +59,7 @@
             <li>￥<input type="text" name="price" value="21.90"></li>
             <li><input type="button" name="minus" value="-" onclick="minus(2);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(2);"></li>
             <li id="price2">￥21.90</li>
-            <li><p onclick="collection();">移入收藏</p><p onclick="del(this);">删除</p></li>
+            <li><p class="collection">移入收藏</p><p onclick="del(this);">删除</p></li>
         </ul>
     </div>
         <div class="list">
@@ -72,7 +72,7 @@
                 <li>￥<input type="text" name="price" value="49.99"></li>
                 <li><input type="button" name="minus" value="-" onclick="minus(3);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(3);"></li>
                 <li id="price3">￥49.99</li>
-                <li><p onclick="collection();">移入收藏</p><p onclick="del(this);">删除</p></li>
+                <li><p class="collection">移入收藏</p><p onclick="del(this);">删除</p></li>
             </ul>
         </div>
         <div class="list">
@@ -83,9 +83,9 @@
                 <li><img src="../../static/img/book/2.jpg"></li>
                 <li>北京女子</li>
                 <li>￥<input type="text" name="price" value="21.90"></li>
-                <li><input type="button" name="minus" value="-" onclick="minus(0);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(0);"></li>
+                <li><input type="button" name="minus" value="-" onclick="minus(4);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(4);"></li>
                 <li id="price4">￥21.90</li>
-                <li><p onclick="collection();">移入收藏</p><p onclick="del(this);">删除</p></li>
+                <li><p class="collection">移入收藏</p><p onclick="del(this);">删除</p></li>
             </ul>
         </div>
         <div class="list">
@@ -96,9 +96,9 @@
                 <li><img src="../../static/img/book/4.jpg"></li>
                 <li>自在成长</li>
                 <li>￥<input type="text" name="price" value="49.99"></li>
-                <li><input type="button" name="minus" value="-" onclick="minus(1);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(1);"></li>
+                <li><input type="button" name="minus" value="-" onclick="minus(5);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(5);"></li>
                 <li id="price5">￥49.99</li>
-                <li><p onclick="collection();">移入收藏</p><p onclick="del(this);">删除</p></li>
+                <li><p class="collection">移入收藏</p><p onclick="del(this);">删除</p>></li>
             </ul>
         </div>
         <ol>

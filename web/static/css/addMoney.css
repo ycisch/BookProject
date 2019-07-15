@@ -30,7 +30,7 @@
     border-radius: 5px;
     background-color: darkgrey;
 }
-#form button{
+#form addmoney_button{
     color: white;
     background: -webkit-linear-gradient(#627f9c,#153759);
     font-size: 20px;

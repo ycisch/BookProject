@@ -27,7 +27,7 @@
         <div id="login_main">
             <div id="login_header">登录</div>
             <div id="login_form">
-                <form>
+                <form action="${pageContext.request.contextPath}/AdminServlet?opr=login" method="post">
                     <p>账号：<span id="nameerror"></span></p>
                     <p><input type="text" name="adminname" id="username"></p>
                     <p>密码：<span id="pwderror"></span></p>
