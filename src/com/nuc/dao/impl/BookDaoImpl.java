@@ -6,6 +6,7 @@ import com.nuc.util.BaseDao;
 import com.nuc.util.DatabaseUtil;
 import com.nuc.util.Page;
 
+import javax.sound.midi.Soundbank;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -94,7 +95,9 @@ public class BookDaoImpl implements BookDao {
         List<Book> bookList = new ArrayList<Book>();
         ResultSet resultSet = null;
 
-        System.out.println(page.toString());
+        /*System.out.println(page.toString());*/
+        System.out.println("dao层book，page："+book+"******"+page);
+        System.out.println(book.getBookStyle());
 
         //条件判断
         if(book.getBookStyle().equals("name")){

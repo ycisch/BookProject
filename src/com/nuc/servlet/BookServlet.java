@@ -57,7 +57,17 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
 
         }else if ("update".equals(opr)){                                            /*更新图书*/
 
-            book = (Book) request.getAttribute("book");                                 //获取需要修改的图书对象
+            book = new Book();                                                     //获取需要修改的图书对象
+            book.setBookid(Integer.parseInt(request.getParameter("bookId")));
+            book.setBookName(request.getParameter("bookName"));
+            book.setBookAuthor(request.getParameter("bookAuthor"));
+            book.setBookInfo(request.getParameter("bookInfo"));
+            book.setBookMoney(Integer.parseInt(request.getParameter("bookMoney")));
+            book.setBookNum(Integer.parseInt(request.getParameter("bookNum")));
+            book.setBookStyle(request.getParameter("bookStyle"));
+            book.setBookimg(request.getParameter("bookImg"));
+
+
             if (bookService.updateBook(book)){                                             //执行修改并判断是否修改成功
                 request.setAttribute("message","修改成功！");
             }else {
@@ -84,15 +94,8 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
                 request.setAttribute("message","添加失败！");
             }
             //查询所有放到bookList
-            Page page = new Page();
-            page.setCurrPageNo(0);
-            page.setTotalCount(bookService.sumBook());
-            book = new Book();
-            book.setBookStyle("all");
-            bookList = bookService.listBookKey(book,page);
-            request.setAttribute("page",page);
-            request.setAttribute("bookList",bookList);                             //存放所有图书到request
-            request.getRequestDispatcher("admin/admin.jsp").forward(request,response);  //跳回后台页面
+
+            request.getRequestDispatcher("/BookServlet?opr=welcome&page=1").forward(request,response);  //跳回后台页面
 
         }else if ("del".equals(opr)){                                               /*按ID删除图书*/
 
@@ -117,10 +120,17 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
             page.setCurrPageNo((currPageNo-1));
             book = new Book();
             if (request.getParameter("style").equals("id")){
+                book.setBookStyle("id");
+                book.setBookid(Integer.parseInt(request.getParameter("id")));
+                System.out.println("servlet:book,page"+book+"******"+page);
+                bookList = bookService.listBookKey(book,page);
+                book = bookList.get(0);
+                System.out.println("输出list的第一个book"+book);
+                request.setAttribute("book",book);
+                System.out.println("查询完成1");
+                System.out.println(bookList);
+                System.out.println("查询完成2");
                 request.getRequestDispatcher("admin/admin_update.jsp").forward(request,response);
-
-
-
             }
 
 

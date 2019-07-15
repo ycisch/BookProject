@@ -16,14 +16,6 @@
     <script src="${pageContext.request.contextPath}/static/js/admin.js"></script>
     <script>
         $(function () {
-            var num = ${page.currPageNo};
-            if (num == 1){
-                $("#hasPrev").hide();
-                $("#hasNext").show();
-            }else (num == ${page.totalPageCout}){
-                $("#hasPrev").show();
-                $("#hasNext").hide();
-            }
             $(".btn").click(function () {
                 console.log("@@@@");
                 var formData = new FormData(document.getElementById("tf"));
@@ -54,10 +46,10 @@
 
     <style>
         .img1{
-            display: none;
             width: 150px;
             height: 150px;
         }
+
     </style>
 </head>
 <body>
@@ -110,72 +102,69 @@
         </dl>
     </div>
     <div id="display">
-        <h1>修改图书</h1>
+        <h1>修改图书</h1>${book.bookimg}
         <div>
             <div id="update">
-                <c:forEach items="${requestScope.bookList}" var="bookList">
-                    <table>
-                        <form action="${pageContext.request.contextPath}/BookServlet?opr=update" id="update_form" method="post">
-                            <tr>
-                                <th>书号：</th>
-                                <td colspan="3"><input type="text" name="bookId" value="${bookList.bookid}"></td>
-                            </tr>
-                            <tr>
-                                <th>书名：</th>
-                                <td colspan="3"><input type="text" name="bookName" value="${bookList.bookName}"></td>
-                            </tr>
-                            <tr>
-                                <th>作者：</th>
-                                <td colspan="3"><input type="text" name="bookAuthor" value="${bookList.bookAuthor}"></td>
-                            </tr>
-                            <tr>
-                                <th>简介：</th>
-                                <td colspan="3"><textarea name="bookInfo" value="${bookList.bookInfo}"></textarea></td>
-                            </tr>
-                            <tr>
-                                <th>价格：</th>
-                                <td colspan="3"><input type="text" name="bookMoney" value="${bookList.bookMoney}"></td>
-                            </tr>
-                            <tr>
-                                <th>库存：</th>
-                                <td colspan="3"><input type="text" name="bookNum" value="${bookList.bookNum}"></td>
-                            </tr>
-                            <tr>
-                                <th>种类：</th>
-                                <td colspan="3">
-                                    <select name="bookStyle">
-                                        <option value="1">文学</option>
-                                        <option value="2">社科</option>
-                                        <option value="3">经管</option>
-                                        <option value="4">少儿</option>
-                                        <option value="5">生活</option>
-                                        <option value="6">科技</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <input type="hidden" name="bookImg" class="img_data" value="">
-                        </form>
+                <table>
+                    <form action="${pageContext.request.contextPath}/BookServlet?opr=update" id="update_form" method="post">
                         <tr>
-                            <form action="" enctype="multipart/form-data" method="post" id="tf_update">
-                                <th>图书展示预览：</th>
-                                <td colspan="2">
-                                    <div class="img1"></div>
-                                </td>
-                                <td>
-                                    <p>选择图片：<input class="file1" type="file" name="nfile"> </p>
-                                    <p><input class="btn_update" type="button" value="上  传  图  片"></p>
-                                </td>
-                            </form>
+                            <th>书号：</th>
+                            <td colspan="3"><input type="text" name="bookId" value="${book.bookid}"></td>
                         </tr>
                         <tr>
-                            <td colspan="4">
-                                <input type="button" value="修        改" onclick="document.getElementById('update_form').submit();">
-
+                            <th>书名：</th>
+                            <td colspan="3"><input type="text" name="bookName" value="${book.bookName}"></td>
+                        </tr>
+                        <tr>
+                            <th>作者：</th>
+                            <td colspan="3"><input type="text" name="bookAuthor" value="${book.bookAuthor}"></td>
+                        </tr>
+                        <tr>
+                            <th>简介：</th>
+                            <td colspan="3"><textarea name="bookInfo">${book.bookInfo}</textarea></td>
+                        </tr>
+                        <tr>
+                            <th>价格：</th>
+                            <td colspan="3"><input type="text" name="bookMoney" value="${book.bookMoney}"></td>
+                        </tr>
+                        <tr>
+                            <th>库存：</th>
+                            <td colspan="3"><input type="text" name="bookNum" value="${book.bookNum}"></td>
+                        </tr>
+                        <tr>
+                            <th>种类：</th>
+                            <td colspan="3">
+                                <select name="bookStyle">
+                                    <option value="1">文学</option>
+                                    <option value="2">社科</option>
+                                    <option value="3">经管</option>
+                                    <option value="4">少儿</option>
+                                    <option value="5">生活</option>
+                                    <option value="6">科技</option>
+                                </select>
                             </td>
                         </tr>
+                        <input type="hidden" name="bookImg" class="img_data" value="">
+                    </form>
+                    <tr>
+                        <form action="" enctype="multipart/form-data" method="post" id="tf_update">
+                            <th>图书展示预览：</th>
+                            <td colspan="2">
+                                <div class="img1" style="background: url(${pageContext.request.contextPath}${book.bookimg})"></div>
+                            </td>
+                            <td>
+                                <p>选择图片：<input class="file1" type="file" name="nfile"> </p>
+                                <p><input class="btn_update" type="button" value="上  传  图  片"></p>
+                            </td>
+                        </form>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <input type="button" value="修        改" onclick="document.getElementById('update_form').submit();">
 
-                    </table>
-                </c:forEach>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>

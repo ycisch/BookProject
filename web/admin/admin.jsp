@@ -22,6 +22,12 @@
                     location.href="BookServlet?opr=keyList&style=id&page=1&id="+id;
                 })
 
+                $(".btn2").click(function () {
+                    var id = $(this).prev().prev().val();
+                    alert(id);
+                    /*location.href="BookServlet?opr=keyList&style=id&page=1&id="+id;*/
+                })
+
                 $(".btn").click(function () {
                     console.log("@@@@");
                     var formData = new FormData(document.getElementById("tf"));
@@ -343,13 +349,13 @@
                         </ul>
                         <div class="sikp">
                             <p>
-                                <a href="${pageContext.request.contextPath}/BookServlet?opr=list&&page=1"><span>首页</span></a>
+                                <a href="${pageContext.request.contextPath}/BookServlet?opr=welcome&&page=1"><span>首页</span></a>
                                 &nbsp;|&nbsp;
-                                <a href="${pageContext.request.contextPath}/BookServlet?opr=list&&page=${page.currPageNo}"><span class="previous">上一页</span></a>
+                                <a href="${pageContext.request.contextPath}/BookServlet?opr=welcome&&page=${page.currPageNo}"><span class="previous">上一页</span></a>
                                 &nbsp;|&nbsp;
-                                <a href="${pageContext.request.contextPath}/BookServlet?opr=list&&page=${page.currPageNo+2}"><span class="next">下一页</span></a>
+                                <a href="${pageContext.request.contextPath}/BookServlet?opr=welcome&&page=${page.currPageNo+2}"><span class="next">下一页</span></a>
                                 &nbsp;|&nbsp;
-                                <a href="${pageContext.request.contextPath}/BookServlet?opr=list&&page=${page.totalPageCout}"><span>尾页</span></a>
+                                <a href="${pageContext.request.contextPath}/BookServlet?opr=welcome&&page=${page.totalPageCout}"><span>尾页</span></a>
                                 &nbsp;|&nbsp;
                                 <a><span class="">当前${page.currPageNo+1}第页</span></a>
                                 &nbsp;|&nbsp;
