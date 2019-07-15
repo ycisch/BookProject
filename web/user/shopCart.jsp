@@ -11,6 +11,12 @@
     <title>华轩书海购物车</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/shopcart.css">
     <script src="${pageContext.request.contextPath}/static/js/jquery-1.11.3.min.js"></script>
+
+    <script>
+        $(function () {
+
+        })
+    </script>
 </head>
 <body>
     <div class="shop">
