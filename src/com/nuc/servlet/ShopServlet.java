@@ -3,7 +3,9 @@ package com.nuc.servlet;
 import com.nuc.entiy.Book;
 import com.nuc.entiy.Shop;
 import com.nuc.entiy.User;
+import com.nuc.service.BookService;
 import com.nuc.service.ShopService;
+import com.nuc.service.impl.BookServiceImpl;
 import com.nuc.service.impl.ShopServiceImpl;
 
 import java.io.IOException;
@@ -17,6 +19,7 @@ public class ShopServlet extends javax.servlet.http.HttpServlet {
         String opr = request.getParameter("opr");
         System.out.println(opr);
 
+        BookService bookService = new BookServiceImpl();
         ShopService shopService = new ShopServiceImpl();
         User user = (User) request.getSession().getAttribute("user");
         Shop shop = new Shop();
@@ -25,7 +28,26 @@ public class ShopServlet extends javax.servlet.http.HttpServlet {
 
             //查看用户所有购物记录
             List<Shop> list = shopService.listShop(user);
+            int id = 0;
+            for (Shop shop1: list) {
+                System.out.println(shop1+"@@");
+                Book book1 = new Book();
+                int num = shop1.getBookId();
+                book1.setBookid(num);
+                bookService.selectBook(book1);
+                book1.setBookAuthor(book1.getBookMoney()*shop1.getNum()+"");
+                System.out.println(book1);
+                shop1.setBook(book1);
+                shop1.setUser(user);
+                shop1.setNumid(id);
+                id++;
+
+//                System.out.println(shop1+"@@");
+            }
+
             request.setAttribute("list",list);
+
+            request.getRequestDispatcher("user/shopCart.jsp").forward(request,response);
         }else if(opr.equals("add")){
 
             //添加书籍到购物车
