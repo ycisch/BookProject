@@ -5,6 +5,7 @@ import com.nuc.entiy.User;
 import com.nuc.service.AdminService;
 import com.nuc.service.impl.AdmainServiceImpl;
 import com.nuc.util.FileUpload;
+import com.nuc.util.Page;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -48,9 +49,19 @@ public class AdminServlet extends javax.servlet.http.HttpServlet {
             request.setAttribute("admin",admin);
             request.getRequestDispatcher("admin/admin.jsp").forward(request,response);
         }else if ("list".equals(opr)){      //展示所有用户信息
-            userList = service.listUser();
+            Page page = new Page();
+            int currPageNo = Integer.parseInt(request.getParameter("currPageNo"));
+
+            page.setCurrPageNo(currPageNo);
+            page.setTotalCount(service.userCount());
+            userList = service.listUser(page);
+            for (User user: userList
+                 ) {
+                System.out.println(user);
+            }
             request.setAttribute("userList",userList);
-            request.getRequestDispatcher("admin/admin.jsp").forward(request,response);
+            request.setAttribute("page",page);
+            request.getRequestDispatcher("admin/admin_userlist.jsp").forward(request,response);
         }
     }
 }

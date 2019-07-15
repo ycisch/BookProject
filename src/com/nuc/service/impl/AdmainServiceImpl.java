@@ -5,6 +5,7 @@ import com.nuc.dao.impl.AdminDaoImpl;
 import com.nuc.entiy.Admin;
 import com.nuc.entiy.User;
 import com.nuc.service.AdminService;
+import com.nuc.util.Page;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,9 +34,15 @@ public class AdmainServiceImpl implements AdminService {
     }
 
     @Override
-    public List<User> listUser() {
+    public List<User> listUser(Page page) {
         List<User> list = new ArrayList<>();
-        list = dao.listUser();
+        list = dao.listUser(page);
         return list;
+    }
+
+    public int userCount(){
+        int userCount = 0;
+        userCount = dao.userCount();
+        return userCount;
     }
 }
