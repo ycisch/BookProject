@@ -33,7 +33,7 @@
                     <li>
                         <input type="checkbox" value="bookID">
                     </li>
-                    <li><img src="../../static/img/book/2.jpg"></li>
+                    <li><img src="${pageContext.request.contextPath}/static/img/book/2.jpg"></li>
                     <li>北京女子</li>
                     <li>￥<input type="text" name="price" value="21.90"></li>
                     <li><input type="button" name="minus" value="-" onclick="minus(0);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(0);"></li>
@@ -46,7 +46,7 @@
                     <li>
                         <input type="checkbox" value="bookID">
                     </li>
-                    <li><img src="../../static/img/book/4.jpg"></li>
+                    <li><img src="${pageContext.request.contextPath}/static/img/book/4.jpg"></li>
                     <li>自在成长</li>
                     <li>￥<input type="text" name="price" value="49.99"></li>
                     <li><input type="button" name="minus" value="-" onclick="minus(1);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(1);"></li>
@@ -59,7 +59,7 @@
                     <li>
                         <input type="checkbox"value="bookID">
                     </li>
-                    <li><img src="../../static/img/book/2.jpg"></li>
+                    <li><img src="${pageContext.request.contextPath}/static/img/book/2.jpg"></li>
                     <li>北京女子</li>
                     <li>￥<input type="text" name="price" value="21.90"></li>
                     <li><input type="button" name="minus" value="-" onclick="minus(2);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(2);"></li>
@@ -72,7 +72,7 @@
                     <li>
                         <input type="checkbox" value="bookID">
                     </li>
-                    <li><img src="../../static/img/book/4.jpg"></li>
+                    <li><img src="${pageContext.request.contextPath}/static/img/book/4.jpg"></li>
                     <li>自在成长</li>
                     <li>￥<input type="text" name="price" value="49.99"></li>
                     <li><input type="button" name="minus" value="-" onclick="minus(3);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(3);"></li>
@@ -85,7 +85,7 @@
                     <li>
                         <input type="checkbox" value="bookID">
                     </li>
-                    <li><img src="../../static/img/book/2.jpg"></li>
+                    <li><img src="${pageContext.request.contextPath}/static/img/book/2.jpg"></li>
                     <li>北京女子</li>
                     <li>￥<input type="text" name="price" value="21.90"></li>
                     <li><input type="button" name="minus" value="-" onclick="minus(0);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(0);"></li>
@@ -98,7 +98,7 @@
                     <li>
                         <input type="checkbox" value="bookID">
                     </li>
-                    <li><img src="../../static/img/book/4.jpg"></li>
+                    <li><img src="${pageContext.request.contextPath}/static/img/book/4.jpg"></li>
                     <li>自在成长</li>
                     <li>￥<input type="text" name="price" value="49.99"></li>
                     <li><input type="button" name="minus" value="-" onclick="minus(1);"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(1);"></li>
@@ -113,6 +113,6 @@
         </div>
     </div>
     </div>
-    <script src="../static/js/shopCart.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/shopCart.js"></script>
 </body>
 </html>
