@@ -1,8 +1,8 @@
-$(function close_plan(){
+function close_plan(){
     window.close()
-});
+}
 function collection() {
-    var flag = confirm("移入收藏后，将不再购物车显示！是否继续操作？");
+    var flag = confirm("您将此商品移入收藏？");
     if (flag == true) {
         alert("移入成功！")
     }
@@ -16,8 +16,7 @@ function minus(num){
     var count=parseInt(document.getElementsByName("amount")[num].value)-1;
     if(count<1){
         alert("商品购买的数量最低为1，不能再少了！");
-    }
-    else{
+    } else{
         document.getElementsByName("amount")[num].value=count;
         var totals=parseFloat(prices*count).toFixed(2);
         document.getElementById("price"+num).innerHTML="¥" +totals;
@@ -52,12 +51,13 @@ $(function () {
     var sum = 0;
 
     //设置每个复选框的value
-    $(".list :checkbox").click(function() {
+    $(".list input[type='checkbox']").click(function() {
         // var sum = 0;
         if (this.checked) {
             // var num = $("input[type='checkbox']:checked").length;
             // for ( var i = 0; i<num;i++){
             var num1 = $(".list :checkbox").index(this);
+            alert("123");
             var prices=document.getElementsByName("price")[num1];
             var count=document.getElementsByName("amount")[num1];
             sum += prices*count;
