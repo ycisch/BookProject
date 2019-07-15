@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/addMoney.css">
 </head>
 <body>
-<form id="form">
+<form id="form" action="${pageContext.request.contextPath}/UserServlet?opr=add" method="post">
     <p> <strong>余额充值</strong></p>
-    <p> 账户余额：<input type="text"  name="oldmoney"  id="oldmoney" value="${requestScope["user"].money}" disabled="disabled">￥</p>
+    <p> 账户余额：<input type="text"  name="oldmoney"  id="oldmoney" value="${sessionScope["user"].money}" disabled="disabled">￥</p>
     <p> 充值金额：<input type="text" name="addmoney" id="addmoney">￥</p>
-    <a href="${pageContext.request.contextPath}/user/personalInfo.jsp" target="_blank"><button >充值</button></a>
+    <input type="submit" name="add" id="addmoney_button" value="充值">
 </form>
 </body>
 </html>

@@ -78,6 +78,8 @@ public class UserDaoImpl implements UserDao {
     public boolean addMoney(User user, float money) {
         BaseDao baseDao = new BaseDao();
         float newMoney = money + user.getMoney();
+//        System.out.println(newMoney);
+        user.setMoney(newMoney);
         String sql = "UPDATE user SET money=? WHERE id=?";
         int result = baseDao.executeUpdate(sql, newMoney, user.getId());
         baseDao.commit();

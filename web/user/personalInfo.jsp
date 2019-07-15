@@ -17,7 +17,7 @@
     <div class="personal">个人信息</div>
     <div class="personal_from" name="personal_form">
         <p><strong>账户：</strong><input type="text" value="${requestScope["user"].username}" name="username" id="username" disabled="disabled" ></p>
-        <p><strong>密码：</strong><input type="password" value="${requestScope["user"].password}" name="password" id="password" disabled="disabled" ></p>
+        <p><strong>密码：</strong><input type="text" value="${requestScope["user"].password}" name="password" id="password" disabled="disabled" ></p>
         <p><strong>邮箱：</strong><input type="text" value="${requestScope["user"].email}" name="email" id="email" disabled="disabled" ></p>
         <p><strong>地址：</strong><input type="text" value="${requestScope["user"].address}" name="address" id="address" disabled="disabled" ></p>
         <p><strong>电话：</strong><input type="text" value="${requestScope["user"].phone}" name="phone" id="phone" disabled="disabled" ></p>
