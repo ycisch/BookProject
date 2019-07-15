@@ -12,8 +12,91 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/shopcart.css">
     <script src="${pageContext.request.contextPath}/static/js/jquery-1.11.3.min.js"></script>
 
+    <%--  Ajax书写，用来对前台的加，减，删除，移入收藏，进行操作
+            Q=Q.....
+     --%>
     <script>
         $(function () {
+            $(".less").click(function () {
+
+                var num = $(".less").index(this);
+                var bookid = $(".bookid:eq("+num+")").val();
+                console.log(bookid);
+
+                //传入id与删除类型，那么我们就可以删除了。
+                $.ajax({
+                    "url":"../ShopServlet",
+                    "type": "get",
+                    "data": "opr=delete1&bookid="+bookid+"",
+                    "dataType": "text",
+                    processData:false,
+                    contentType:false,
+                });
+            })
+
+            //点击添加之后要进行的Ajax操作
+            $(".add").click(function () {
+                var num = $(".add").index(this);
+                var bookid = $(".bookid:eq("+num+")").val();
+
+                //传入id与删除类型，那么我们就可以删除了。
+                $.ajax({
+                    "url":"../ShopServlet",
+                    "type": "get",
+                    "data": "opr=add1&bookid="+bookid+"",
+                    "dataType": "text",
+                    processData:false,
+                    contentType:false,
+                });
+            })
+
+            //点击结算按钮之后要进行的Ajax操作
+            $(".del").click(function () {
+                var num = $(".del").index(this);
+                var bookid = $(".bookid:eq("+num+")").val();
+
+                //传入id与删除类型，那么我们就可以删除了。
+                $.ajax({
+                    "url":"../ShopServlet",
+                    "type": "get",
+                    "data": "opr=delete&bookid="+bookid+"",
+                    "dataType": "text",
+                    processData:false,
+                    contentType:false,
+                });
+            })
+
+            //点击删除按钮对当前选中的id进行删除
+            $(".allcount").click(function () {
+                //var num = $(".allcount").index(this);
+                //var bookid = $(".bookid:eq("+num+")").val();
+
+                var li = $(".bookid");
+                var ids = new Array();
+                var k  = 0;
+                console.log(li);
+
+                for(var i = 0; i < li.length; i++){
+                    var value = $(".bookid:eq("+i+"):checked").val();
+                    if(value != null){
+                        ids[k++] = value;
+                    }
+                };
+                console.log(ids);
+
+                //将所有的id保存起来就可以传送到后台了
+                //传入id与删除类型，那么我们就可以删除了。
+                $.ajax({
+                    "url":"../ShopServlet",
+                    "type": "get",
+                    "data": "opr=sum&ids="+ids+"",
+                    "dataType": "text",
+                    processData:false,
+                    contentType:false,
+                });
+
+            })
+
 
         })
     </script>
@@ -37,7 +120,7 @@
             <div class="list">
                 <ul>
                     <li>
-                        <input type="checkbox" name="bookid" class="bookid">
+                        <input type="checkbox" name="bookid" class="bookid" value="1">
                     </li>
                     <li><img src="${pageContext.request.contextPath}/static/img/book/2.jpg"></li>
                     <li>北京女子</li>
@@ -50,7 +133,7 @@
             <div class="list">
                 <ul>
                     <li>
-                        <input type="checkbox" name="bookid" class="bookid">
+                        <input type="checkbox" name="bookid" class="bookid" value="2">
                     </li>
                     <li><img src="${pageContext.request.contextPath}/static/img/book/4.jpg"></li>
                     <li>自在成长</li>
@@ -63,7 +146,7 @@
             <div class="list">
                 <ul>
                     <li>
-                        <input type="checkbox" name="bookid" class="bookid">
+                        <input type="checkbox" name="bookid" class="bookid" value="3">
                     </li>
                     <li><img src="${pageContext.request.contextPath}/static/img/book/2.jpg"></li>
                     <li>北京女子</li>
@@ -76,7 +159,7 @@
             <div class="list">
                 <ul>
                     <li>
-                        <input type="checkbox" name="bookid" class="bookid">
+                        <input type="checkbox" name="bookid" class="bookid" value="4">
                     </li>
                     <li><img src="${pageContext.request.contextPath}/static/img/book/4.jpg"></li>
                     <li>自在成长</li>
@@ -89,7 +172,7 @@
             <div class="list">
                 <ul>
                     <li>
-                        <input type="checkbox" name="bookid" class="bookid">
+                        <input type="checkbox" name="bookid" class="bookid" value="5">
                     </li>
                     <li><img src="${pageContext.request.contextPath}/static/img/book/2.jpg"></li>
                     <li>北京女子</li>

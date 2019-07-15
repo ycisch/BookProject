@@ -12,7 +12,7 @@
     </filter>
     <filter-mapping>
         <filter-name>Login</filter-name>
-        <url-pattern>/ShopServlet</url-pattern>
+        <url-pattern>/</url-pattern>
     </filter-mapping>
 
     <!--监听器-->

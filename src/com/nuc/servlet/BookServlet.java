@@ -92,8 +92,10 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
             book = new Book();
             book.setBookStyle(request.getParameter("style1"));
             book.setBookName(request.getParameter("style"));//取得查询条件
+            System.out.println(bookService.sumBook(book)+"asdasdasd");
             page.setTotalCount(bookService.sumBook(book));
             bookList = bookService.listBookKey(book,page);                                       //查询所有放到bookList
+            System.out.println(book.getBookStyle()+"asdasdasd"+book.getBookName());
             request.setAttribute("style1",book.getBookStyle());
             request.setAttribute("style",book.getBookName());
             request.setAttribute("page",page);
