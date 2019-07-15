@@ -16,15 +16,15 @@
 <div class="perinfo">
     <div class="personal">个人信息</div>
     <div class="personal_from" name="personal_form">
-        <p><strong>账户：</strong><input type="text" name="username" id="username"></p>
-        <p><strong>密码：</strong><input type="password" name="password" id="password"></p>
-        <p><strong>邮箱：</strong><input type="text" name="email" id="email"></p>
-        <p><strong>地址：</strong><input type="text" name="address" id="address"></p>
-        <p><strong>电话：</strong><input type="text" name="phone" id="phone"></p>
-        <p><strong>余额：</strong><input type="text" name="money" id="money"></p>
+        <p><strong>账户：</strong><input type="text" value="${requestScope["user"].username}" name="username" id="username" disabled="disabled" ></p>
+        <p><strong>密码：</strong><input type="text" value="${requestScope["user"].password}" name="password" id="password" disabled="disabled" ></p>
+        <p><strong>邮箱：</strong><input type="text" value="${requestScope["user"].email}" name="email" id="email" disabled="disabled" ></p>
+        <p><strong>地址：</strong><input type="text" value="${requestScope["user"].address}" name="address" id="address" disabled="disabled" ></p>
+        <p><strong>电话：</strong><input type="text" value="${requestScope["user"].phone}" name="phone" id="phone" disabled="disabled" ></p>
+        <p><strong>余额：</strong><input type="text" value="${requestScope["user"].money}" name="money" id="money" disabled="disabled" ></p>
         <div class="button">
-            <a href="../../admin/admin.jsp"><input type="submit" name="confirm" id="confirm_button" onclick="modify()" value="确认信息"></a>
-            <a href="../modifyPersonalInfo.jsp"><input type="submit" name="modify" id="modify_button" onclick="modify()" value="修改信息"></a>
+            <a href="${pageContext.request.contextPath}/user/addMoney.jsp"><input type="button" name="addmoney" id="addmoney_button"  value="余额充值"></a>
+            <a href="${pageContext.request.contextPath}/user/modifyPersonalInfo.jsp"><input type="submit" name="modify" id="modify_button"  value="修改信息"></a>
         </div>
     </div>
 </div>

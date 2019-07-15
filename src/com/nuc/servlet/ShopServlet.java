@@ -28,6 +28,7 @@ public class ShopServlet extends javax.servlet.http.HttpServlet {
 
             //添加书籍到购物车
             book.setBookid(Integer.parseInt(request.getParameter("bookid")));
+            book.setBookNum(1);
             shopService.addShop(book,user);
         }else if(opr == "delete"){
 
@@ -40,10 +41,19 @@ public class ShopServlet extends javax.servlet.http.HttpServlet {
             shop.setShopId(Integer.parseInt(request.getParameter("shopid")));
             shopService.updateShop(shop,user);
         }else if(opr == "sum"){
-
+            String ids[] = null;
             //点击清算之后
-            shopService.sumMoney(user);
+            shopService.sumMoney(user,ids);
 
+        }else  if(opr == "add1"){
+            book.setBookNum(1);
+            book.setBookid(Integer.parseInt(request.getParameter("bookid")));
+            shopService.addShop(book,user);
+
+        }else if(opr == "delete1"){
+            book.setBookNum(-1);
+            book.setBookid(Integer.parseInt(request.getParameter("bookid")));
+            shopService.addShop(book,user);
         }
     }
 

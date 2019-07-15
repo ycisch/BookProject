@@ -8,7 +8,7 @@ public class BaseDao {
 
     static String driver = "com.mysql.cj.jdbc.Driver";
     static String username = "root";
-    static String password = "123456";
+    static String password = "981024";
     static String url = "jdbc:mysql://localhost:3306/bookshop?serverTimezone=UTC&characterEncoding=utf-8";
     static Connection conn = null;
 
@@ -59,6 +59,7 @@ public class BaseDao {
      * @return  查询结果集
      */
     public ResultSet executeQuery(String sql, Object...params){
+        //System.out.println(sql);
         PreparedStatement pstmt=null;
         ResultSet rs=null;
         try {

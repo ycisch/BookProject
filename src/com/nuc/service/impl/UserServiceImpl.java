@@ -1,31 +1,44 @@
 package com.nuc.service.impl;
 
+import com.nuc.dao.UserDao;
+import com.nuc.dao.impl.UserDaoImpl;
 import com.nuc.entiy.User;
 import com.nuc.service.UserService;
 
 public class UserServiceImpl implements UserService {
+    private UserDao dao = new UserDaoImpl();
     @Override
     public User login(User user) {
-        return null;
+        User user1 = new User();
+        user1 = dao.login(user);
+        return user1;
     }
 
     @Override
     public boolean regist(User user) {
-        return false;
+        boolean result = false;
+        result = dao.regist(user);
+        return result;
     }
 
     @Override
     public User getUser(User user) {
-        return null;
+        User user1 = new User();
+        user1 = dao.getUser(user);
+        return user1;
     }
 
     @Override
     public User updateUser(User user) {
-        return null;
+        User user1 = new User();
+        user1 = dao.updateUser(user);
+        return user1;
     }
 
     @Override
     public boolean addMoney(User user, float money) {
-        return false;
+        boolean result = false;
+        result = dao.addMoney(user, money);
+        return result;
     }
 }

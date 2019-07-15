@@ -26,13 +26,11 @@
         <hr/>
         <div class="left_list">
             <ul>
-                <li><a href="personalInfo.jsp" target="mainframe">查看个人信息</a> </li>
+                <li><a href="${pageContext.request.contextPath}/UserServlet?opr=show" target="mainframe">查看个人信息</a> </li>
 
-                <li><a href="modifyPersonalInfo.jsp" target="mainframe">修改个人信息</a></li>
+                <li><a href="${pageContext.request.contextPath}/ShopServlet?opr=list" target="mainframe">我的购物车</a></li>
 
-                <li><a href="shopCart.jsp" target="mainframe">我的购物车</a></li>
-
-                <li><a href="order.jsp" target="mainframe">我的订单</a></li>
+                <li><a href="${pageContext.request.contextPath}/OrderServlet?opr=list" target="mainframe">我的订单</a></li>
             </ul>
         </div>
     </div>

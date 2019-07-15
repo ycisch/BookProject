@@ -27,7 +27,7 @@
         <div id="regist_main">
             <div id="regist_header">注册</div>
             <div id="regist_form">
-                <form>
+                <form action="${pageContext.request.contextPath}/UserServlet?opr=regist" method="post">
                     <p>账号：<input type="text" name="username" id="username"></p>
                     <p>密码：<input type="password" name="password" id="password"></p>
                     <p>邮箱：<input type="text" name="email" id="email"></p>

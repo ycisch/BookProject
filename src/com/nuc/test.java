@@ -16,6 +16,6 @@ public class test {
         user.setId(1);
         //shopDao.deleteShop(shop,user)asdasdxzczxczxczxczxczxczxczxczxc
         user.setMoney(123.0f);
-        System.out.println(shopDao.sumMoney(user));
+        //System.out.println(shopDao.sumMoney(user));
     }
 }

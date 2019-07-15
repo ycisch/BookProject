@@ -23,5 +23,5 @@ public interface ShopService {
     public boolean updateShop(Shop shop,User user);
 
     //用户结算购物车
-    public boolean sumMoney(User user);
+    public boolean sumMoney(User user,String ids[]);
 }
