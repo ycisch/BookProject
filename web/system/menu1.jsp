@@ -25,26 +25,27 @@
                 console.log("asdasd");
                 var num = ${page.currPageNo};
                 var style = ${style};
-                var styl1 =${style1};
+                var style1 =${style1};
+                console.log(style+"   "+style1)
                 num = num - 1;
                 if(num <= 0) num = 1;
                 console.log(num);
 
-                location.href="BookServlet?opr=keyList&style1="+style1+"&style="+style+"&page="+num;
+                location.href="BookServlet?opr=keyList&style1="+'${style1 }'+"&style="+'${style }'+"&page="+num;
             });
 
             $(".btn_brand_next").click(function () {
                 var num = ${page.currPageNo};
                 if(num <= 0) num = 1;
-                var style = ${style};
-                var styl1 =${style1};
+                // var style = ;
+                // var style1 =;
                 num += 1;
                 // console.log(num);
                 if(num >= ${page.totalPageCout}) {
 
                     num = num = ${page.totalPageCout};;
                 }
-                location.href="BookServlet?opr=keyList&style1="+style1+"&style="+style+"&page="+num;
+                location.href="BookServlet?opr=keyList&style1="+'${style1 }'+"&style="+'${style }'+"&page="+num;
             })
         })
     </script>
@@ -53,6 +54,8 @@
 <div class="top">
     <div class="top-text">
         <span>华轩书海商城</span>
+        ${style}<br>
+        ${style1};
     </div>
     <div class="top-serach">
         <form class="top-serach-form">

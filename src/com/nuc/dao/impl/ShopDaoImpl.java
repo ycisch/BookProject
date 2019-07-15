@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -119,8 +120,9 @@ public class ShopDaoImpl implements ShopDao {
     @Override
     public boolean sumMoney(User user,String ids[]) {
         int sum = 0;
-        String sql = "select sum(num) as money from shop where userid = ?";
+        String sql = "select sum(num*b.bookmoney) as money from shop s,book b where userid = ? and b.bookid = s.bookid";
         Object params[] = {user.getId()};
+        System.out.println(Arrays.toString(params));
         ResultSet rs = baseDao.executeQuery(sql,params);
         try {
             if(rs == null){
@@ -129,13 +131,16 @@ public class ShopDaoImpl implements ShopDao {
             while (rs.next()){
                 sum = rs.getInt(1);
             }
+            //System.out.println(sum+"@@@@"+user.getMoney());
             if(user.getMoney() < sum) return false;
 
+            //System.out.println(sum+"!!!");
             String sql1 = "update user set money = money - ? where id = ?";
             Object params1[] = {sum,user.getId()};
             int num1 = baseDao.executeUpdate(sql1,params1);
             //System.out.println(num1);
             if(num1 >= 1){
+                //System.out.println(Arrays.toString(ids));
                 for (int i = 0; i < ids.length; i++){
                     sql1 = "delete from shop where userid = ? and shopid = ?";
                     Object params2[] = {user.getId(),ids[i]};
