@@ -88,7 +88,7 @@
                     <li><img src="${pageContext.request.contextPath}/static/img/book/2.jpg"></li>
                     <li>北京女子</li>
                     <li>￥<input type="text" name="price" value="21.90"></li>
-                    <li><input type="button" name="minus" class="less" value="-" onclick="minus(0);"><input type="text" name="amount" value="1"><input type="button" name="plus" class="add" value="+" onclick="plus(0);"></li>
+                    <li><input type="button" name="minus" class="less" value="-" onclick="minus(4);"><input type="text" name="amount" value="1"><input type="button" name="plus" class="add" value="+" onclick="plus(4);"></li>
                     <li id="price4">￥21.90</li>
                     <li><p class="collection" onclick="collection();">移入收藏</p><p class="del" onclick="del(this);">删除</p></li>
                 </ul>
@@ -101,7 +101,7 @@
                     <li><img src="${pageContext.request.contextPath}/static/img/book/4.jpg"></li>
                     <li>自在成长</li>
                     <li>￥<input type="text" name="price" value="49.99"></li>
-                    <li><input type="button" class="less" name="minus"  value="-" onclick="minus(1);"><input type="text" name="amount" value="1"><input type="button" class="add" name="plus" value="+" onclick="plus(1);"></li>
+                    <li><input type="button" class="less" name="minus"  value="-" onclick="minus(5);"><input type="text" name="amount" value="1"><input type="button" class="add" name="plus" value="+" onclick="plus(5);"></li>
                     <li id="price5">￥49.99</li>
                     <li><p class="collection" onclick="collection();">移入收藏</p><p class="del" onclick="del(this);">删除</p></li>
                 </ul>
