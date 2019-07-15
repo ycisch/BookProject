@@ -58,24 +58,16 @@ $(function () {
             // var num = $("input[type='checkbox']:checked").length;
             // for ( var i = 0; i<num;i++){
             var num1 = $(".list :checkbox").index(this);
-            var prices = document.getElementsByName("price")[num1].value;
-            var count = parseInt(document.getElementsByName("amount")[num1].value) + 1;
-            document.getElementsByName("amount")[num1].value = count;
-            var totals1 = parseFloat(prices * count).toFixed(2);
-            // var prices=document.getElementsByName("price")[num1];
-            //var count=document.getElementsByName("amount")[num1];
-            sum += totals1;
+            var prices=document.getElementsByName("price")[num1];
+            var count=document.getElementsByName("amount")[num1];
+            sum += prices*count;
             // }
             document.getElementById("allPrice").getElementsByTagName("span")[0].innerHTML = "¥" + sum.toFixed(2);
         } else {
-            var num2 = $(".list :checkbox").index(this);
-            //var prices=document.getElementsByName("price")[num1];
-            //var count=document.getElementsByName("amount")[num1];
-            var prices = document.getElementsByName("price")[num2].value;
-            var count = parseInt(document.getElementsByName("amount")[num2].value) - 1;
-                document.getElementsByName("amount")[num2].value = count;
-                var totals = parseFloat(prices * count).toFixed(2);
-                sum -= totals;
+            var num1 = $(".list :checkbox").index(this);
+            var prices=document.getElementsByName("price")[num1];
+            var count=document.getElementsByName("amount")[num1];
+                sum -= prices*count;
                 document.getElementById("allPrice").getElementsByTagName("span")[0].innerHTML = "¥" + sum.toFixed(2);
         }
     });

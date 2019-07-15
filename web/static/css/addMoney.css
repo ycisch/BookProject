@@ -2,18 +2,18 @@
     margin: 0;
     padding: 0;
 }
-.perinfo{
+#form{
     position:absolute;
     top:20%;
     left: 35%;
     font-size: 18px;
     border: 1px solid darkgrey;
     width: 600px;
-    height: 450px;
+    height: 250px;
     border-radius: 3px;
     background-color: white;
 }
-.personal{
+#form p:nth-child(1){
     background-color: #ececec;
     height: 40px;
     line-height: 40px;
@@ -21,29 +21,23 @@
     text-indent: 1em;
     border-bottom: 1px solid #dfdfdf;
 }
-.personal_from{
-    height: 220px;
-    width: 550px;
-    margin: 10px auto;
-    padding-left: 60px;
+#form p{
+    line-height: 55px;
 }
-.personal_from p{
-     line-height: 55px;
- }
-#username,#password,#email,#address,#phone,#money{
+#oldmoney,#addmoney{
     height: 30px;
     width: 400px;
     border-radius: 5px;
     background-color: darkgrey;
 }
-#addmoney_button,#modify_button{
+#form button{
     color: white;
     background: -webkit-linear-gradient(#627f9c,#153759);
     font-size: 20px;
     border-radius: 8px;
-    padding: 10px 20px;
+    padding: 10px 50px;
     margin-top: 10px;
-    margin-left: 35px;
-    width: 200px;
+    margin-left: 95px;
+    width: 300px;
     cursor: pointer;
 }
