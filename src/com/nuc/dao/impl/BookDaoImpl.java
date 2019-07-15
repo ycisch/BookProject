@@ -66,6 +66,8 @@ public class BookDaoImpl implements BookDao {
     @Override
     public boolean deleteBook(Book book) {
         boolean result = false;
+
+        System.out.println("所删除图书的id为"+book.getBookid());
         String sql = "delete from book where bookid=?";
         BaseDao baseDao = new BaseDao();
         if (0!=baseDao.executeUpdate(sql,book.getBookid())){
