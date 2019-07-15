@@ -28,6 +28,7 @@ public class AdminServlet extends javax.servlet.http.HttpServlet {
         if ("login".equals(opr)){       //管理员登录
             admin.setAdminName(request.getParameter("adminname"));
             admin.setAdminPwd(request.getParameter("adminpwd"));
+            System.out.println(admin);
             admin = service.login(admin);
             request.getSession().setAttribute("admin",admin);
             request.getRequestDispatcher("admin/admin.jsp").forward(request,response);
@@ -51,14 +52,15 @@ public class AdminServlet extends javax.servlet.http.HttpServlet {
         }else if ("list".equals(opr)){      //展示所有用户信息
             Page page = new Page();
             int currPageNo = Integer.parseInt(request.getParameter("currPageNo"));
-
-            page.setCurrPageNo(currPageNo);
             page.setTotalCount(service.userCount());
+            int num = page.getTotalPageCout();
+            if(currPageNo <= 1) currPageNo=1;
+            if(currPageNo >= num) currPageNo = num;
+            page.setCurrPageNo(currPageNo);
+
             userList = service.listUser(page);
-            for (User user: userList
-                 ) {
-                System.out.println(user);
-            }
+
+
             request.setAttribute("userList",userList);
             request.setAttribute("page",page);
             request.getRequestDispatcher("admin/admin_userlist.jsp").forward(request,response);

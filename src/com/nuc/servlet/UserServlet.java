@@ -57,7 +57,7 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
                 request.getRequestDispatcher("user/personalInfo.jsp").forward(request,response);
         }else if ("add".equals(opr)){       //余额充值
             user = (User) request.getSession().getAttribute("user");
-            float money = Float.parseFloat(request.getParameter("addmoney"));
+            float money = Float.parseFloat(request.getParameter("total_amount"));
             System.out.println(money);
             if (service.addMoney(user,money))
             {
@@ -66,7 +66,7 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
             }
             else
                 request.setAttribute("message","充值失败");
-            request.getRequestDispatcher("user/personalInfo.jsp").forward(request,response);
+            request.getRequestDispatcher("user/personalCenter.jsp").forward(request,response);
         }
 
     }
