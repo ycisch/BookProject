@@ -29,4 +29,9 @@ public class OrderServiceImpl implements OrderService {
         }
         return list;
     }
+
+    @Override
+    public void addStyle(Style style) {
+        orderDao.addStyle(style);
+    }
 }

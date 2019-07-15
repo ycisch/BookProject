@@ -18,4 +18,7 @@ public interface OrderService {
 
     //查看所有类别
     public List<Style> listStyle();
+
+    //添加类别
+    public void addStyle(Style style);
 }

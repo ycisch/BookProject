@@ -63,4 +63,26 @@ public class OrderDaoImpl implements OrderDao {
 
         return list;
     }
+
+
+    //添加类别
+    @Override
+    public void addStyle(Style style) {
+
+        String sql1 = "SELECT COUNT(DISTINCT bookstyle) from style";
+        ResultSet rs = baseDao.executeQuery(sql1);
+        int num = 0;
+        try{
+           while(rs.next()){
+               num = rs.getInt(1);
+           }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        String sql = "insert into style (bookstyle,booksname) values(?,?)";
+        Object params[] = {num+1,style.getBooksName()};
+
+        baseDao.executeUpdate(sql,params);
+
+    }
 }

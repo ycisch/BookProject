@@ -144,7 +144,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <input type="hidden" name="bookImg" class="img_data" value="">
+                        <input type="hidden" name="bookImg" class="img_data" value="../${book.bookimg}">
                     </form>
                     <tr>
                         <form action="" enctype="multipart/form-data" method="post" id="tf_update">
