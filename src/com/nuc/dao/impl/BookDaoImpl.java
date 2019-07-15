@@ -15,12 +15,12 @@ public class BookDaoImpl implements BookDao {
 
     //查看所有图书
     @Override
-    public List<Book> listBook() {
+    public List<Book> listBook(Page page) {
         List<Book> bookList = new ArrayList<Book>();
         ResultSet resultSet = null;
-        String sql = "select * from book";
         BaseDao baseDao = new BaseDao();
-        resultSet = baseDao.executeQuery(sql);
+        String sql = "select * from book limit ?,?";
+        resultSet = baseDao.executeQuery(sql,page.getCurrPageNo()*page.getPageSize(),page.getPageSize());
         Book book = null;
         try{
             while (resultSet.next()){
@@ -32,7 +32,9 @@ public class BookDaoImpl implements BookDao {
                 book.setBookMoney(resultSet.getFloat("bookmoney"));
                 book.setBookNum(resultSet.getInt("booknum"));
                 book.setBookStyle(resultSet.getString("bookstyle"));
-                book.setBookimg(resultSet.getString("bookimg"));
+                String name = resultSet.getString("bookimg");
+                name = name.substring(2,name.length());
+                book.setBookimg(name);
                 bookList.add(book);
             }
         }catch (SQLException e){
@@ -51,6 +53,7 @@ public class BookDaoImpl implements BookDao {
                 "set bookname=?,bookauthor=?,bookinfo=?,bookmoney=?,booknum=?,bookstyle=?,bookimg=? " +
                 "where bookid=?";
         BaseDao baseDao =new BaseDao();
+        System.out.println(book);
         if (0!=baseDao.executeUpdate(sql,book.getBookName(),book.getBookAuthor(),book.getBookInfo(),book.getBookMoney(),book.getBookNum(),book.getBookStyle(),book.getBookimg(),book.getBookid())){
             baseDao.commit();
             result = true;
@@ -102,7 +105,7 @@ public class BookDaoImpl implements BookDao {
             resultSet = baseDao.executeQuery(sql,book.getBookid(),page.getCurrPageNo()*page.getPageSize(),page.getPageSize());
         }else if(book.getBookStyle().equals("style")){
             String sql = "select * from book where bookstyle=? limit ?,?";
-            System.out.println(page.getCurrPageNo()+"   "+page.getPageSize()+"######"+book.getBookName());
+            System.out.println(page.getCurrPageNo()+"  style "+page.getPageSize()+"######"+book.getBookName());
             resultSet = baseDao.executeQuery(sql,book.getBookName(),page.getCurrPageNo()*page.getPageSize(),page.getPageSize());
         }
         Book keybook = null;
@@ -154,7 +157,28 @@ public class BookDaoImpl implements BookDao {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            DatabaseUtil.closeAll(null,null,rs);
         }
         return ans;
+    }
+
+    @Override
+    public int sumBook() {
+        int result = 0;
+        ResultSet resultSet = null;
+        String sql = "select count(*) from book";
+        BaseDao baseDao = new BaseDao();
+        try {
+            resultSet = baseDao.executeQuery(sql);
+            while (resultSet.next()){
+                result = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DatabaseUtil.closeAll(null,null,resultSet);
+        }
+        return result;
     }
 }

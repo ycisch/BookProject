@@ -28,13 +28,30 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
         System.out.println(request.getParameter("style"));
         if ("welcome".equals(opr)) {                                                  /*首页展示图书*/
 
-            bookList = bookService.listBook();                                              //查询所有放到bookList
+                                                       //查询所有放到bookList
+            int currPageNo = Integer.parseInt(request.getParameter("page"));
+            Page page = new Page();
+            page.setCurrPageNo(currPageNo-1);
+            page.setTotalCount(bookService.sumBook());
+            book = new Book();
+            book.setBookStyle("all");
+            bookList = bookService.listBook(page);
+            request.setAttribute("page",page);
             request.setAttribute("bookList",bookList);                             //存放所有图书到request
-            request.getRequestDispatcher("system/menu.jsp").forward(request,response);  //跳回首页
+            request.getRequestDispatcher("admin/admin.jsp").forward(request,response);  //跳回后台页面
+
 
         }else if ("list".equals(opr)){                                               /*后台所有展示图书*/
 
-            bookList = bookService.listBook();                                              //查询所有放到bookList
+                                                        //查询所有放到bookList
+            int currPageNo = Integer.parseInt(request.getParameter("page"));
+            Page page = new Page();
+            page.setCurrPageNo(currPageNo-1);
+            page.setTotalCount(bookService.sumBook());
+            book = new Book();
+            book.setBookStyle("all");
+            bookList = bookService.listBookKey(book,page);
+            request.setAttribute("page",page);
             request.setAttribute("bookList",bookList);                             //存放所有图书到request
             request.getRequestDispatcher("admin/admin.jsp").forward(request,response);  //跳回后台页面
 
@@ -46,7 +63,7 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
             }else {
                 request.setAttribute("message","修改失败！");
             }
-            bookList = bookService.listBook();                                              //查询所有放到bookList
+            //查询所有放到bookList
             request.setAttribute("bookList",bookList);                             //存放所有图书到request
             request.getRequestDispatcher("admin/admin.jsp").forward(request,response);  //跳回后台页面
 
@@ -66,8 +83,15 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
             }else {
                 request.setAttribute("message","添加失败！");
             }
-            bookList = bookService.listBook();                                              //查询所有放到bookList
-            request.setAttribute("bookList","bookList");                             //存放所有图书到request
+            //查询所有放到bookList
+            Page page = new Page();
+            page.setCurrPageNo(0);
+            page.setTotalCount(bookService.sumBook());
+            book = new Book();
+            book.setBookStyle("all");
+            bookList = bookService.listBookKey(book,page);
+            request.setAttribute("page",page);
+            request.setAttribute("bookList",bookList);                             //存放所有图书到request
             request.getRequestDispatcher("admin/admin.jsp").forward(request,response);  //跳回后台页面
 
         }else if ("del".equals(opr)){                                               /*按ID删除图书*/
@@ -81,8 +105,8 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
             }else {
                 request.setAttribute("message","删除失败！");
             }
-            bookList = bookService.listBook();                                              //查询所有放到bookList
-            request.setAttribute("bookList","bookList");                             //存放所有图书到request
+                                                     //查询所有放到bookList
+                                     //存放所有图书到request
             request.getRequestDispatcher("admin/admin.jsp").forward(request,response);  //跳回后台页面
 
         }else if ("keyList".equals(opr)){                                           /*按条件查找图书*/
@@ -92,14 +116,30 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
             Page page = new Page();
             page.setCurrPageNo((currPageNo-1));
             book = new Book();
+            if (request.getParameter("style").equals("id")){
+                request.getRequestDispatcher("admin/admin_update.jsp").forward(request,response);
+
+
+
+            }
+
+
+
             book.setBookStyle("style");
             book.setBookName(request.getParameter("style"));//取得查询条件
+
             page.setTotalCount(bookService.sumBook(book));
             bookList = bookService.listBookKey(book,page);                                       //查询所有放到bookList
             request.setAttribute("type",book.getBookStyle());
             request.setAttribute("style",book.getBookName());
             request.setAttribute("page",page);
             request.setAttribute("bookList",bookList);                             //存放所有图书到request
+
+            for (Book book2:bookList) {
+                System.out.println(book2);
+            }
+
+
             request.getRequestDispatcher("system/menu1.jsp").forward(request,response);
 //            response.sendRedirect("./system/menu1.jsp");
 

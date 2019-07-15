@@ -15,10 +15,10 @@ public class BookServiceImpl implements BookService {
 
     //查看所有图书
     @Override
-    public List<Book> listBook() {
+    public List<Book> listBook(Page page) {
         List<Book> booklist = new ArrayList<Book>();
         BookDao bookDao = new BookDaoImpl();
-        booklist = bookDao.listBook();
+        booklist = bookDao.listBook(page);
         return booklist;
     }
 
@@ -62,5 +62,13 @@ public class BookServiceImpl implements BookService {
     public int sumBook(Book book) {
         BookDao bookDao = new BookDaoImpl();
         return bookDao.sumBook(book);
+    }
+
+    @Override
+    public int sumBook() {
+        int result = 0;
+        BookDao bookDao = new BookDaoImpl();
+        result = bookDao.sumBook();
+        return result;
     }
 }
