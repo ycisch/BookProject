@@ -13,6 +13,15 @@ import java.util.List;
 
 public class BookServiceImpl implements BookService {
 
+    @Override
+    public void selectBook(Book book) {
+        BookDao bookDao = new BookDaoImpl();
+        bookDao.selectBook(book);
+        String img = book.getBookimg().substring(2,book.getBookimg().length());
+        book.setBookimg(img);
+//        System.out.println(book+"@####%%%%%");
+    }
+
     //查看所有图书
     @Override
     public List<Book> listBook(Page page) {

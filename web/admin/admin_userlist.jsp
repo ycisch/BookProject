@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: W
@@ -19,7 +20,7 @@
             if (num == 1){
                 $("#hasPrev").hide();
                 $("#hasNext").show();
-            }else (num == ${page.totalPageCout}){
+            }else if(num == ${page.totalPageCout} ){
                 $("#hasPrev").show();
                 $("#hasNext").hide();
             }
@@ -98,7 +99,7 @@
                         <hr/> -->
 
             <dt>用户管理</dt>
-            <dd><a href="${pageContext.request.contextPath}/admin/admin_userlist.jsp"><span id="userList">用户列表</span></a></dd>
+            <dd><a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=1"><span id="userList">用户列表</span></a></dd>
             <dd><a href="${pageContext.request.contextPath}/admin/admin_online.jsp"><span id="onlineList">在线用户</span></a></dd>
 
             <hr/>
@@ -120,42 +121,31 @@
                         <th class="phone">电话</th>
                         <th class="operation" colspan=2>操作</th>
                     </tr>
-                    <tr>
-                        <td class="username">张三</td>
-                        <td class="email">1111111111.@qq.com</td>
-                        <td class="adress">山西省</td>
-                        <td class="phone">12365474121</td>
-                        <td class="update"><span>修改</span></td>
-                        <td class="delete"><span>删除</span></td>
-                    </tr>
-                    <tr>
-                        <td class="username">李四</td>
-                        <td class="email">1112.@qq.com</td>
-                        <td class="adress">山西省</td>
-                        <td class="phone">12365474258</td>
-                        <td class="update"><span>修改</span></td>
-                        <td class="delete"><span>删除</span></td>
-                    </tr>
-                    <tr>
-                        <td class="username">王五</td>
-                        <td class="email">1113.@qq.com</td>
-                        <td class="adress">山西省</td>
-                        <td class="phone">12365414635</td>
-                        <td class="update"><span>修改</span></td>
-                        <td class="delete"><span>删除</span></td>
-                    </tr>
+                    <c:forEach var="list" items="${userList}">
+                        <tr>
+                            <td class="username">${list.username}</td>
+                            <td class="email">${list.email}</td>
+                            <td class="adress">${list.address}</td>
+                            <td class="phone">${list.phone}</td>
+                            <td class="update"><span>修改</span></td>
+                            <td class="delete"><span>删除</span></td>
+                        </tr>
+                    </c:forEach>
+
                 </table>
                 <div class="sikp">
                     <p>
-                        <a href="#"><span>首页</span></a>
+                        <a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=1"><span>首页</span></a>
                         &nbsp;|&nbsp;
-                        <a href="#"><span>下一页</span></a>
+                        <a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=${requestScope["page"].currPageNo-1}"><span>上一页</span></a>
+                        |
+                        <a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=${requestScope["page"].currPageNo+1}"><span>下一页</span></a>
                         &nbsp;|&nbsp;
-                        <a href="#"><span>尾页</span></a>
+                        <a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=${requestScope["page"].totalPageCout}"><span>尾页</span></a>
                         &nbsp;|&nbsp;
-                        <a></a><span>当前第页</span>
+                        <a></a><span>当前第${requestScope["page"].currPageNo}页</span>
                         &nbsp;|&nbsp;
-                        <a></a><span>总共页</span>
+                        <a></a><span>总共${requestScope["page"].totalPageCout}页</span>
                     </p>
                 </div>
             </div>

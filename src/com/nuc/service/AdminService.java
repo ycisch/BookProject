@@ -2,6 +2,7 @@ package com.nuc.service;
 
 import com.nuc.entiy.Admin;
 import com.nuc.entiy.User;
+import com.nuc.util.Page;
 
 import java.util.List;
 
@@ -20,5 +21,8 @@ public interface AdminService {
     public Admin updateUser(Admin admin);
 
     //查看所有用户
-    public List<User> listUser();
+    public List<User> listUser(Page page);
+
+    //获得总用户数
+    public int userCount();
 }

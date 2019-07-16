@@ -19,7 +19,7 @@
         <span>-----华轩书海商城</span>
     </div>
     <div class="guangao">
-        <p><img src="../static/img/guanggao.png"></p>
+        <p><img src="${pageContext.request.contextPath}/static/img/guanggao.png"></p>
     </div>
     <div class="left">
         <i>个人信息</i>
@@ -41,13 +41,13 @@
         <p>猜你喜欢</p>
         <hr/>
         <ul class="books">
-            <li><img src="../static/img/book/1.jpg"></li>
-            <li><img src="../static/img/book/2.jpg"></li>
-            <li><img src="../static/img/book/3.jpg"></li>
-            <li><img src="../static/img/book/4.jpg"></li>
-            <li><img src="../static/img/book/5.jpg"></li>
-            <li><img src="../static/img/book/6.jpg"></li>
-            <li><img src="../static/img/book/7.jpg"></li>
+            <li><img src="${pageContext.request.contextPath}/static/img/book/1.jpg"></li>
+            <li><img src="${pageContext.request.contextPath}/static/img/book/2.jpg"></li>
+            <li><img src="${pageContext.request.contextPath}/static/img/book/3.jpg"></li>
+            <li><img src="${pageContext.request.contextPath}/static/img/book/4.jpg"></li>
+            <li><img src="${pageContext.request.contextPath}/static/img/book/5.jpg"></li>
+            <li><img src="${pageContext.request.contextPath}/static/img/book/6.jpg"></li>
+            <li><img src="${pageContext.request.contextPath}/static/img/book/7.jpg"></li>
 
         </ul>
     </div>

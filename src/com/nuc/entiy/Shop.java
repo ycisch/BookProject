@@ -17,8 +17,19 @@ public class Shop {
     private int userId;
     private int num;
 
+    private int numid;
+
+
     private User user;
     private Book book;
+
+    public int getNumid() {
+        return numid;
+    }
+
+    public void setNumid(int numid) {
+        this.numid = numid;
+    }
 
     public int getShopId() {
         return shopId;

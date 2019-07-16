@@ -57,11 +57,11 @@ public class AdminDaoImpl implements AdminDao {
     }
 
     @Override
-    public List<User> listUser() {
+    public List<User> listUser(Page page) {
         BaseDao baseDao = new BaseDao();
-        String sql = "SELECT * FROM user";
+        String sql = "SELECT * FROM user LIMIT ?,?";
         List<User> list = new ArrayList<>();
-        ResultSet rs = baseDao.executeQuery(sql);
+        ResultSet rs = baseDao.executeQuery(sql, (page.getCurrPageNo() - 1) * page.getPageSize(), page.getPageSize());
         try{
             while (rs.next())
             {
@@ -82,5 +82,22 @@ public class AdminDaoImpl implements AdminDao {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public int userCount(){
+        BaseDao baseDao = new BaseDao();
+        int userCount = 0;
+        String sql = "SELECT COUNT(id) FROM user ";
+        ResultSet rs = baseDao.executeQuery(sql);
+        try{
+            while (rs.next()){
+                userCount = rs.getInt(1);
+                baseDao.commit();
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return userCount;
     }
 }

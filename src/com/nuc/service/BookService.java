@@ -11,6 +11,9 @@ public interface BookService {
      * 图书管理
      */
 
+    //查看某一图书
+    public void selectBook(Book book);
+
     //查看所有图书
     public List<Book> listBook(Page page);
 
