@@ -9,7 +9,6 @@ public class Book {
     private String bookStyle;
     private float bookMoney;
     private String bookimg;
-    private String bookCategory;
 
     @Override
     public String toString() {
@@ -22,16 +21,7 @@ public class Book {
                 ", bookStyle='" + bookStyle + '\'' +
                 ", bookMoney=" + bookMoney +
                 ", bookimg='" + bookimg + '\'' +
-                ", bookCategory='" + bookCategory + '\'' +
                 '}';
-    }
-
-    public String getBookCategory() {
-        return bookCategory;
-    }
-
-    public void setBookCategory(String bookCategory) {
-        this.bookCategory = bookCategory;
     }
 
     public String getBookimg() {

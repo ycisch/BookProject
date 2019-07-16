@@ -14,16 +14,16 @@ public interface OrderDao {
      */
 
     //修改订单
-    public boolean updateOrder(Order order,User uer);
+    public boolean updateOrder(Order order, User uer);
 
     //删除订单
-    public  boolean deleteOrder(Order order,User user);
+    public boolean deleteOrder(Order order, User user);
 
     //查看个人订单
-    public List<Order> listOrder(User user, Page page);
+    public List<Order> listOrder(User user);
 
     //查看所有订单
-    public List<Order> listOrder(Page page);
+    public List<Order> listOrder();
 
     //按个人查询所有订单总数
     public int sumOrder(Order order);
@@ -36,4 +36,5 @@ public interface OrderDao {
 
     //添加类别
     public void addStyle(Style style);
+
 }

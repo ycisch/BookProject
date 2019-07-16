@@ -4,26 +4,6 @@ public class Style {
     private int id;
     private String bookStyle;
     private String booksName;
-    private String bookCategory;
-
-
-    @Override
-    public String toString() {
-        return "Style{" +
-                "id=" + id +
-                ", bookStyle='" + bookStyle + '\'' +
-                ", booksName='" + booksName + '\'' +
-                ", bookCategory='" + bookCategory + '\'' +
-                '}';
-    }
-
-    public String getBookCategory() {
-        return bookCategory;
-    }
-
-    public void setBookCategory(String bookCategory) {
-        this.bookCategory = bookCategory;
-    }
 
     public int getId() {
         return id;
@@ -49,4 +29,12 @@ public class Style {
         this.booksName = booksName;
     }
 
+    @Override
+    public String toString() {
+        return "Style{" +
+                "id=" + id +
+                ", bookStyle='" + bookStyle + '\'' +
+                ", booksName='" + booksName + '\'' +
+                '}';
+    }
 }

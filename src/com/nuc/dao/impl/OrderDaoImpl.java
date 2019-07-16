@@ -90,10 +90,10 @@ public class OrderDaoImpl implements OrderDao {
 
     //查看个人订单
     @Override
-    public List<Order> listOrder(User user, Page page) {
+    public List<Order> listOrder(User user) {
         String sql = "select * from order where userid = ?";
-        Object params[] = {user.getId()};
-        ResultSet rs = baseDao.executeQuery(sql,params);
+//        Object params[] = {user.getId()};
+        ResultSet rs = baseDao.executeQuery(sql, user.getId());
         List<Order> list = new ArrayList<>();
         baseDao.commit();
         try{
@@ -112,12 +112,12 @@ public class OrderDaoImpl implements OrderDao {
         }finally {
             DatabaseUtil.closeAll(null,null,rs);
         }
-        return list;
+        return null;
     }
 
     //查看所有订单
     @Override
-    public List<Order> listOrder(Page page) {
+    public List<Order> listOrder() {
         List<Order> orderList = new ArrayList<Order>();
         ResultSet resultSet = null;
         String sql = "select * from order";
@@ -141,6 +141,7 @@ public class OrderDaoImpl implements OrderDao {
         }finally {
             DatabaseUtil.closeAll(null,null,resultSet);
         }
+
     return orderList;
     }
 
@@ -162,20 +163,18 @@ public class OrderDaoImpl implements OrderDao {
     //按个人查询所有订单总数
     @Override
     public int sumOrder(Order order) {
-        int result = 0;
-        ResultSet resultSet = null;
-        String sql = "select count(*) from order where userid=?";
-        try {
-            resultSet = baseDao.executeQuery(sql,order.getUserId());
-            while (resultSet.next()){
-                result = resultSet.getInt(1);
+        int count = 0;
+        String sql = "SELECT count(userid) FROM bookshop.order";
+        ResultSet rs = baseDao.executeQuery(sql);
+        baseDao.commit();
+        try{
+            while (rs.next()){
+                count = rs.getInt(1);
             }
-        } catch (SQLException e) {
+        }catch (SQLException e){
             e.printStackTrace();
-        }finally {
-            DatabaseUtil.closeAll(null,null,resultSet);
         }
-        return 0;
+        return count;
     }
 
     //查询订单总数
@@ -183,7 +182,7 @@ public class OrderDaoImpl implements OrderDao {
     public int sumOrder() {
         int result = 0;
         ResultSet resultSet = null;
-        String sql = "select count(*) from order";
+        String sql = "select count(*) from bookshop.order";
         try{
             resultSet = baseDao.executeQuery(sql);
             while(resultSet.next()){
@@ -211,8 +210,7 @@ public class OrderDaoImpl implements OrderDao {
                 Style style = new Style();
                 style.setId(rs.getInt(1));
                 style.setBookStyle(rs.getString(2));
-                style.setBooksName(rs.getString(4));
-                style.setBookCategory(rs.getString(3));
+                style.setBooksName(rs.getString(3));
                 //System.out.println(style);
                 list.add(style);
 

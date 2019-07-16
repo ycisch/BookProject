@@ -69,7 +69,6 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
             book.setBookNum(Integer.parseInt(request.getParameter("bookNum")));
             book.setBookStyle(request.getParameter("bookStyle"));
             book.setBookimg(request.getParameter("bookImg"));
-            book.setBookCategory(request.getParameter("bookCategory"));
 
 
             if (bookService.updateBook(book)){                                             //执行修改并判断是否修改成功
@@ -91,7 +90,6 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
             book.setBookMoney(Integer.parseInt(request.getParameter("bookMoney")));
             book.setBookNum(Integer.parseInt(request.getParameter("bookNum")));
             book.setBookStyle(request.getParameter("bookStyle"));
-            book.setBookCategory(request.getParameter("bookCategory"));
             book.setBookimg(request.getParameter("bookImg"));
             if (bookService.addBook(book)){                                                //执行添加并判断是否添加成功
                 request.setAttribute("message","添加成功！");

@@ -8,12 +8,47 @@ function collection() {
         alert("移入成功！")
     }
 }
-function del1(id){
+/*function del(id){
     var delNode=id.parentNode.parentNode;
     delNode.parentNode.removeChild(delNode);
-}
-function minus(num){
+}*/
+// function minus(num){
+//
+//     //var num = $(".list input:nth-of-type(3)[class='less']").index(this);
+//     var prices=document.getElementsByName("price")[num].value;
+//     var count=parseInt(document.getElementsByName("amount")[num].value)-1;
+//     if(count<1){
+//         alert("商品购买的数量最低为1，不能再少了！");
+//     } else{
+//         document.getElementsByName("amount")[num].value=count;
+//         var totals=parseFloat(prices*count).toFixed(2);
+//         document.getElementById("price"+num).innerHTML="¥" +totals;
+//         /*$(".list :checkbox").each(function () {
+//             if($(this).prop("checked")==true){
+//                 var allmoney = document.getElementById("allPrice");
+//                 sum= allmoney-prices;
+//                 document.getElementById("allPrice").getElementsByTagName("span")[0].innerHTML="¥" +sum.toFixed(2);
+//             }else {
+//                 var allmoney = document.getElementById("allPrice");
+//                 sum=allmoney-totals;
+//                 document.getElementById("allPrice").getElementsByTagName("span")[0].innerHTML="¥" +sum.toFixed(2);
+//             }
+//         });*/
+//         if($(".bookid").is(":checked")){
+//              sum-=prices;
+//             if (sum<=0){
+//                 var err = 0;
+//                 document.getElementById("allPrice").getElementsByTagName("span")[0].innerHTML = "¥" + err.toFixed(2);
+//             } else {
+//                 document.getElementById("allPrice").getElementsByTagName("span")[0].innerHTML = "¥" + sum.toFixed(2);
+//             }
+//         }
+//     }
+// }
+
+$(".less").click(function () {
     //var num = $(".list input:nth-of-type(3)[class='less']").index(this);
+    num = $(".less").index(this);
     var prices=document.getElementsByName("price")[num].value;
     var count=parseInt(document.getElementsByName("amount")[num].value)-1;
     if(count<1){
@@ -34,7 +69,7 @@ function minus(num){
             }
         });*/
         if($(".bookid").is(":checked")){
-             sum-=prices;
+            sum-=prices;
             if (sum<=0){
                 var err = 0;
                 document.getElementById("allPrice").getElementsByTagName("span")[0].innerHTML = "¥" + err.toFixed(2);
@@ -43,24 +78,18 @@ function minus(num){
             }
         }
     }
-}
+})
+
 function plus(num){
     //var num = $(".add").index(this);
     //alert(num);
-    console.log(num+"####")
     var prices=document.getElementsByName("price")[num].value;
     parseFloat(prices);
     var count=parseInt(document.getElementsByName("amount")[num].value)+1;
     document.getElementsByName("amount")[num].value=count;
     var totals=parseFloat(prices*count).toFixed(2);
 
-    console.log(prices+"@@@@@"+totals);
-
-    var totals1 = "¥" +totals;
-
-    console.log(document.getElementById("price"+num));
-
-    document.getElementById("price"+num).innerHTML=totals1;
+    document.getElementById("price"+num).innerHTML="¥" +totals;
 
     /*$(".list :checkbox").each(function () {
         if($(this).prop("checked")==true){
@@ -138,10 +167,4 @@ function allchk(){
     }else{//不全选
         $("#all").prop("checked",false);
     }
-}
-
-function showsum() {
-    console.log(sum);
-    sum = 0;
-    console.log(sum+"asdasdadsd");
 }

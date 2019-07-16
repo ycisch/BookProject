@@ -22,6 +22,4 @@ public interface UserDao {
     //余额充值
     public boolean addMoney(User user,float money);
 
-    //判断用户名是否存在
-    public boolean exist(String username);
 }

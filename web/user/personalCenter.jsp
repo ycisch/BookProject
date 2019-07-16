@@ -30,7 +30,7 @@
 
                 <li><a href="${pageContext.request.contextPath}/ShopServlet?opr=list" target="mainframe">我的购物车</a></li>
 
-                <li><a href="${pageContext.request.contextPath}/OrderServlet?opr=list" target="mainframe">我的订单</a></li>
+                <li><a href="${pageContext.request.contextPath}/OrderServlet?opr=showMyorder" target="mainframe">我的订单</a></li>
             </ul>
         </div>
     </div>

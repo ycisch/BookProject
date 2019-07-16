@@ -74,10 +74,10 @@ public class BookDaoImpl implements BookDao {
     public boolean updateBook(Book book) {
         boolean result = false;
         String sql = "update book " +
-                "set bookname=?,bookauthor=?,bookinfo=?,bookmoney=?,booknum=?,bookstyle=?,bookimg=?,bookcategory=?" +
+                "set bookname=?,bookauthor=?,bookinfo=?,bookmoney=?,booknum=?,bookstyle=?,bookimg=? " +
                 "where bookid=?";
         BaseDao baseDao =new BaseDao();
-        if (0!=baseDao.executeUpdate(sql,book.getBookName(),book.getBookAuthor(),book.getBookInfo(),book.getBookMoney(),book.getBookNum(),book.getBookStyle(),book.getBookimg(),book.getBookCategory(),book.getBookid())){
+        if (0!=baseDao.executeUpdate(sql,book.getBookName(),book.getBookAuthor(),book.getBookInfo(),book.getBookMoney(),book.getBookNum(),book.getBookStyle(),book.getBookimg(),book.getBookid())){
             baseDao.commit();
             result = true;
         }
@@ -101,9 +101,9 @@ public class BookDaoImpl implements BookDao {
     @Override
     public boolean addBook(Book book) {
         boolean result = false;
-        String sql = "insert into book (bookid,bookname,bookauthor,bookinfo,bookmoney,booknum,bookstyle,bookcategory,bookimg) values(?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into book (bookid,bookname,bookauthor,bookinfo,bookmoney,booknum,bookstyle,bookimg) values(?,?,?,?,?,?,?,?)";
         BaseDao baseDao = new BaseDao();
-        if (0!=baseDao.executeUpdate(sql,book.getBookid(),book.getBookName(),book.getBookAuthor(),book.getBookInfo(),book.getBookMoney(),book.getBookNum(),book.getBookStyle(),book.getBookCategory(),book.getBookimg())){
+        if (0!=baseDao.executeUpdate(sql,book.getBookid(),book.getBookName(),book.getBookAuthor(),book.getBookInfo(),book.getBookMoney(),book.getBookNum(),book.getBookStyle(),book.getBookimg())){
             baseDao.commit();
             result = true;
         }
@@ -144,7 +144,6 @@ public class BookDaoImpl implements BookDao {
                 keybook.setBookMoney(resultSet.getFloat("bookmoney"));
                 keybook.setBookNum(resultSet.getInt("booknum"));
                 keybook.setBookStyle(resultSet.getString("bookstyle"));
-                keybook.setBookCategory(resultSet.getString("bookcategory"));
                 String name = resultSet.getString("bookimg");
                 name = name.substring(2,name.length());
                 keybook.setBookimg(name);

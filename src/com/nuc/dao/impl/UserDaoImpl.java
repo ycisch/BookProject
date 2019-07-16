@@ -85,20 +85,4 @@ public class UserDaoImpl implements UserDao {
         baseDao.commit();
         return result > 0;
     }
-
-    @Override
-    public boolean exist(String username) {
-        Boolean exist = false;
-        BaseDao baseDao = new BaseDao();
-        String sql = "SELECT * FROM user WHERE username=?";
-        ResultSet rs = baseDao.executeQuery(sql, username);
-        try{
-            if (rs.next())      return true;
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-
 }
