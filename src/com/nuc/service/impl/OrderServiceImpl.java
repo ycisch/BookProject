@@ -26,24 +26,10 @@ public class OrderServiceImpl implements OrderService {
         return false;
     }
 
-    @Override
-    public List<Order> listOrder(User user) {
-        return null;
-    }
 
     @Override
     public List<Order> listOrder(Page page) {
         return null;
-    }
-
-    @Override
-    public int sumOrder(Order order) {
-        return 0;
-    }
-
-    @Override
-    public int sumOrder() {
-        return 0;
     }
 
     @Override
@@ -73,4 +59,5 @@ public class OrderServiceImpl implements OrderService {
       result = orderDao.sumOrder();
       return  result;
     }
+
 }

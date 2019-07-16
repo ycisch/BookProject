@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -115,11 +116,15 @@
                 <table>
                     <tr>
                         <th class="username">用户名</th>
+                        <th class="bybookid">商品详情</th>
+                        <th class="booknum">购买数量</th>
+                        <th class="money">消费金额</th>
                         <th class="email">邮箱</th>
                         <th class="adress">地址</th>
                         <th class="phone">电话</th>
                     </tr>
-                    <tr>
+
+                    <!--<tr>
                         <td class="username">张三</td>
                         <td class="email">22222222.@qq.com</td>
                         <td class="adress">山西省</td>
@@ -136,7 +141,7 @@
                         <td class="email">1113.@qq.com</td>
                         <td class="adress">山西省</td>
                         <td class="phone">12365414635</td>
-                    </tr>
+                    </tr>-->
                 </table>
                 <div class="sikp">
                     <p>

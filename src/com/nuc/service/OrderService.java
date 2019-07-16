@@ -20,8 +20,6 @@ public interface OrderService {
     //删除订单
     public  boolean deleteOrder(Order order,User user);
 
-    //查看所有订单
-    public List<Order> listOrder(User user);
 
     //查看所有订单
     public List<Order> listOrder(Page page);
@@ -29,8 +27,6 @@ public interface OrderService {
     //按个人查询所有订单总数
     public int sumOrder(Order order);
 
-    //查询订单总数
-    public int sumOrder();
 
     //查看所有类别
     public List<Style> listStyle();
@@ -38,8 +34,6 @@ public interface OrderService {
     //添加类别
     public void addStyle(Style style);
 
-    //按个人查询所有订单总数
-    public int sumOrder(User user);
 
     //计算订单总数
     public  int sumOrder();

@@ -39,8 +39,7 @@ public class OrderServlet extends javax.servlet.http.HttpServlet {
                 currPageNo = 1;
             }
             page.setCurrPageNo(currPageNo-1);
-            order = new Order();
-            orderList = orderService.listOrder();
+            orderList = orderService.listOrder(page);
             request.setAttribute("orderList",orderList);
             request.getRequestDispatcher("#").forward(request,response);
 
@@ -56,9 +55,9 @@ public class OrderServlet extends javax.servlet.http.HttpServlet {
             }
             page.setCurrPageNo(currPageNo-1);
             order = new Order();
-            orderList = orderService.listOrder();
+            //orderList = orderService.listOrder();
             request.setAttribute("orderList",orderList);
-            request.getRequestDispatcher("#").forward(request,response);
+            request.getRequestDispatcher("user/order.jsp").forward(request,response);
 
 
 
