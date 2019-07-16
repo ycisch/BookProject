@@ -29,25 +29,43 @@ public class AdminServlet extends javax.servlet.http.HttpServlet {
             admin.setAdminName(request.getParameter("adminname"));
             admin.setAdminPwd(request.getParameter("adminpwd"));
             admin = service.login(admin);
-            request.getSession().setAttribute("admin",admin);
-            request.getRequestDispatcher("admin/admin.jsp").forward(request,response);
+            if (admin == null)
+            {
+                request.setAttribute("message","登陆失败");
+                request.getRequestDispatcher("admin/adminlogin.jsp").forward(request,response);
+            }
+            else
+            {
+                request.getSession().setAttribute("admin",admin);
+                request.getRequestDispatcher("BookServlet?opr=welcome&page=1").forward(request,response);
+            }
         }else if ("show".equals(opr)){      //展示管理员信息
             admin = (Admin) request.getSession().getAttribute("admin");
             admin = service.getUser(admin);
             request.setAttribute("admin",admin);
-            request.getRequestDispatcher("admin/admin.jsp").forward(request,response);
+            request.getRequestDispatcher("admin/admin_info.jsp").forward(request,response);
         }else if ("update".equals(opr)){        //修改管理员信息
             admin = (Admin) request.getSession().getAttribute("admin");
-            admin.setAdminId(Integer.parseInt(request.getParameter("adminid")));
-            admin.setAdminName(request.getParameter("adminname"));
-            admin.setAdminPwd(request.getParameter("adminpwd"));
-            admin = service.updateUser(admin);
-            if (admin == null)
-                request.setAttribute("message","修改成功");
-            else
-                request.setAttribute("message","修改失败");
-            request.setAttribute("admin",admin);
-            request.getRequestDispatcher("admin/admin.jsp").forward(request,response);
+//            admin.setAdminId(admin.getAdminId());
+            System.out.println(admin);
+            System.out.println(request.getParameter("adminpwd"));
+            System.out.println(request.getParameter("newpwd"));
+            System.out.println(request.getParameter("repwd"));
+            if (admin.getAdminPwd().equals(request.getParameter("adminpwd"))){
+                if (request.getParameter("repwd").equals(request.getParameter("newpwd"))){
+                    admin.setAdminPwd(request.getParameter("newpwd"));
+                    admin = service.updateUser(admin);
+                    System.out.println(admin);
+                    request.setAttribute("admin",admin);
+                }
+            }
+
+//            if (admin == null)
+//                request.setAttribute("message","修改成功");
+//            else
+//                request.setAttribute("message","修改失败");
+
+            request.getRequestDispatcher("BookServlet?opr=welcome&page=1").forward(request,response);
         }else if ("list".equals(opr)){      //展示所有用户信息
             Page page = new Page();
             int currPageNo = Integer.parseInt(request.getParameter("currPageNo"));

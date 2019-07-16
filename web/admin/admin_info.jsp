@@ -67,10 +67,10 @@
         <h1>管理员信息</h1>
         <div id="admin_info">
             <table>
-                <form action="${pageContext.request.contextPath}/AdminServlet?opr=update&adminid=${admin.adminId}" id="update_form"  method="post">
+                <form action="${pageContext.request.contextPath}/AdminServlet?opr=update" id="update_form"  method="post">
                     <tr>
                         <th>用户名：</th>
-                        <td colspan="3"><input type="text" name="adminname" value="${admin.adminName}"></td>
+                        <td colspan="3"><input type="text" name="adminname" value="${admin.adminName}" disabled="disabled"></td>
                     </tr>
                     <tr>
                         <th>原密码：</th>

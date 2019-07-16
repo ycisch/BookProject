@@ -6,12 +6,17 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <html>
 <head>
     <meta charset="utf-8">
     <title>管理员登录</title>
-    <link href="../static/css/login.css" rel="stylesheet" >
+    <link href="${pageContext.request.contextPath}/static/css/login.css" rel="stylesheet" >
+    <script src="${pageContext.request.contextPath}/static/js/jquery-1.11.3.min.js"></script>
+    <script>
 
+    </script>
 </head>
 <body>
 <div id="header">
@@ -25,6 +30,11 @@
 <div id="main">
     <div id="login">
         <div id="login_main">
+            <c:if test="${!empty message}">
+            <script>
+                alert("用户名或密码错误！");
+            </script>
+            </c:if>
             <div id="login_header">登录</div>
             <div id="login_form">
                 <form action="${pageContext.request.contextPath}/AdminServlet?opr=login" method="post">

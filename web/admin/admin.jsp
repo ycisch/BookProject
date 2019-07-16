@@ -74,7 +74,7 @@
                 <!-- <i id="mark"></i> -->
                 <ul>
                     <li>
-                        <a href="${pageContext.request.contextPath}/AdminServlet?opr=show&id=${admin.adminId}">
+                        <a href="${pageContext.request.contextPath}/AdminServlet?opr=show">
                             <i id="home"></i>
                             个人信息
                         </a>

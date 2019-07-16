@@ -49,10 +49,12 @@ public class AdminDaoImpl implements AdminDao {
 
     @Override
     public Admin updateUser(Admin admin) {
+        System.out.println(admin);
         BaseDao baseDao = new BaseDao();
         String sql = "UPDATE admin SET adminname=?, adminpwd=? WHERE adminid=?";
         int result = baseDao.executeUpdate(sql, admin.getAdminName(), admin.getAdminPwd(), admin.getAdminId());
         baseDao.commit();
+        System.out.println(admin);
         return result > 0 ? admin : null;
     }
 
