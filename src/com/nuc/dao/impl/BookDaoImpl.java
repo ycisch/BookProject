@@ -14,6 +14,27 @@ import java.util.List;
 
 public class BookDaoImpl implements BookDao {
 
+    @Override
+    public void selectBook(Book book) {
+        BaseDao baseDao = new BaseDao();
+        String sql  = "select * from book where bookid = ?";
+        ResultSet rs = baseDao.executeQuery(sql,book.getBookid());
+        try{
+            while(rs.next()){
+                book.setBookName(rs.getString(2));
+                book.setBookAuthor(rs.getString(3));
+                book.setBookInfo(rs.getString(4));
+                book.setBookMoney(rs.getFloat(5));
+                book.setBookNum(rs.getInt(6));
+                book.setBookStyle(rs.getString(7));
+                book.setBookimg(rs.getString(8));
+//                System.out.println(book+"@####");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
     //查看所有图书
     @Override
     public List<Book> listBook(Page page) {
@@ -54,7 +75,6 @@ public class BookDaoImpl implements BookDao {
                 "set bookname=?,bookauthor=?,bookinfo=?,bookmoney=?,booknum=?,bookstyle=?,bookimg=? " +
                 "where bookid=?";
         BaseDao baseDao =new BaseDao();
-        System.out.println(book);
         if (0!=baseDao.executeUpdate(sql,book.getBookName(),book.getBookAuthor(),book.getBookInfo(),book.getBookMoney(),book.getBookNum(),book.getBookStyle(),book.getBookimg(),book.getBookid())){
             baseDao.commit();
             result = true;
@@ -66,8 +86,6 @@ public class BookDaoImpl implements BookDao {
     @Override
     public boolean deleteBook(Book book) {
         boolean result = false;
-
-        System.out.println("所删除图书的id为"+book.getBookid());
         String sql = "delete from book where bookid=?";
         BaseDao baseDao = new BaseDao();
         if (0!=baseDao.executeUpdate(sql,book.getBookid())){

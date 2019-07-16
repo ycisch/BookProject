@@ -20,7 +20,7 @@
             if (num == 1){
                 $("#hasPrev").hide();
                 $("#hasNext").show();
-            }else (num == ${page.totalPageCout}){
+            }else if(num == ${page.totalPageCout} ){
                 $("#hasPrev").show();
                 $("#hasNext").hide();
             }
@@ -65,7 +65,7 @@
     <em>四川省成都市</em>
     <span>-----华轩书海商城</span>
     <div id="admin">
-        <span>欢迎您：admin</span>
+        <span>欢迎您：${admin.adminName}</span>
         <i id="down"></i>
         <!-- <i id="mark"></i> -->
         <ul>
@@ -99,7 +99,7 @@
                         <hr/> -->
 
             <dt>用户管理</dt>
-            <dd><a href="${pageContext.request.contextPath}/admin/admin_userlist.jsp"><span id="userList">用户列表</span></a></dd>
+            <dd><a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=1"><span id="userList">用户列表</span></a></dd>
             <dd><a href="${pageContext.request.contextPath}/admin/admin_online.jsp"><span id="onlineList">在线用户</span></a></dd>
 
             <hr/>
@@ -135,15 +135,17 @@
                 </table>
                 <div class="sikp">
                     <p>
-                        <a href="${pageContext.request.contextPath}/AdminServlet?opr=list?currPageNo=1"><span>首页</span></a>
+                        <a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=1"><span>首页</span></a>
                         &nbsp;|&nbsp;
-                        <a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=${requestScope[page].currPageNo+1}"><span>下一页</span></a>
+                        <a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=${requestScope["page"].currPageNo-1}"><span>上一页</span></a>
+                        |
+                        <a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=${requestScope["page"].currPageNo+1}"><span>下一页</span></a>
                         &nbsp;|&nbsp;
-                        <a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=${requestScope[page].totalPageCout}"><span>尾页</span></a>
+                        <a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=${requestScope["page"].totalPageCout}"><span>尾页</span></a>
                         &nbsp;|&nbsp;
-                        <a></a><span>当前第${requestScope[page].currPageNo}页</span>
+                        <a></a><span>当前第${requestScope["page"].currPageNo}页</span>
                         &nbsp;|&nbsp;
-                        <a></a><span>总共${requestScope[page].totalPageCout}页</span>
+                        <a></a><span>总共${requestScope["page"].totalPageCout}页</span>
                     </p>
                 </div>
             </div>

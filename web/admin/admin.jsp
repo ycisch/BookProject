@@ -69,12 +69,12 @@
             <em>四川省成都市</em>
             <span>-----华轩书海商城</span>
             <div id="admin">
-                <span>欢迎您：admin</span>
+                <span>欢迎您：${admin.adminName}</span>
                 <i id="down"></i>
                 <!-- <i id="mark"></i> -->
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="${pageContext.request.contextPath}/AdminServlet?opr=show&id=${admin.adminId}">
                             <i id="home"></i>
                             个人信息
                         </a>

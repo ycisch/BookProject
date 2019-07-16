@@ -27,10 +27,10 @@ public class PayServlet extends HttpServlet {
         alipayRequest.setNotifyUrl(AlipayConfig.notify_url);
 
         //商户订单号，商户网站订单系统中唯一订单号，必填
-        System.out.println(request.getParameter("WIDout_trade_no")+"@@@@"+request.getParameter("WIDtotal_amount"));
+        System.out.println(request.getParameter("WIDout_trade_no")+"@@@@"+request.getParameter("addmoney"));
         String out_trade_no = request.getParameter("WIDout_trade_no");
         //付款金额，必填
-        String total_amount = request.getParameter("WIDtotal_amount");
+        String total_amount = request.getParameter("total_amount");
         //订单名称，必填
         String subject = "支付宝测试";
         //商品描述，可空

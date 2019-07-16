@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <html>
 <head>
     <title>华轩书海购物车</title>
@@ -117,84 +119,104 @@
             <li>操作</li>
         </ul>
         <div class="box">
+
+            <c:forEach items="${requestScope.list}" var="shoplist">
             <div class="list">
                 <ul>
                     <li>
-                        <input type="checkbox" name="bookid" class="bookid" value="1">
+                        <input type="checkbox" name="bookid" class="bookid" value="${shoplist.shopId}">
                     </li>
-                    <li><img src="${pageContext.request.contextPath}/static/img/book/2.jpg"></li>
-                    <li>北京女子</li>
-                    <li>￥<input type="text" name="price" value="21.90"></li>
-                    <li><input type="button" name="minus" class="less" value="-" onclick="minus(0);"><input type="text" name="amount" value="1"><input type="button" name="plus" class="add" value="+" onclick="plus(0);"></li>
-                    <li id="price0">￥21.90</li>
+                    <li><img src="${pageContext.request.contextPath}${shoplist.book.bookimg}"></li>
+                    <li>${shoplist.book.bookName}</li>
+                    <li>￥<input type="text" name="price" value="${shoplist.book.bookMoney}"></li>
+                    <li><input type="button" name="minus" class="less" value="-" onclick="minus(${shoplist.numid});">
+                        <input type="text" name="amount" value="${shoplist.num}">
+                        <input type="button" name="plus" class="add" value="+" onclick="plus(${shoplist.numid});">
+                    </li>
+                    <li id="price0"><c:out value="${shoplist.book.bookAuthor}"></c:out></li>
                     <li><p class="collection" onclick="collection();">移入收藏</p><p class="del" onclick="del(this);">删除</p></li>
                 </ul>
             </div>
-            <div class="list">
-                <ul>
-                    <li>
-                        <input type="checkbox" name="bookid" class="bookid" value="2">
-                    </li>
-                    <li><img src="${pageContext.request.contextPath}/static/img/book/4.jpg"></li>
-                    <li>自在成长</li>
-                    <li>￥<input type="text" name="price" value="49.99"></li>
-                    <li><input type="button" name="minus" class="less" value="-" onclick="minus(1);"><input type="text" name="amount" value="1"><input type="button" name="plus" class="add" value="+" onclick="plus(1);"></li>
-                    <li id="price1">￥49.99</li>
-                    <li><p class="collection" onclick="collection();">移入收藏</p><p class="del" onclick="del(this);">删除</p></li>
-                </ul>
-            </div>
-            <div class="list">
-                <ul>
-                    <li>
-                        <input type="checkbox" name="bookid" class="bookid" value="3">
-                    </li>
-                    <li><img src="${pageContext.request.contextPath}/static/img/book/2.jpg"></li>
-                    <li>北京女子</li>
-                    <li>￥<input type="text" name="price" value="21.90"></li>
-                    <li><input type="button" name="minus" class="less" value="-" onclick="minus(2);"><input type="text" name="amount" value="1"><input type="button" name="plus" class="add" value="+" onclick="plus(2);"></li>
-                    <li id="price2">￥21.90</li>
-                    <li><p class="collection" onclick="collection();">移入收藏</p><p class="del" onclick="del(this);">删除</p></li>
-                </ul>
-            </div>
-            <div class="list">
-                <ul>
-                    <li>
-                        <input type="checkbox" name="bookid" class="bookid" value="4">
-                    </li>
-                    <li><img src="${pageContext.request.contextPath}/static/img/book/4.jpg"></li>
-                    <li>自在成长</li>
-                    <li>￥<input type="text" name="price" value="49.99"></li>
-                    <li><input type="button" name="minus" class="less" value="-" onclick="minus(3);"><input type="text" name="amount" value="1"><input type="button" name="plus" class="add" value="+" onclick="plus(3);"></li>
-                    <li id="price3">￥49.99</li>
-                    <li><p class="collection" onclick="collection();">移入收藏</p><p class="del" onclick="del(this);">删除</p></li>
-                </ul>
-            </div>
-            <div class="list">
-                <ul>
-                    <li>
-                        <input type="checkbox" name="bookid" class="bookid" value="5">
-                    </li>
-                    <li><img src="${pageContext.request.contextPath}/static/img/book/2.jpg"></li>
-                    <li>北京女子</li>
-                    <li>￥<input type="text" name="price" value="21.90"></li>
-                    <li><input type="button" name="minus" class="less" value="-" onclick="minus(0);"><input type="text" name="amount" value="1"><input type="button" name="plus" class="add" value="+" onclick="plus(0);"></li>
-                    <li id="price4">￥21.90</li>
-                    <li><p class="collection" onclick="collection();">移入收藏</p><p class="del" onclick="del(this);">删除</p></li>
-                </ul>
-            </div>
-            <div class="list">
-                <ul>
-                    <li>
-                        <input type="checkbox" name="bookid" class="bookid">
-                    </li>
-                    <li><img src="${pageContext.request.contextPath}/static/img/book/4.jpg"></li>
-                    <li>自在成长</li>
-                    <li>￥<input type="text" name="price" value="49.99"></li>
-                    <li><input type="button" class="less" name="minus"  value="-" onclick="minus(1);"><input type="text" name="amount" value="1"><input type="button" class="add" name="plus" value="+" onclick="plus(1);"></li>
-                    <li id="price5">￥49.99</li>
-                    <li><p class="collection" onclick="collection();">移入收藏</p><p class="del" onclick="del(this);">删除</p></li>
-                </ul>
-            </div>
+            </c:forEach>
+
+<%--            <div class="list">--%>
+<%--                <ul>--%>
+<%--                    <li>--%>
+<%--                        <input type="checkbox" name="bookid" class="bookid" value="1">--%>
+<%--                    </li>--%>
+<%--                    <li><img src="${pageContext.request.contextPath}/static/img/book/2.jpg"></li>--%>
+<%--                    <li>北京女子</li>--%>
+<%--                    <li>￥<input type="text" name="price" value="21.90"></li>--%>
+<%--                    <li><input type="button" name="minus" class="less" value="-" onclick="minus(0);"><input type="text" name="amount" value="1"><input type="button" name="plus" class="add" value="+" onclick="plus(0);"></li>--%>
+<%--                    <li id="price0">￥21.90</li>--%>
+<%--                    <li><p class="collection" onclick="collection();">移入收藏</p><p class="del" onclick="del(this);">删除</p></li>--%>
+<%--                </ul>--%>
+<%--            </div>--%>
+<%--            <div class="list">--%>
+<%--                <ul>--%>
+<%--                    <li>--%>
+<%--                        <input type="checkbox" name="bookid" class="bookid" value="2">--%>
+<%--                    </li>--%>
+<%--                    <li><img src="${pageContext.request.contextPath}/static/img/book/4.jpg"></li>--%>
+<%--                    <li>自在成长</li>--%>
+<%--                    <li>￥<input type="text" name="price" value="49.99"></li>--%>
+<%--                    <li><input type="button" name="minus" class="less" value="-" onclick="minus(1);"><input type="text" name="amount" value="1"><input type="button" name="plus" class="add" value="+" onclick="plus(1);"></li>--%>
+<%--                    <li id="price1">￥49.99</li>--%>
+<%--                    <li><p class="collection" onclick="collection();">移入收藏</p><p class="del" onclick="del(this);">删除</p></li>--%>
+<%--                </ul>--%>
+<%--            </div>--%>
+<%--            <div class="list">--%>
+<%--                <ul>--%>
+<%--                    <li>--%>
+<%--                        <input type="checkbox" name="bookid" class="bookid" value="3">--%>
+<%--                    </li>--%>
+<%--                    <li><img src="${pageContext.request.contextPath}/static/img/book/2.jpg"></li>--%>
+<%--                    <li>北京女子</li>--%>
+<%--                    <li>￥<input type="text" name="price" value="21.90"></li>--%>
+<%--                    <li><input type="button" name="minus" class="less" value="-" onclick="minus(2);"><input type="text" name="amount" value="1"><input type="button" name="plus" class="add" value="+" onclick="plus(2);"></li>--%>
+<%--                    <li id="price2">￥21.90</li>--%>
+<%--                    <li><p class="collection" onclick="collection();">移入收藏</p><p class="del" onclick="del(this);">删除</p></li>--%>
+<%--                </ul>--%>
+<%--            </div>--%>
+<%--            <div class="list">--%>
+<%--                <ul>--%>
+<%--                    <li>--%>
+<%--                        <input type="checkbox" name="bookid" class="bookid" value="4">--%>
+<%--                    </li>--%>
+<%--                    <li><img src="${pageContext.request.contextPath}/static/img/book/4.jpg"></li>--%>
+<%--                    <li>自在成长</li>--%>
+<%--                    <li>￥<input type="text" name="price" value="49.99"></li>--%>
+<%--                    <li><input type="button" name="minus" class="less" value="-" onclick="minus(3);"><input type="text" name="amount" value="1"><input type="button" name="plus" class="add" value="+" onclick="plus(3);"></li>--%>
+<%--                    <li id="price3">￥49.99</li>--%>
+<%--                    <li><p class="collection" onclick="collection();">移入收藏</p><p class="del" onclick="del(this);">删除</p></li>--%>
+<%--                </ul>--%>
+<%--            </div>--%>
+<%--            <div class="list">--%>
+<%--                <ul>--%>
+<%--                    <li>--%>
+<%--                        <input type="checkbox" name="bookid" class="bookid" value="5">--%>
+<%--                    </li>--%>
+<%--                    <li><img src="${pageContext.request.contextPath}/static/img/book/2.jpg"></li>--%>
+<%--                    <li>北京女子</li>--%>
+<%--                    <li>￥<input type="text" name="price" value="21.90"></li>--%>
+<%--                    <li><input type="button" name="minus" class="less" value="-" onclick="minus(4);"><input type="text" name="amount" value="1"><input type="button" name="plus" class="add" value="+" onclick="plus(4);"></li>--%>
+<%--                    <li id="price4">￥21.90</li>--%>
+<%--                    <li><p class="collection" onclick="collection();">移入收藏</p><p class="del" onclick="del(this);">删除</p></li>--%>
+<%--                </ul>--%>
+<%--            </div>--%>
+<%--            <div class="list">--%>
+<%--                <ul>--%>
+<%--                    <li>--%>
+<%--                        <input type="checkbox" name="bookid" class="bookid">--%>
+<%--                    </li>--%>
+<%--                    <li><img src="${pageContext.request.contextPath}/static/img/book/4.jpg"></li>--%>
+<%--                    <li>自在成长</li>--%>
+<%--                    <li>￥<input type="text" name="price" value="49.99"></li>--%>
+<%--                    <li><input type="button" class="less" name="minus"  value="-" onclick="minus(5);"><input type="text" name="amount" value="1"><input type="button" class="add" name="plus" value="+" onclick="plus(5);"></li>--%>
+<%--                    <li id="price5">￥49.99</li>--%>
+<%--                    <li><p class="collection" onclick="collection();">移入收藏</p><p class="del" onclick="del(this);">删除</p></li>--%>
+<%--                </ul>--%>
+<%--            </div>--%>
             <ol>
                 <li id="allPrice">商品总计:<span></span></li>
                 <li><span class="allcount" >结算</span></li>

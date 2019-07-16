@@ -54,7 +54,7 @@ ul,li,ol{list-style: none;}
     border: 1px solid #999999;
     border-left: none;
     border-right: none;
-    height: 21px;
+    height: 25px;
 }
 .cartList ul li input[name="minus"],.cartList ul li input[name="plus"]{
     height: 25px;
