@@ -10,7 +10,7 @@ $(function () {
             f = 4;
         }
         num++;
-        var text = "../static/img/11("+(num+1)+").jpg";
+        var text = "/TestPro_war_exploded/static/img/11("+(num+1)+").jpg";
         $(".menu").css({"background-image":"url('"+text+"')"});
         $(".select-tb ul a:eq("+f+")").css({"background":"#aaaaaa"});
         $(".select-tb ul a:eq("+num+")").css({"background":"orange"});
@@ -55,7 +55,7 @@ $(function () {
         else{
             num--;
             var x = num+1;
-            var text = "../static/img/11("+x+").jpg";
+            var text = "/TestPro_war_exploded/static/img/11("+x+").jpg";
             //console.log(num+" @@####  "+f);
             $(".menu").css({"background-image":"url('"+text+"')"});
             $(".select-tb ul a:eq("+f+")").css({"background":"#aaaaaa"});
@@ -72,7 +72,7 @@ $(function () {
         else{
             num++;
             var x = num+1;
-            var text = "../static/img/11("+x+").jpg";
+            var text = "/TestPro_war_exploded/static/img/11("+x+").jpg";
             //console.log(num+" @@  "+f);
             $(".menu").css({"background-image":"url('"+text+"')"});
             $(".select-tb ul a:eq("+f+")").css({"background":"#aaaaaa"});
@@ -89,7 +89,7 @@ $(function () {
         //console.log(f+"    "+num);
         $(".select-tb ul a:eq("+f+")").css({"background":"#aaaaaa"});
         $(".select-tb ul a:eq("+num+")").css({"background":"orange"});
-        var text = "../static/img/11("+(num+1)+").jpg";
+        var text = "/TestPro_war_exploded/static/img/11("+(num+1)+").jpg";
         //console.log(num+" @@####  "+f);
         $(".menu").css({"background-image":"url('"+text+"')"});
         f = num;

@@ -42,6 +42,7 @@ public class ShopDaoImpl implements ShopDao {
 
     @Override
     public boolean addShop(Book book, User user) {
+        System.out.println(book+"@@@"+user);
         ResultSet rs = null;
         int num = 1,id = 0;
         String sql1 = "select * from shop where bookid = ? and userid=?";
@@ -52,6 +53,8 @@ public class ShopDaoImpl implements ShopDao {
         baseDao.commit();
         //System.out.println(rs);
 
+        System.out.println(rs+"@@@");
+
         try {
             while(rs.next()){
                 num = rs.getInt(4);
@@ -60,6 +63,8 @@ public class ShopDaoImpl implements ShopDao {
         }catch (SQLException e){
             e.printStackTrace();
         }
+
+        System.out.println(id);
         if(id !=0){
             //System.out.println(num+"  "+id);
             rs = null;
@@ -119,44 +124,53 @@ public class ShopDaoImpl implements ShopDao {
 
     @Override
     public boolean sumMoney(User user,String ids[]) {
-        int sum = 0;
-        String sql = "select sum(num*b.bookmoney) as money from shop s,book b where userid = ? and b.bookid = s.bookid";
-        Object params[] = {user.getId()};
-        System.out.println(Arrays.toString(params));
-        ResultSet rs = baseDao.executeQuery(sql,params);
-        try {
+        float sum = 0;
+        String sql = "";
+        Object params[]=null;
+//        System.out.println(Arrays.toString(ids)+"us"+user.getId());
+        for(int i = 0; i < ids.length; i++){
+//            System.out.println(ids[i]+"  "+i);
+            sql = "select CAST(sum(num*b.bookmoney)  AS decimal(18,2))as money from shop s,book b where userid = ? and b.bookid = s.bookid and s.bookid=?";
+            params = new Object[]{user.getId(),ids[i]};
+            ResultSet rs = baseDao.executeQuery(sql,params);
+            baseDao.commit();
+//            System.out.println(rs+"@@@");
             if(rs == null){
                 return false;
             }
-            while (rs.next()){
-                sum = rs.getInt(1);
-            }
-            //System.out.println(sum+"@@@@"+user.getMoney());
-            if(user.getMoney() < sum) return false;
-
-            //System.out.println(sum+"!!!");
-            String sql1 = "update user set money = money - ? where id = ?";
-            Object params1[] = {sum,user.getId()};
-            int num1 = baseDao.executeUpdate(sql1,params1);
-            //System.out.println(num1);
-            if(num1 >= 1){
-                //System.out.println(Arrays.toString(ids));
-                for (int i = 0; i < ids.length; i++){
-                    sql1 = "delete from shop where userid = ? and shopid = ?";
-                    Object params2[] = {user.getId(),ids[i]};
-                    if(baseDao.executeUpdate(sql1,params2) >= 1){
-                        baseDao.commit();
-
-                    }
-                    else{
-                        baseDao.runback();
-                        return true;
-                    }
+            try {
+                while (rs.next()){
+                    sum += rs.getFloat(1);
                 }
-                user.setMoney(user.getMoney()-sum);
+            }catch (SQLException e){
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+
+        }
+//        System.out.println(sum+"   "+user.getMoney());
+        if(user.getMoney() < sum) return false;
+//        System.out.println(sum+"asdasd");
+        //System.out.println(sum+"!!!");
+        String sql1 = "update user set money = money - ? where id = ?";
+        Object params1[] = {sum,user.getId()};
+        int num1 = baseDao.executeUpdate(sql1,params1);
+        //System.out.println(num1);
+        if(num1 >= 1){
+            //System.out.println(Arrays.toString(ids));
+            for (int i = 0; i < ids.length; i++){
+                sql1 = "delete from shop where userid = ? and bookid = ?";
+                Object params2[] = {user.getId(),ids[i]};
+                if(baseDao.executeUpdate(sql1,params2) >= 1){
+                    baseDao.commit();
+
+                }
+                else{
+                    baseDao.runback();
+                    return true;
+                }
+            }
+            user.setMoney(user.getMoney()-sum);
         }
         return false;
     }
