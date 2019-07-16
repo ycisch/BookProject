@@ -175,7 +175,7 @@
             <div class="list">
                 <ul>
                     <li>
-                        <input type="checkbox" name="bookid" class="bookid" value="${shoplist.book.bookid}">****${shoplist.shopId}
+                        <input type="checkbox" name="bookid" class="bookid" value="${shoplist.book.bookid}">
                         <input type="hidden" name="shopid" class="shopid" value="${shoplist.shopId}">
                     </li>
                     <li><img src="${pageContext.request.contextPath}${shoplist.book.bookimg}"></li>

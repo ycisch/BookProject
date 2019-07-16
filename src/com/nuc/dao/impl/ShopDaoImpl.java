@@ -124,46 +124,47 @@ public class ShopDaoImpl implements ShopDao {
 
     @Override
     public boolean sumMoney(User user,String ids[]) {
-        float sum = 0;
+        float sum = 0,ans = 0;
+        int bookid = 0,userid = 0,num=0;
         String sql = "";
         Object params[]=null;
-//        System.out.println(Arrays.toString(ids)+"us"+user.getId());
         for(int i = 0; i < ids.length; i++){
-//            System.out.println(ids[i]+"  "+i);
-            sql = "select CAST(sum(num*b.bookmoney)  AS decimal(18,2))as money from shop s,book b where userid = ? and b.bookid = s.bookid and s.bookid=?";
+            sql = "select CAST(sum(num*b.bookmoney)  AS decimal(18,2))as money,s.num,s.bookid,s.userid from shop s,book b where userid = ? and b.bookid = s.bookid and s.bookid=?";
             params = new Object[]{user.getId(),ids[i]};
             ResultSet rs = baseDao.executeQuery(sql,params);
             baseDao.commit();
-//            System.out.println(rs+"@@@");
             if(rs == null){
                 return false;
             }
             try {
                 while (rs.next()){
                     sum += rs.getFloat(1);
+                    ans = rs.getFloat(1);
+                    num = rs.getInt(2);
+                    bookid = rs.getInt(3);
+                    userid = rs.getInt(4);
                 }
             }catch (SQLException e){
                 e.printStackTrace();
             }
 
+            sql = "insert into bookshop.order(bookid,booknum,money,userid,ctdate) values(?,?,?,?,?)";
+            params = new Object[]{bookid, num, ans, userid, new Date()};
+
+            baseDao.executeUpdate(sql,params);
+            baseDao.commit();
 
         }
-//        System.out.println(sum+"   "+user.getMoney());
         if(user.getMoney() < sum) return false;
-//        System.out.println(sum+"asdasd");
-        //System.out.println(sum+"!!!");
         String sql1 = "update user set money = money - ? where id = ?";
         Object params1[] = {sum,user.getId()};
         int num1 = baseDao.executeUpdate(sql1,params1);
-        //System.out.println(num1);
         if(num1 >= 1){
-            //System.out.println(Arrays.toString(ids));
             for (int i = 0; i < ids.length; i++){
                 sql1 = "delete from shop where userid = ? and bookid = ?";
                 Object params2[] = {user.getId(),ids[i]};
                 if(baseDao.executeUpdate(sql1,params2) >= 1){
                     baseDao.commit();
-
                 }
                 else{
                     baseDao.runback();
