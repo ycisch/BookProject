@@ -15,26 +15,26 @@ public interface OrderService {
 
 
     //修改订单
-    public boolean updateOrder(Order order,User uer);
+    public boolean updateOrder(Order order,User user);
 
     //删除订单
     public  boolean deleteOrder(Order order,User user);
 
-
     //查看所有订单
-    public List<Order> listOrder(Page page);
+    public List<Order> listOrder();
+
+    //查看个人订单
+    public List<Order> listOrder(User user);
 
     //按个人查询所有订单总数
     public int sumOrder(Order order);
 
+    //查询订单总数
+    public int sumOrder();
 
     //查看所有类别
     public List<Style> listStyle();
 
     //添加类别
     public void addStyle(Style style);
-
-
-    //计算订单总数
-    public  int sumOrder();
 }

@@ -20,7 +20,7 @@
             if (num == 1){
                 $("#hasPrev").hide();
                 $("#hasNext").show();
-            }else (num == ${page.totalPageCout}){
+            }else if(num == ${page.totalPageCout}){
                 $("#hasPrev").show();
                 $("#hasNext").hide();
             }
@@ -110,7 +110,7 @@
         </dl>
     </div>
     <div id="display">
-        <h1>图书列表</h1>
+        <h1>列表</h1>
         <div>
             <div id="order">
                 <table>
@@ -123,7 +123,17 @@
                         <th class="adress">地址</th>
                         <th class="phone">电话</th>
                     </tr>
-
+                    <c:forEach var="order"  items="${orderList}" >
+                    <tr>
+                        <td class="username"> ${order.user.username}</td>
+                        <td class="bookid">${order.bookid}</td>
+                        <td class="booknum">${order.booknum}</td>
+                        <td class="money">${order.money}</td>
+                        <td class="email">${order.user.email}</td>
+                        <td class="address">${order.user.address}</td>
+                        <td class="phone">${order.user.phone}</td>
+                    </tr>
+                    </c:forEach>
                     <!--<tr>
                         <td class="username">张三</td>
                         <td class="email">22222222.@qq.com</td>

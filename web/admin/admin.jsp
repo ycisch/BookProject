@@ -105,7 +105,7 @@
                                 <hr/> -->
                     <dt>用户管理</dt>
                     <dd><a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=1"><span id="userList">用户列表</span></a></dd>
-                    <dd><a href="${pageContext.request.contextPath}/admin/admin_order.jsp"><span id="onlineList">用户订单</span></a></dd>
+                    <dd><a href="${pageContext.request.contextPath}/OrderServlet?opr=showAllusersorder"><span id="onlineList">用户订单</span></a></dd>
 
                     <hr/>
 

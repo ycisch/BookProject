@@ -7,6 +7,7 @@ import com.nuc.service.OrderService;
 import com.nuc.service.impl.OrderServiceImpl;
 import com.nuc.util.Date;
 import com.nuc.util.Page;
+import com.sun.org.apache.xpath.internal.operations.Or;
 import javafx.scene.chart.PieChart;
 
 import java.io.IOException;
@@ -28,9 +29,8 @@ public class OrderServlet extends javax.servlet.http.HttpServlet {
         User user = null;
         List<Order> orderList = new ArrayList<Order>();
         String opr = request.getParameter("opr");
-        System.out.println(request.getParameter("style"));
-        if ("show allusersorder".equals(opr)){                                          //展示所有人的订单
-            int currPageNo = Integer.parseInt(request.getParameter("page"));
+        if ("showAllusersorder".equals(opr)){                                          //展示所有人的订单
+           /* int currPageNo = Integer.parseInt(request.getParameter("page"));
             Page page = new Page();
             page.setTotalCount(orderService.sumOrder());
             if (currPageNo>= page.getTotalCount()){
@@ -38,14 +38,13 @@ public class OrderServlet extends javax.servlet.http.HttpServlet {
             }else if (currPageNo<=1){
                 currPageNo = 1;
             }
-            page.setCurrPageNo(currPageNo-1);
-            orderList = orderService.listOrder(page);
+            page.setCurrPageNo(currPageNo-1);*/
+            orderList = orderService.listOrder();
             request.setAttribute("orderList",orderList);
-            request.getRequestDispatcher("#").forward(request,response);
+            request.getRequestDispatcher("admin/admin_order.jsp").forward(request,response);
 
-
-        }else if ("show myorder".equals(opr)){                                         //展示自己的订单
-            int currPageNo = Integer.parseInt(request.getParameter("page"));
+        }else if ("showMyorder".equals(opr)){                                         //展示自己的订单
+           /* int currPageNo = Integer.parseInt(request.getParameter("page"));
             Page page = new Page();
             page.setTotalCount(orderService.sumOrder());
             if (currPageNo>= page.getTotalCount()){
@@ -54,8 +53,8 @@ public class OrderServlet extends javax.servlet.http.HttpServlet {
                 currPageNo = 1;
             }
             page.setCurrPageNo(currPageNo-1);
-            order = new Order();
-            //orderList = orderService.listOrder();
+            order = new Order();*/
+            orderList = orderService.listOrder();
             request.setAttribute("orderList",orderList);
             request.getRequestDispatcher("user/order.jsp").forward(request,response);
 
@@ -75,12 +74,22 @@ public class OrderServlet extends javax.servlet.http.HttpServlet {
 
 
 
-           if (orderService.updateOrder(order,user)){}
+           if (orderService.updateOrder(order,user)){
+               request.setAttribute("massage","修改成功！");
+           }else {
+               request.setAttribute("message", "修改失败！");
+           }
 
 
         }else if ("deleteorder".equals(opr)) {                                     //删除订单
-
-
+            order = new Order();
+            user = new User();
+            order.setOrderId(Integer.parseInt(request.getParameter("orderIde")));
+            if (orderService.deleteOrder(order,user)){
+                request.setAttribute("message","删除成功！");
+            }else {
+                request.setAttribute("message","删除失败！");
+            }
         }
     }
 }

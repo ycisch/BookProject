@@ -48,16 +48,16 @@ public class OrderDaoImpl implements OrderDao {
 
     //查看个人订单
     @Override
-    public List<Order> listOrder(User user, Page page) {
+    public List<Order> listOrder(User user) {
         String sql = "select * from order where userid = ?";
-        Object params[] = {user.getId()};
-        ResultSet rs = baseDao.executeQuery(sql,params);
+//        Object params[] = {user.getId()};
+        ResultSet rs = baseDao.executeQuery(sql, user.getId());
         List<Order> list = new ArrayList<>();
         baseDao.commit();
         try{
             while (rs.next()){
                 Order order = new Order();
-                order.setBookId(rs.getInt(1));
+                order.setOrderId(rs.getInt(1));
                 order.setBookId(rs.getInt(2));
                 order.setBooknum(rs.getInt(3));
                 order.setMoney(rs.getFloat(4));
@@ -75,7 +75,7 @@ public class OrderDaoImpl implements OrderDao {
 
     //查看所有订单
     @Override
-    public List<Order> listOrder(Page page) {
+    public List<Order> listOrder() {
         List<Order> orderList = new ArrayList<Order>();
         ResultSet resultSet = null;
         String sql = "select * from order";
@@ -121,7 +121,18 @@ public class OrderDaoImpl implements OrderDao {
     //按个人查询所有订单总数
     @Override
     public int sumOrder(Order order) {
-        return 0;
+        int count = 0;
+        String sql = "SELECT count(userid) FROM bookshop.order";
+        ResultSet rs = baseDao.executeQuery(sql);
+        baseDao.commit();
+        try{
+            while (rs.next()){
+                count = rs.getInt(1);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return count;
     }
 
     //查询订单总数
@@ -129,7 +140,7 @@ public class OrderDaoImpl implements OrderDao {
     public int sumOrder() {
         int result = 0;
         ResultSet resultSet = null;
-        String sql = "select count(*) from order";
+        String sql = "select count(*) from bookshop.order";
         try{
             resultSet = baseDao.executeQuery(sql);
             while(resultSet.next()){

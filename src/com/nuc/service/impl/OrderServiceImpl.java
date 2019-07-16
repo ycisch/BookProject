@@ -14,28 +14,37 @@ import java.util.List;
 
 public class OrderServiceImpl implements OrderService {
 
-    OrderDao orderDao = new OrderDaoImpl();
+    OrderDao dao = new OrderDaoImpl();
 
     @Override
     public boolean updateOrder(Order order, User user) {
-        return false;
+        return dao.updateOrder(order,user);
     }
 
     @Override
     public boolean deleteOrder(Order order, User user) {
-        return false;
+        return dao.deleteOrder(order, user);
     }
-
 
     @Override
-    public List<Order> listOrder(Page page) {
-        return null;
+    public List<Order> listOrder() {
+        List<Order> list = new ArrayList<>();
+        list = dao.listOrder();
+        return list;
     }
+
+    @Override
+    public List<Order> listOrder(User user) {
+        List<Order> list = new ArrayList<>();
+        list = dao.listOrder(user);
+        return list;
+    }
+
 
     @Override
     public List<Style> listStyle() {
         List<Style> list = new ArrayList<>();
-        list = orderDao.listStyle();
+        list = dao.listStyle();
         for (Style style:list) {
             Date.map.put(style.getBooksName(),style.getBookStyle());
         }
@@ -43,7 +52,7 @@ public class OrderServiceImpl implements OrderService {
     }
     @Override
     public void addStyle(Style style) {
-        orderDao.addStyle(style);
+        dao.addStyle(style);
     }
 
     @Override
