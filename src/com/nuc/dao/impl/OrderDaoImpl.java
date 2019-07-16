@@ -16,6 +16,16 @@ public class OrderDaoImpl implements OrderDao {
     BaseDao baseDao = new BaseDao();
 
     @Override
+    public boolean updateOrder(Order order, User uer) {
+        return false;
+    }
+
+    @Override
+    public boolean deleteOrder(Order order, User user) {
+        return false;
+    }
+
+    @Override
     public List<Order> listOrder(User user) {
         String sql = "select * from order where userid = ?";
         Object params[] = {user.getId()};

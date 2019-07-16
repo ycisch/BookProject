@@ -47,13 +47,20 @@ function minus(num){
 function plus(num){
     //var num = $(".add").index(this);
     //alert(num);
+    console.log(num+"####")
     var prices=document.getElementsByName("price")[num].value;
     parseFloat(prices);
     var count=parseInt(document.getElementsByName("amount")[num].value)+1;
     document.getElementsByName("amount")[num].value=count;
     var totals=parseFloat(prices*count).toFixed(2);
 
-    document.getElementById("price"+num).innerHTML="¥" +totals;
+    console.log(prices+"@@@@@"+totals);
+
+    var totals1 = "¥" +totals;
+
+    console.log(document.getElementById("price"+num));
+
+    document.getElementById("price"+num).innerHTML=totals1;
 
     /*$(".list :checkbox").each(function () {
         if($(this).prop("checked")==true){
@@ -131,4 +138,10 @@ function allchk(){
     }else{//不全选
         $("#all").prop("checked",false);
     }
+}
+
+function showsum() {
+    console.log(sum);
+    sum = 0;
+    console.log(sum+"asdasdadsd");
 }

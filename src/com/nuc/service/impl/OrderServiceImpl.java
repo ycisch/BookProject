@@ -16,6 +16,16 @@ public class OrderServiceImpl implements OrderService {
     OrderDao orderDao = new OrderDaoImpl();
 
     @Override
+    public boolean updateOrder(Order order, User uer) {
+        return false;
+    }
+
+    @Override
+    public boolean deleteOrder(Order order, User user) {
+        return false;
+    }
+
+    @Override
     public List<Order> listOrder(User user) {
         return null;
     }

@@ -12,7 +12,7 @@
 <head>
     <title>华轩书海购物车</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/shopcart.css">
-    <script src="${pageContext.request.contextPath}/static/js/jquery-1.11.3.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/jquery-3.4.1.js"></script>
 
     <%--  Ajax书写，用来对前台的加，减，删除，移入收藏，进行操作
             Q=Q.....
@@ -37,6 +37,7 @@
                 });
 
                 function callback() {
+                    $(".price:eq("+num+")").attr('id',"price"+num);
                     minus(num);
 
                 }
@@ -64,6 +65,8 @@
                 });
 
                 function callback() {
+                    console.log("success");
+                    $(".price:eq("+num+")").attr('id',"price"+num);
                     plus(num);
 
                 }
@@ -106,15 +109,26 @@
 
                 var li = $(".bookid");
                 var ids = new Array();
-                var k  = 0;
+                var ids1 = new Array();
+                var k  = 0,j = 0;
                 console.log(li);
 
                 for(var i = 0; i < li.length; i++){
                     var value = $(".bookid:eq("+i+"):checked").val();
                     if(value != null){
                         ids[k++] = value;
+                        ids1[j++] = i;
                     }
                 };
+
+                var prek = 0;
+
+                for(var i = 0; i < ids1.length; i++){
+                    console.log(ids1[i]);
+
+                    $(".list:eq("+(ids1[i]-prek)+")").remove();
+                    prek++;
+                }
                 console.log(ids);
 
                 //将所有的id保存起来就可以传送到后台了
@@ -122,11 +136,17 @@
                 $.ajax({
                     "url":"${pageContext.request.contextPath}/ShopServlet",
                     "type": "get",
-                    "data": "opr=sum&ids="+ids+"",
+                    "data": "opr=sum&ids="+ids,
                     "dataType": "text",
                     processData:false,
                     contentType:false,
+                    success:callback,
                 });
+
+                function callback() {
+                    $(".show_allprice").text("￥0.00");
+                    showsum();
+                }
 
             })
 
@@ -165,7 +185,7 @@
                         <input type="text" name="amount" value="${shoplist.num}">
                         <input type="button" name="plus" class="add" value="+">
                     </li>
-                    <li id="price0"><c:out value="${shoplist.book.bookAuthor}"></c:out></li>
+                    <li id="price0" class="price">￥<c:out value="${shoplist.book.bookAuthor}"></c:out></li>
                     <li><p class="collection" onclick="collection();">移入收藏</p><p class="del" >删除</p></li>
                 </ul>
             </div>
@@ -250,7 +270,7 @@
 <%--                </ul>--%>
 <%--            </div>--%>
             <ol>
-                <li id="allPrice">商品总计:<span></span></li>
+                <li id="allPrice">商品总计:<span class="show_allprice"></span></li>
                 <li><span class="allcount" >结算</span></li>
             </ol>
         </div>

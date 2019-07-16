@@ -13,6 +13,12 @@ public interface OrderService {
 
 
 
+    //修改订单
+    public boolean updateOrder(Order order,User uer);
+
+    //删除订单
+    public  boolean deleteOrder(Order order,User user);
+
     //查看所有订单
     public List<Order> listOrder(User user);
 

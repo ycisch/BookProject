@@ -1,7 +1,7 @@
 body,ul,li,div,p,h2,ol{margin:0;padding: 0;}
 body{margin: 5px 0 0 0}
 ul,li,ol{list-style: none;}
-.shop{width: 750px; margin: 0 auto;  font-family: "微软雅黑"; border: solid 1px #cecece; padding: 5px;}
+.shop{width: 900px; margin: 0 auto;  font-family: "微软雅黑"; border: solid 1px #cecece; padding: 5px;}
 .title h1{
     display: inline-block;
 }
@@ -52,12 +52,12 @@ ul,li,ol{list-style: none;}
     text-align: center;
 }
 .cartList ul li input[name="amount"]{
-    width: 45px;
+    width: 46px;
     text-align: center;
     border: 1px solid #999999;
     border-left: none;
     border-right: none;
-    height: 25px;
+    height: 24px;
 }
 .cartList ul li input[name="minus"],.cartList ul li input[name="plus"]{
     height: 25px;
@@ -66,8 +66,8 @@ ul,li,ol{list-style: none;}
     text-align: center;
 }
 .cartList ul li:nth-of-type(1){width: 130px;}
-.cartList ul li:nth-of-type(2){width: 100px;}
-.cartList ul li:nth-of-type(3){width: 130px;}
+.cartList ul li:nth-of-type(2){width: 170px;}
+.cartList ul li:nth-of-type(3){width: 170px;}
 .cartList ul li:nth-of-type(4){width: 100px;}
 .cartList ul li:nth-of-type(5){width: 130px;}
 .cartList ul li:nth-of-type(6){width: 100px;}
