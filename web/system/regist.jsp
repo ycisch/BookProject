@@ -11,6 +11,39 @@
     <meta charset="utf-8">
     <title>注册-华轩书海商城</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/regist.css">
+    <script src="${pageContext.request.contextPath}/static/js/jquery-3.4.1.js"></script>
+    <script>
+        $(function () {
+            $("#username").blur(function () {
+                var username = $("#username").val();
+
+                if (username == null || username == ""){
+                    $("#usernameError").html("用户名为空");
+                    return false;
+                }
+                $.ajax({
+                    url:"../UserServlet",
+                    data:"opr=exist&username="+username,
+                    type:"get",
+                    dataType:"text",
+                    success:callBack,
+                    error:callBackError
+                });
+                function callBack(data) {
+                    $("#usernameError").html(data);
+                }
+                function callBackError(data) {
+                    $("#usernameError").html(data);
+                }
+            })
+        });
+    </script>
+    <style>
+        #usernameError{
+            font-size: 14px;
+            color: red;
+        }
+    </style>
 </head>
 <body>
 <div id="header">
@@ -28,7 +61,7 @@
             <div id="regist_header">注册</div>
             <div id="regist_form">
                 <form action="${pageContext.request.contextPath}/UserServlet?opr=regist" method="post">
-                    <p>账号：<input type="text" name="username" id="username"></p>
+                    <p>账号：<input type="text" name="username" id="username"><span id="usernameError"></span></p>
                     <p>密码：<input type="password" name="password" id="password"></p>
                     <p>邮箱：<input type="text" name="email" id="email"></p>
                     <p>地址：<input type="text" name="address" id="address"></p>

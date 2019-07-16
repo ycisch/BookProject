@@ -5,6 +5,7 @@ import com.nuc.service.UserService;
 import com.nuc.service.impl.UserServiceImpl;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class UserServlet extends javax.servlet.http.HttpServlet {
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
@@ -38,6 +39,8 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
             }else {
                 request.setAttribute("message","注册失败");
             }
+
+
         }else if ("show".equals(opr)){      //展示个人信息
             user = (User) request.getSession().getAttribute("user");
             System.out.println(user);
@@ -72,6 +75,22 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
             else
                 request.setAttribute("message","充值失败");
             request.getRequestDispatcher("user/personalCenter.jsp").forward(request,response);
+        }else  if ("exist".equals(opr)){
+            String username = request.getParameter("username");
+            System.out.println(username);
+            PrintWriter printWriter = response.getWriter();
+            boolean exists = service.exist(username);
+            response.setContentType("text/html;charset=utf-8");
+            if (exists){
+                printWriter.print("用户名已存在");
+                printWriter.flush();
+                printWriter.close();
+
+            }else {
+                printWriter.print("用户名可以使用");
+                printWriter.flush();
+                printWriter.close();
+            }
         }
 
     }

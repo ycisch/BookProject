@@ -20,5 +20,26 @@
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="alipay-sdk-java20170324180803 (4)" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <ANNOTATIONS>
+          <root url="file://F:/jar包/nice-validator-1.1.4" />
+        </ANNOTATIONS>
+        <CLASSES>
+          <root url="file://F:/jar包/nice-validator-1.1.4" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="file://F:/jar包/nice-validator-1.1.4" />
+        </JAVADOC>
+        <NATIVE>
+          <root url="file://F:/jar包/nice-validator-1.1.4" />
+        </NATIVE>
+        <SOURCES>
+          <root url="file://F:/jar包/nice-validator-1.1.4" />
+        </SOURCES>
+        <jarDirectory url="file://F:/jar包/nice-validator-1.1.4" recursive="false" />
+        <jarDirectory url="file://F:/jar包/nice-validator-1.1.4" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
   </component>
 </module>

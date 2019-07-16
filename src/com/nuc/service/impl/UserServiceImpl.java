@@ -41,4 +41,9 @@ public class UserServiceImpl implements UserService {
         result = dao.addMoney(user, money);
         return result;
     }
+
+    @Override
+    public boolean exist(String username) {
+        return dao.exist(username);
+    }
 }
