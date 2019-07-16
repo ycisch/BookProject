@@ -24,8 +24,12 @@
 
                 $(".btn2").click(function () {
                     var id = $(this).prev().prev().val();
-                    alert(id);
-                    location.href="BookServlet?opr=del&id="+id;
+                    var name = $(this).parent().prev().prev().prev().text();
+                    alert(name);
+                    if (confirm("确认删除"+name+"吗？\n")==true){
+                        location.href="BookServlet?opr=del&id="+id;
+                    }
+
                 })
 
                 $(".btn").click(function () {
