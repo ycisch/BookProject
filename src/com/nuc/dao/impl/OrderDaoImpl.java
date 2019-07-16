@@ -26,10 +26,33 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public boolean updateOrder(Order order, User uer) {
         boolean result = false;
-        String sql = "update order set booknum=?,money=?";
-        if (0 != baseDao.executeUpdate(sql, order.getBooknum(), order.getMoney())){
-            baseDao.commit();
-            result = true;
+
+        double oldMoney = 0;                //原订单的金额
+        double money = 0;
+        String oldOrderMoney = "select money from bookshop.order where orderid=?";       //查原订单的金额
+        ResultSet resultSet = null;
+        String oldUserMoney = "select money from user where id=?";          //查用户原来的余额
+        String sql = "update bookshop.order set booknum=?,money=? where orderid=?";                      //修改订单
+        String updateMoney = "update user set money=? where id=?";              //修改用户余额
+        try {
+            resultSet = baseDao.executeQuery(oldOrderMoney,order.getOrderId());//查原订单的金额
+            while (resultSet.next()){
+                oldMoney = resultSet.getFloat("money");
+            }
+            money = oldMoney-order.getMoney();              //得到订单金额差值
+            resultSet = baseDao.executeQuery(oldUserMoney,order.getUserId());//查用户原来的余额
+            while (resultSet.next()){
+                oldMoney = resultSet.getFloat("money");
+            }
+            money = oldMoney+money;                         //得到用户需要修改为的金额
+            if (0 != baseDao.executeUpdate(updateMoney,money,order.getUserId())&&0 != baseDao.executeUpdate(sql, order.getBooknum(), order.getMoney(),order.getOrderId())){
+                baseDao.commit();
+                result = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DatabaseUtil.closeAll(null,null,resultSet);
         }
         return result;
     }
@@ -38,8 +61,27 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public boolean deleteOrder(Order order, User user) {
         boolean result = false;
-        String sql = "delete from order where orderid=?";
-        if (0!=baseDao.executeUpdate(sql,order.getOrderId())){
+        ResultSet resultSet = null;
+        double money = 0;                //需要加回用户的金额
+        double oldMoney = 0;               //用户余额
+        String oldOrderMoney = "select money from bookshop.order where orderid=?";       //查原订单的金额
+        String updateMoney = "update user set money=? where id=?";              //修改用户余额
+        String sql = "delete from bookshop.order where orderid=?";                       //删除订单
+        String oldUserMoney = "select money from user where id=?";          //查用户原来的余额
+        try {
+            resultSet = baseDao.executeQuery(oldOrderMoney,order.getOrderId()); //查原订单的金额
+            while (resultSet.next()){
+                money = resultSet.getFloat("money");
+            }
+            resultSet = baseDao.executeQuery(oldUserMoney,order.getUserId());//查用户原来的余额
+            while (resultSet.next()){
+                oldMoney = resultSet.getFloat("money");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        money = money+oldMoney;
+        if (0!=baseDao.executeUpdate(updateMoney,money,order.getUserId())&&0!=baseDao.executeUpdate(sql,order.getOrderId())){
             baseDao.commit();
             result = true;
         }
@@ -57,7 +99,7 @@ public class OrderDaoImpl implements OrderDao {
         try{
             while (rs.next()){
                 Order order = new Order();
-                order.setBookId(rs.getInt(1));
+                order.setOrderId(rs.getInt(1));
                 order.setBookId(rs.getInt(2));
                 order.setBooknum(rs.getInt(3));
                 order.setMoney(rs.getFloat(4));

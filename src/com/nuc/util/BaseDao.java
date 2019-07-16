@@ -3,6 +3,7 @@ package com.nuc.util;
 import com.nuc.util.DatabaseUtil;
 
 import java.sql.*;
+import java.util.Arrays;
 
 public class BaseDao {
 
