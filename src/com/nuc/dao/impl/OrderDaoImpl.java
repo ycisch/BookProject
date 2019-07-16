@@ -5,6 +5,7 @@ import com.nuc.entiy.Order;
 import com.nuc.entiy.Style;
 import com.nuc.entiy.User;
 import com.nuc.util.BaseDao;
+import com.nuc.util.DatabaseUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -94,5 +95,53 @@ public class OrderDaoImpl implements OrderDao {
 
         baseDao.executeUpdate(sql,params);
 
+    }
+
+    @Override
+    public int sumOrder(User user) {
+        String sql = "select * from order where userid = ?";
+        Object params[] = null;
+        BaseDao baseDao = new BaseDao();
+        if ("id".equals(user.getList_order())){
+            sql = "select COUNT(*) FROM order where userid = ?";
+        }else if ("name".equals(user.getList_order())){
+            sql = "select COUNT(*) FROM order where bookname = ?";
+        }else if ("date".equals(user.getList_order())){
+            sql = "select COUNT(*) FROM order where ctdate = ?";
+        }
+        params = new Object[]{user.getList_order()};
+        ResultSet rs = baseDao.executeQuery(sql,params);
+        int ans = 0;
+        try {
+            while (rs.next()){
+                ans = rs.getInt(1);
+            }
+            baseDao.commit();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            DatabaseUtil.closeAll(null,null,rs);
+        }
+        return ans;
+    }
+
+    @Override
+    public int sumOrder() {
+        int result = 0;
+        ResultSet resultSet = null;
+        String sql = "select count(*) from order";
+        BaseDao baseDao = new BaseDao();
+        try {
+            resultSet = baseDao.executeQuery(sql);
+            while (resultSet.next()){
+                result = resultSet.getInt(1);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            DatabaseUtil.closeAll(null,null,resultSet);
+        }
+
+        return result;
     }
 }

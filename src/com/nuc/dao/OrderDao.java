@@ -26,4 +26,11 @@ public interface OrderDao {
 
     //添加类别
     public void addStyle(Style style);
+
+
+    //查看个人订单
+    public  int sumOrder(Order order);
+
+    //查看所有订单
+    public  int sumOrder();
 }

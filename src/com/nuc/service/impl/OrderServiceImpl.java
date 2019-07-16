@@ -16,7 +16,7 @@ public class OrderServiceImpl implements OrderService {
     OrderDao orderDao = new OrderDaoImpl();
 
     @Override
-    public boolean updateOrder(Order order, User uer) {
+    public boolean updateOrder(Order order, User user) {
         return false;
     }
 
@@ -39,9 +39,22 @@ public class OrderServiceImpl implements OrderService {
         }
         return list;
     }
-
     @Override
     public void addStyle(Style style) {
         orderDao.addStyle(style);
+    }
+
+    @Override
+    public int sumOrder(Order order) {
+        OrderDao orderDao = new OrderDaoImpl();
+        return  orderDao.sumOrder();
+    }
+
+    @Override
+    public int sumOrder() {
+      int result = 0;
+      OrderDao orderDao = new OrderDaoImpl();
+      result = orderDao.sumOrder();
+      return  result;
     }
 }
