@@ -28,7 +28,7 @@
         <div id="login_main">
             <c:if test="${!empty requestScope.message}">
                 <script>
-                    alert(${requestScope.message});
+                    alert("${requestScope.message}");
                 </script>
             </c:if>
             <div id="login_header">登录</div>
