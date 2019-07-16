@@ -27,7 +27,8 @@ public class BookDaoImpl implements BookDao {
                 book.setBookMoney(rs.getFloat(5));
                 book.setBookNum(rs.getInt(6));
                 book.setBookStyle(rs.getString(7));
-                book.setBookimg(rs.getString(8));
+                book.setBookCategory(rs.getString(8));
+                book.setBookimg(rs.getString(9));
 //                System.out.println(book+"@####");
             }
         }catch (SQLException e){
@@ -54,6 +55,7 @@ public class BookDaoImpl implements BookDao {
                 book.setBookMoney(resultSet.getFloat("bookmoney"));
                 book.setBookNum(resultSet.getInt("booknum"));
                 book.setBookStyle(resultSet.getString("bookstyle"));
+                book.setBookCategory(resultSet.getString("bookcategory"));
                 String name = resultSet.getString("bookimg");
                 name = name.substring(2,name.length());
                 book.setBookimg(name);
