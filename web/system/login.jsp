@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Dell
@@ -25,6 +26,11 @@
 <div id="main">
     <div id="login">
         <div id="login_main">
+            <c:if test="${!empty requestScope.message}">
+                <script>
+                    alert(${requestScope.message});
+                </script>
+            </c:if>
             <div id="login_header">登录</div>
             <div id="login_form">
                 <form action="${pageContext.request.contextPath}/UserServlet?opr=login" method="post">

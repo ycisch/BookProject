@@ -49,10 +49,12 @@ public class AdminDaoImpl implements AdminDao {
 
     @Override
     public Admin updateUser(Admin admin) {
+        System.out.println(admin);
         BaseDao baseDao = new BaseDao();
         String sql = "UPDATE admin SET adminname=?, adminpwd=? WHERE adminid=?";
         int result = baseDao.executeUpdate(sql, admin.getAdminName(), admin.getAdminPwd(), admin.getAdminId());
         baseDao.commit();
+        System.out.println(admin);
         return result > 0 ? admin : null;
     }
 
@@ -66,6 +68,7 @@ public class AdminDaoImpl implements AdminDao {
             while (rs.next())
             {
                 User user = new User();
+                user.setId(rs.getInt(1));
                 user.setUsername(rs.getString(2));
                 user.setPassword(rs.getString(3));
                 user.setEmail(rs.getString(4));
@@ -99,5 +102,14 @@ public class AdminDaoImpl implements AdminDao {
         }
 
         return userCount;
+    }
+
+    @Override
+    public boolean deleteUser(User user) {
+        BaseDao baseDao = new BaseDao();
+        String sql = "DELETE FROM user WHERE id=?";
+        int result = baseDao.executeUpdate(sql, user.getId());
+        baseDao.commit();
+        return result > 0;
     }
 }

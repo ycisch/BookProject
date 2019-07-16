@@ -21,4 +21,5 @@ public interface UserDao {
 
     //余额充值
     public boolean addMoney(User user,float money);
+
 }

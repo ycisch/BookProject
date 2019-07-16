@@ -25,4 +25,7 @@ public interface AdminDao {
 
     //得到总用户数
     public int userCount();
+
+    //删除用户
+    public boolean deleteUser(User user);
 }
