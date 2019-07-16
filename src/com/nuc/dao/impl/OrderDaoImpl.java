@@ -70,7 +70,7 @@ public class OrderDaoImpl implements OrderDao {
         }finally {
             DatabaseUtil.closeAll(null,null,rs);
         }
-        return null;
+        return list;
     }
 
     //查看所有订单
@@ -99,7 +99,6 @@ public class OrderDaoImpl implements OrderDao {
         }finally {
             DatabaseUtil.closeAll(null,null,resultSet);
         }
-
     return orderList;
     }
 
@@ -121,6 +120,19 @@ public class OrderDaoImpl implements OrderDao {
     //按个人查询所有订单总数
     @Override
     public int sumOrder(Order order) {
+        int result = 0;
+        ResultSet resultSet = null;
+        String sql = "select count(*) from order where userid=?";
+        try {
+            resultSet = baseDao.executeQuery(sql,order.getUserId());
+            while (resultSet.next()){
+                result = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DatabaseUtil.closeAll(null,null,resultSet);
+        }
         return 0;
     }
 
