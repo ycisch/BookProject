@@ -27,6 +27,7 @@
                 var username = $("#username").val();
 
                 if (username == null || username == ""){
+                    $("#usernameSuccess").html("");
                     $("#usernameError").html("用户名为空");
                     return false;
                 }
@@ -38,55 +39,81 @@
                     success:callBack,
                 });
                 function callBack(data) {
-                    if (data == "true")
-                    $("#usernameError").html("用户名不可用");
+                    if (data == "true"){
+                        $("#usernameError").html("用户名不可用");
+                        $("#usernameSuccess").html("");
+                    }
                     else {
                         usernameOk = true;
-                        $("#usernameSuccess").html("用户名可以使用");
+                        $("#usernameError").html("");
+                        $("#usernameSuccess").html("用户名可用");
                     }
                 }
+            });
+            $("#password").focus(function () {
+                $("#passwordError").html("");
             });
             $("#password").blur(function () {
                 var password = $("#password").val();
                 if (password == null || password == ""){
+                    $("#passwordSuccess").html("");
                     $("#passwordError").html("密码为空");
                 } else if (password.length < 3){
+                    $("#passwordSuccess").html("");
                     $("#passwordError").html("密码长度小于3");
                 }else{
                     passwordOk = true;
+                    $("#passwordError").html("");
                     $("#passwordSuccess").html("密码可用");
                 }
+            });
+            $("#email").focus(function () {
+                $("#emailError").html("");
             });
             $("#email").blur(function () {
                 var reg = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
                 var email = $("#email").val();
                 if (email == null || email == ""){
+                    $("#emailSuccess").html("");
                     $("#emailError").html("邮箱为空");
                 } else if (!reg.test(email)){
                     $("#emailError").html("邮箱格式不对");
+                    $("#emailSuccess").html("");
                 }else {
                     emailOk = true;
+                    $("#emailError").html("");
                     $("#emailSuccess").html("邮箱可用");
                 }
+            });
+            $("#address").focus(function () {
+                $("#addressError").html("");
             });
             $("#address").blur(function () {
                 var address = $("#address").val();
                 if (address == null || address == ""){
                     $("#addressError").html("地址为空");
+                    $("#addressSuccess").html("");
                 }else {
                     addressOk = true;
+                    $("#addressError").html("");
                     $("#addressSuccess").html("地址可用");
                 }
+            });
+            $("#phone").focus(function () {
+                $("#phoneError").html("");
             });
             $("#phone").blur(function () {
                 var phone = $("#phone").val();
                 var reg =  /^1[34578]\d{9}$/;
                 if (phone == null || phone == ""){
                     $("#phoneError").html("手机号为空");
+                    $("#phoneSuccess").html("");
                 } else if (!reg.test(phone)){
-                    $("#phoneError").html("手机号格式不对");
+                    $("#phoneError").html("手机号不合法");
+                    $("#phoneSuccess").html("");
                 }else {
                     phoneOk = true;
+                    $("#phoneError").html("");
                     $("#phoneSuccess").html("手机号可用");
                 }
             });
