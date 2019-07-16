@@ -37,4 +37,5 @@ public class Admin {
     public void setAdminPwd(String adminPwd) {
         this.adminPwd = adminPwd;
     }
+
 }

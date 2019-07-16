@@ -64,7 +64,7 @@
     <em>四川省成都市</em>
     <span>-----华轩书海商城</span>
     <div id="admin">
-        <span>欢迎您：admin</span>
+        <span>欢迎您：${admin.adminName}</span>
         <i id="down"></i>
         <!-- <i id="mark"></i> -->
         <ul>
@@ -98,7 +98,7 @@
                         <hr/> -->
 
             <dt>用户管理</dt>
-            <dd><a href="${pageContext.request.contextPath}/admin/admin_userlist.jsp"><span id="userList">用户列表</span></a></dd>
+            <dd><a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=1"><span id="userList">用户列表</span></a></dd>
             <dd><a href="${pageContext.request.contextPath}/admin/admin_online.jsp"><span id="onlineList">在线用户</span></a></dd>
 
             <hr/>

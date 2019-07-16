@@ -47,7 +47,6 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
 
         }else if ("list".equals(opr)){                                               /*后台所有展示图书*/
 
-                                                        //查询所有放到bookList
             int currPageNo = Integer.parseInt(request.getParameter("page"));
             Page page = new Page();
             page.setCurrPageNo(currPageNo-1);
@@ -123,14 +122,9 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
             if (request.getParameter("style").equals("id")){
                 book.setBookStyle("id");
                 book.setBookid(Integer.parseInt(request.getParameter("id")));
-                System.out.println("servlet:book,page"+book+"******"+page);
                 bookList = bookService.listBookKey(book,page);
                 book = bookList.get(0);
-                System.out.println("输出list的第一个book"+book);
                 request.setAttribute("book",book);
-                System.out.println("查询完成1");
-                System.out.println(bookList);
-                System.out.println("查询完成2");
                 request.getRequestDispatcher("admin/admin_update.jsp").forward(request,response);
             }
 

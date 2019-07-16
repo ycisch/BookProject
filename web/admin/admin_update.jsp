@@ -16,6 +16,8 @@
     <script src="${pageContext.request.contextPath}/static/js/admin.js"></script>
     <script>
         $(function () {
+
+
             $(".btn").click(function () {
                 console.log("@@@@");
                 var formData = new FormData(document.getElementById("tf"));
@@ -57,12 +59,12 @@
     <em>四川省成都市</em>
     <span>-----华轩书海商城</span>
     <div id="admin">
-        <span>欢迎您：admin</span>
+        <span>欢迎您：${admin.adminName}</span>
         <i id="down"></i>
         <!-- <i id="mark"></i> -->
         <ul>
             <li>
-                <a href="#">
+                <a href="${pageContext.request.contextPath}/AdminServlet?opr=show&id=${admin.adminId}">
                     <i id="home"></i>
                     个人信息
                 </a>
@@ -91,7 +93,7 @@
                         <hr/> -->
 
             <dt>用户管理</dt>
-            <dd><a href="${pageContext.request.contextPath}/admin/admin_userlist.jsp"><span id="userList">用户列表</span></a></dd>
+            <dd><a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=1"><span id="userList">用户列表</span></a></dd>
             <dd><a href="${pageContext.request.contextPath}/admin/admin_online.jsp"><span id="onlineList">在线用户</span></a></dd>
 
             <hr/>
