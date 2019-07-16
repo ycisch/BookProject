@@ -66,6 +66,7 @@ public class AdminDaoImpl implements AdminDao {
             while (rs.next())
             {
                 User user = new User();
+                user.setId(rs.getInt(1));
                 user.setUsername(rs.getString(2));
                 user.setPassword(rs.getString(3));
                 user.setEmail(rs.getString(4));
@@ -99,5 +100,14 @@ public class AdminDaoImpl implements AdminDao {
         }
 
         return userCount;
+    }
+
+    @Override
+    public boolean deleteUser(User user) {
+        BaseDao baseDao = new BaseDao();
+        String sql = "DELETE FROM user WHERE id=?";
+        int result = baseDao.executeUpdate(sql, user.getId());
+        baseDao.commit();
+        return result > 0;
     }
 }

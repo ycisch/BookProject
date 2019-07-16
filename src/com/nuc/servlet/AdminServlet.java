@@ -55,13 +55,19 @@ public class AdminServlet extends javax.servlet.http.HttpServlet {
             page.setCurrPageNo(currPageNo);
             page.setTotalCount(service.userCount());
             userList = service.listUser(page);
-            for (User user: userList
-                 ) {
-                System.out.println(user);
-            }
+//            for (User user: userList)
+//            {
+//                System.out.println(user);
+//            }
             request.setAttribute("userList",userList);
             request.setAttribute("page",page);
             request.getRequestDispatcher("admin/admin_userlist.jsp").forward(request,response);
+        }else if ("delete".equals(opr)){
+            User user = new User();
+            user.setId(Integer.parseInt(request.getParameter("id")));
+            System.out.println(request.getParameter("id"));
+            service.deleteUser(user);
+            request.getRequestDispatcher("/AdminServlet?opr=list&currPageNo=1").forward(request,response);
         }
     }
 }

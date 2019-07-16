@@ -127,8 +127,8 @@
                             <td class="email">${list.email}</td>
                             <td class="adress">${list.address}</td>
                             <td class="phone">${list.phone}</td>
-                            <td class="update"><span>修改</span></td>
-                            <td class="delete"><span>删除</span></td>
+<%--                            <td class="update"><span><a href="${pageContext.request.contextPath}/UserServlet?opr=update">修改</a></span></td>--%>
+                            <td class="delete"><span><a href="${pageContext.request.contextPath}/AdminServlet?opr=delete&id=${list.id}">删除</a></span></td>
                         </tr>
                     </c:forEach>
 
