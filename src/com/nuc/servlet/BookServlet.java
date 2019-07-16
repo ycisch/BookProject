@@ -47,7 +47,6 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
 
         }else if ("list".equals(opr)){                                               /*后台所有展示图书*/
 
-                                                        //查询所有放到bookList
             int currPageNo = Integer.parseInt(request.getParameter("page"));
             Page page = new Page();
             page.setCurrPageNo(currPageNo-1);

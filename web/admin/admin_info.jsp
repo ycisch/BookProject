@@ -53,7 +53,7 @@
                         <hr/> -->
 
             <dt>用户管理</dt>
-            <dd><a href="${pageContext.request.contextPath}/admin/admin_userlist.jsp"><span id="userList">用户列表</span></a></dd>
+            <dd><a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=1"><span id="userList">用户列表</span></a></dd>
             <dd><a href="${pageContext.request.contextPath}/admin/admin_online.jsp"><span id="onlineList">在线用户</span></a></dd>
 
             <hr/>
