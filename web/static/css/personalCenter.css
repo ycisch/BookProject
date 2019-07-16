@@ -67,12 +67,12 @@ a:hover{
     color: brown;
 }
 .right{
+    width:1317px;
     float: right;
     height: 600px;
-    border-radius: 4px;
 }
 .right iframe{
-    width:1143px;
+    width:1317px;
     height:600px;
     border-radius: 4px;
     border: 1px yellow solid;
@@ -81,7 +81,7 @@ a:hover{
     clear: both;
 }
 .footer{
-    width: 1349px;
+    width: 1920px;
     height: 150px;
     font-size: 25px;
     color: red;
@@ -89,15 +89,15 @@ a:hover{
 }
 .footer hr{
     color: red;
-    width: 100%;
+    width: 1920px;
 }
 .footer ul li {
     display: inline-block;
 }
-.footer ul li:nth-of-type(1){width: 190px}
-.footer ul li:nth-of-type(2){width: 190px}
-.footer ul li:nth-of-type(3){width: 190px}
-.footer ul li:nth-of-type(4){width: 190px}
-.footer ul li:nth-of-type(5){width: 190px}
-.footer ul li:nth-of-type(6){width: 190px}
-.footer ul li:nth-of-type(7){width: 190px}
+.footer ul li:nth-of-type(1){width: 200px}
+.footer ul li:nth-of-type(2){width: 200px}
+.footer ul li:nth-of-type(3){width: 200px}
+.footer ul li:nth-of-type(4){width: 200px}
+.footer ul li:nth-of-type(5){width: 200px}
+.footer ul li:nth-of-type(6){width: 200px}
+.footer ul li:nth-of-type(7){width: 200px}

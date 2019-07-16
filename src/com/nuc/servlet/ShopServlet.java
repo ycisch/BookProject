@@ -53,11 +53,12 @@ public class ShopServlet extends javax.servlet.http.HttpServlet {
             //添加书籍到购物车
             book.setBookid(Integer.parseInt(request.getParameter("bookid")));
             book.setBookNum(1);
-            shopService.addShop(book,user);
+//            shopService.addShop(book,user);
         }else if(opr.equals("delete")){
 
             //删除购物某一栏
             shop.setShopId(Integer.parseInt(request.getParameter("shopid")));
+            System.out.println(shop);
             shopService.deleteShop(shop,user);
         }else if(opr.equals("update")){
 
@@ -65,17 +66,17 @@ public class ShopServlet extends javax.servlet.http.HttpServlet {
             shop.setShopId(Integer.parseInt(request.getParameter("shopid")));
             shopService.updateShop(shop,user);
         }else if(opr.equals("sum")){
-            String ids[] = request.getParameterValues("ids");
-            System.out.println(Arrays.toString(ids));
+            String ids[] = request.getParameter("ids").split(",");
+//            System.out.println(ids.length+"   "+Arrays.toString(ids));
             //点击清算之后
             shopService.sumMoney(user,ids);
 
-        }else  if(opr == "add1"){
+        }else  if(opr.equals("add1")){
             book.setBookNum(1);
             book.setBookid(Integer.parseInt(request.getParameter("bookid")));
             shopService.addShop(book,user);
 
-        }else if(opr == "delete1"){
+        }else if(opr.equals("delete1")){
             book.setBookNum(-1);
             book.setBookid(Integer.parseInt(request.getParameter("bookid")));
             shopService.addShop(book,user);
