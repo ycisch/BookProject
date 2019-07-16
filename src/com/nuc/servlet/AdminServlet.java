@@ -3,7 +3,10 @@ package com.nuc.servlet;
 import com.nuc.entiy.Admin;
 import com.nuc.entiy.User;
 import com.nuc.service.AdminService;
+import com.nuc.service.OrderService;
 import com.nuc.service.impl.AdmainServiceImpl;
+import com.nuc.service.impl.OrderServiceImpl;
+import com.nuc.util.Date;
 import com.nuc.util.FileUpload;
 import com.nuc.util.Page;
 
@@ -36,6 +39,8 @@ public class AdminServlet extends javax.servlet.http.HttpServlet {
             }
             else
             {
+                OrderService orderService = new OrderServiceImpl();
+                orderService.listStyle();
                 request.getSession().setAttribute("admin",admin);
                 request.getRequestDispatcher("BookServlet?opr=welcome&page=1").forward(request,response);
             }

@@ -106,6 +106,7 @@
             <dt>图书管理</dt>
             <dd><a href="${pageContext.request.contextPath}/BookServlet?opr=list&page=1"><span id="bookList">查询图书</span></a></dd>
             <dd><a href="${pageContext.request.contextPath}/admin/admin_insert.jsp"><span id="insertBook">添加图书</span></a></dd>
+            <dd><a href="${pageContext.request.contextPath}/admin/admin_insertstyle.jsp"><span id="insertStyle">添加分类</span></a></dd>
         </dl>
     </div>
     <div id="display">

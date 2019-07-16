@@ -62,7 +62,8 @@ public class OrderDaoImpl implements OrderDao {
                 Style style = new Style();
                 style.setId(rs.getInt(1));
                 style.setBookStyle(rs.getString(2));
-                style.setBooksName(rs.getString(3));
+                style.setBooksName(rs.getString(4));
+                style.setBookCategory(rs.getString(3));
                 //System.out.println(style);
                 list.add(style);
 

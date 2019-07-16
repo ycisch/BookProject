@@ -10,6 +10,7 @@ import com.nuc.util.Date;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class OrderServiceImpl implements OrderService {
 
@@ -35,8 +36,40 @@ public class OrderServiceImpl implements OrderService {
         List<Style> list = new ArrayList<>();
         list = orderDao.listStyle();
         for (Style style:list) {
-            Date.map.put(style.getBooksName(),style.getBookStyle());
+            System.out.println(style);
+            if(style.getBookCategory().equals("1")){
+                Date.MAP.add(style);
+            }
+            else{
+                int index = style.getBookStyle().indexOf('_');
+                String name = style.getBookStyle().substring(0,index);
+                System.out.println(name+"@@@"+Date.MAP_TWO.containsKey(name));
+                if(Date.MAP_TWO.containsKey(name)){
+
+                    List<Style> list1_two = Date.MAP_TWO.get(name);
+                    //System.out.println(list1_two.size());
+                    list1_two.add(style);
+                }
+                else{
+                    List<Style> list1_two = new ArrayList<>();
+                    list1_two.add(style);
+                   // System.out.println(name+"   "+list1_two.size());
+                    Date.MAP_TWO.put(name,list1_two);
+                }
+            }
         }
+
+        for (Map.Entry<String, List<Style>> entry : Date.MAP_TWO.entrySet()) {
+            System.out.println("key = " + entry.getKey() + ", value = " + entry.getValue());
+            for (Style style: entry.getValue()) {
+                System.out.println(style);
+            }
+        }
+
+        for (Style style : Date.MAP) {
+            System.out.println(style);
+        }
+
         return list;
     }
 
