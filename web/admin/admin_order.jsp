@@ -99,7 +99,7 @@
 
             <dt>用户管理</dt>
             <dd><a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=1"><span id="userList">用户列表</span></a></dd>
-            <dd><a href="${pageContext.request.contextPath}/admin/admin_online.jsp"><span id="onlineList">在线用户</span></a></dd>
+            <dd><a href="${pageContext.request.contextPath}/admin/admin_order.jsp"><span id="onlineList">用户订单</span></a></dd>
 
             <hr/>
 
@@ -111,7 +111,7 @@
     <div id="display">
         <h1>图书列表</h1>
         <div>
-            <div id="onlines">
+            <div id="order">
                 <table>
                     <tr>
                         <th class="username">用户名</th>
