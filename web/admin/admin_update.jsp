@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <title>后台管理-华轩书海商城</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin.css">
-    <script src="${pageContext.request.contextPath}/static/js/jquery-1.11.3.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/jquery-3.4.1.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/admin.js"></script>
     <script>
         $(function () {
@@ -44,6 +44,52 @@
                 }
             })
         })
+    </script>
+
+    <script type="text/javascript">
+        $(function() {
+            //ajax实现二级联动
+            $.post("${pageContext.request.contextPath}/OrderServlet?opr=style",function(data){
+                var field = "";
+                console.log("@@@@")
+                console.log(data+"   "+data.length)
+                for(var i=0;i<data.length;i++){
+                    <c:if test="${book.bookStyle == data[i].booksName}">
+                    field += "<option value=" + data[i].id+" selected = selected>" + data[i].booksName + "</option>";
+                    </c:if>
+
+                    <c:if test="${book.bookStyle != data[i].booksName}">
+                    field += "<option value=" + data[i].id+ ">" + data[i].booksName + "</option>";
+                    </c:if>
+
+                }
+                $("#field").append(field);
+                //选中一级学科触发函数,异步获取二级学科
+                $("#field").change(function() {
+                    var field = $("#field option:selected").val();//获取下拉列表中的选中项
+                    var textfield = $("#field option:selected").text();//获取下拉列表中的内容
+                    $("#profession > option:gt(0)").each(function(){//避免option累加
+                        $("#profession").empty();
+                    });
+                    $.post("${pageContext.request.contextPath}/OrderServlet?opr=category",{field:field},function(data){
+
+                        console.log(data);
+
+                        var profession = "";
+                        for(var i=0;i<data.length;i++){
+                            <c:if test="${book.bookCategory == data[i].booksName}">
+                            profession += "<option value=" + data[i].id+" selected = selected>" + data[i].booksName + "</option>";
+                            </c:if>
+
+                            <c:if test="${book.bookCategory != data[i].booksName}">
+                            profession += "<option value=" + data[i].id+ ">" + data[i].booksName + "</option>";
+                            </c:if>
+                        }
+                        $("#profession").append(profession);
+                    },"json");
+                });
+            },"json");
+        });
     </script>
 
     <style>
@@ -94,13 +140,14 @@
 
             <dt>用户管理</dt>
             <dd><a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=1"><span id="userList">用户列表</span></a></dd>
-            <dd><a href="${pageContext.request.contextPath}/admin/admin_online.jsp"><span id="onlineList">在线用户</span></a></dd>
+            <dd><a href="${pageContext.request.contextPath}/admin/admin_order.jsp"><span id="onlineList">用户订单</span></a></dd>
 
             <hr/>
 
             <dt>图书管理</dt>
             <dd><a href="${pageContext.request.contextPath}/BookServlet?opr=welcome&page=1"><span id="bookList">查询图书</span></a></dd>
             <dd><a href="${pageContext.request.contextPath}/admin/admin_insert.jsp"><span id="insertBook">添加图书</span></a></dd>
+            <dd><a href="${pageContext.request.contextPath}/admin/admin_insertstyle.jsp"><span id="insertStyle">添加分类</span></a></dd>
         </dl>
     </div>
     <div id="display">
@@ -136,13 +183,14 @@
                         <tr>
                             <th>种类：</th>
                             <td colspan="3">
-                                <select name="bookStyle">
-                                    <option value="1">文学</option>
-                                    <option value="2">社科</option>
-                                    <option value="3">经管</option>
-                                    <option value="4">少儿</option>
-                                    <option value="5">生活</option>
-                                    <option value="6">科技</option>
+                                类型:
+                                <select class="form-control" id="field" name="bookStyle">
+                                    <option>----请选择类型----</option>
+                                </select>
+                                <br>
+                                标签:
+                                <select class="form-control" id="profession" name="bookCategory">
+                                    <option>----请选择标签----</option>
                                 </select>
                             </td>
                         </tr>

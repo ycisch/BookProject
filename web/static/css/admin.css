@@ -201,7 +201,7 @@ dd:hover{
     cursor: pointer;
 }
 
-#books,#update,#onlines,#users,#inserts,#admin_info{
+#books,#update,#order,#users,#inserts,#admin_info{
     width: 1150px;
     height: 700px;
     border:1px solid #DFDFDF;
@@ -213,7 +213,7 @@ table,th,td{
     text-align: center;
 }
 
-#users table,#onlines table,#inserts table,#update table,#admin_info table{
+#users table,#order table,#inserts table,#update table,#admin_info table{
     margin: 10px auto;
 }
 

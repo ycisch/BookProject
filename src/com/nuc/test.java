@@ -19,11 +19,11 @@ public class test {
         admin.setAdminId(1);
         /*AdminDao adminDao = new AdminDaoImpl();
         admin = adminDao.getUser(admin);*/
-        AdminService adminService = new AdmainServiceImpl();
-        admin = adminService.getUser(admin);
-        System.out.println(admin.getAdminId());
-        System.out.println(admin.getAdminName());
-        System.out.println(admin.getAdminPwd());
+//        AdminService adminService = new AdmainServiceImpl();
+//        admin = adminService.getUser(admin);
+//        System.out.println(admin.getAdminId());
+//        System.out.println(admin.getAdminName());
+//        System.out.println(admin.getAdminPwd());
         /*String sql = "select * from admin where adminid=?";
         ResultSet resultSet = new BaseDao().executeQuery(sql,admin.getAdminId());
         try{
