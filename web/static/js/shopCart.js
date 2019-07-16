@@ -8,7 +8,7 @@ function collection() {
         alert("移入成功！")
     }
 }
-function del(id){
+function del1(id){
     var delNode=id.parentNode.parentNode;
     delNode.parentNode.removeChild(delNode);
 }

@@ -23,17 +23,23 @@
 
                 var num = $(".less").index(this);
                 var bookid = $(".bookid:eq("+num+")").val();
-                console.log(bookid);
+                console.log(bookid+"@@@@");
 
                 //传入id与删除类型，那么我们就可以删除了。
                 $.ajax({
-                    "url":"../ShopServlet",
+                    "url":"${pageContext.request.contextPath}/ShopServlet",
                     "type": "get",
                     "data": "opr=delete1&bookid="+bookid+"",
                     "dataType": "text",
                     processData:false,
                     contentType:false,
+                    success:callback,
                 });
+
+                function callback() {
+                    minus(num);
+
+                }
             })
 
             //点击添加之后要进行的Ajax操作
@@ -41,34 +47,59 @@
                 var num = $(".add").index(this);
                 var bookid = $(".bookid:eq("+num+")").val();
 
+
+
+                console.log(bookid+"   "+num);
+
+
                 //传入id与删除类型，那么我们就可以删除了。
                 $.ajax({
-                    "url":"../ShopServlet",
+                    "url":"${pageContext.request.contextPath}/ShopServlet",
                     "type": "get",
                     "data": "opr=add1&bookid="+bookid+"",
                     "dataType": "text",
                     processData:false,
                     contentType:false,
+                    success:callback,
                 });
-            })
 
-            //点击结算按钮之后要进行的Ajax操作
-            $(".del").click(function () {
-                var num = $(".del").index(this);
-                var bookid = $(".bookid:eq("+num+")").val();
+                function callback() {
+                    plus(num);
 
-                //传入id与删除类型，那么我们就可以删除了。
-                $.ajax({
-                    "url":"../ShopServlet",
-                    "type": "get",
-                    "data": "opr=delete&bookid="+bookid+"",
-                    "dataType": "text",
-                    processData:false,
-                    contentType:false,
-                });
+                }
             })
 
             //点击删除按钮对当前选中的id进行删除
+            $(".del").click(function () {
+                var num = $(".del").index(this);
+                var bookid = $(".bookid:eq("+num+")").val();
+                var shopid = $(".shopid:eq("+num+")").val();
+
+                console.log(bookid+"@@@"+shopid+"@@@@"+num);
+
+                //传入id与删除类型，那么我们就可以删除了。
+                $.ajax({
+                    "url":"${pageContext.request.contextPath}/ShopServlet",
+                    "type": "get",
+                    "data": "opr=delete&bookid="+bookid+"&shopid="+shopid,
+                    "dataType": "text",
+                    processData:false,
+                    contentType:false,
+                    success:callback(),
+                });
+
+                function callback() {
+                    // var delNode=$(".del:eq("+num+")").parent().parent().parent();
+                    // delNode.parentNode.removeChild(delNode);
+
+                    $(".list:eq("+num+")").remove();
+                    // delNode.parent().removeChild(delNode);
+                    // console.log(delNode);
+
+                }
+            })
+
+            //点击结算按钮之后要进行的Ajax操作
             $(".allcount").click(function () {
                 //var num = $(".allcount").index(this);
                 //var bookid = $(".bookid:eq("+num+")").val();
@@ -89,7 +120,7 @@
                 //将所有的id保存起来就可以传送到后台了
                 //传入id与删除类型，那么我们就可以删除了。
                 $.ajax({
-                    "url":"../ShopServlet",
+                    "url":"${pageContext.request.contextPath}/ShopServlet",
                     "type": "get",
                     "data": "opr=sum&ids="+ids+"",
                     "dataType": "text",
@@ -124,17 +155,18 @@
             <div class="list">
                 <ul>
                     <li>
-                        <input type="checkbox" name="bookid" class="bookid" value="${shoplist.shopId}">
+                        <input type="checkbox" name="bookid" class="bookid" value="${shoplist.book.bookid}">****${shoplist.shopId}
+                        <input type="hidden" name="shopid" class="shopid" value="${shoplist.shopId}">
                     </li>
                     <li><img src="${pageContext.request.contextPath}${shoplist.book.bookimg}"></li>
                     <li>${shoplist.book.bookName}</li>
                     <li>￥<input type="text" name="price" value="${shoplist.book.bookMoney}"></li>
-                    <li><input type="button" name="minus" class="less" value="-" onclick="minus(${shoplist.numid});">
+                    <li><input type="button" name="minus" class="less" value="-" >
                         <input type="text" name="amount" value="${shoplist.num}">
-                        <input type="button" name="plus" class="add" value="+" onclick="plus(${shoplist.numid});">
+                        <input type="button" name="plus" class="add" value="+">
                     </li>
                     <li id="price0"><c:out value="${shoplist.book.bookAuthor}"></c:out></li>
-                    <li><p class="collection" onclick="collection();">移入收藏</p><p class="del" onclick="del(this);">删除</p></li>
+                    <li><p class="collection" onclick="collection();">移入收藏</p><p class="del" >删除</p></li>
                 </ul>
             </div>
             </c:forEach>

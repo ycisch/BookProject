@@ -42,6 +42,7 @@ public class ShopDaoImpl implements ShopDao {
 
     @Override
     public boolean addShop(Book book, User user) {
+        System.out.println(book+"@@@"+user);
         ResultSet rs = null;
         int num = 1,id = 0;
         String sql1 = "select * from shop where bookid = ? and userid=?";
@@ -52,6 +53,8 @@ public class ShopDaoImpl implements ShopDao {
         baseDao.commit();
         //System.out.println(rs);
 
+        System.out.println(rs+"@@@");
+
         try {
             while(rs.next()){
                 num = rs.getInt(4);
@@ -60,6 +63,8 @@ public class ShopDaoImpl implements ShopDao {
         }catch (SQLException e){
             e.printStackTrace();
         }
+
+        System.out.println(id);
         if(id !=0){
             //System.out.println(num+"  "+id);
             rs = null;

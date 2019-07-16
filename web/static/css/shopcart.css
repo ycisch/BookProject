@@ -31,7 +31,10 @@ ul,li,ol{list-style: none;}
     border-bottom: 1px #c6c6c6 dashed;
     padding-top: 6px;
 }
-.cartList ul li img{width: 60px;}
+.cartList ul li img{
+    width: 150px;
+    height: 150px;
+}
 .cartList ul li{
     font-family: "微软雅黑";
     font-size: 12px;
