@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <title>登录-华轩书海商城</title>
     <link href="${pageContext.request.contextPath}/static/css/login.css" rel="stylesheet" >
-    <script src="${pageContext.request.contextPath}/static/js/jquery-3.4.1.js"></script>
+
 </head>
 <body>
 <div id="header">
@@ -28,7 +28,7 @@
         <div id="login_main">
             <c:if test="${!empty requestScope.message}">
                 <script>
-                    alert(${requestScope.message});
+                    alert("${requestScope.message}");
                 </script>
             </c:if>
             <div id="login_header">登录</div>

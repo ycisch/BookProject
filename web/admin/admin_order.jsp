@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -20,7 +19,7 @@
             if (num == 1){
                 $("#hasPrev").hide();
                 $("#hasNext").show();
-            }else if(num == ${page.totalPageCout}){
+            }else (num == ${page.totalPageCout}){
                 $("#hasPrev").show();
                 $("#hasNext").hide();
             }
@@ -107,34 +106,21 @@
             <dt>图书管理</dt>
             <dd><a href="${pageContext.request.contextPath}/BookServlet?opr=list&page=1"><span id="bookList">查询图书</span></a></dd>
             <dd><a href="${pageContext.request.contextPath}/admin/admin_insert.jsp"><span id="insertBook">添加图书</span></a></dd>
+            <dd><a href="${pageContext.request.contextPath}/admin/admin_insertstyle.jsp"><span id="insertStyle">添加分类</span></a></dd>
         </dl>
     </div>
     <div id="display">
-        <h1>列表</h1>
+        <h1>图书列表</h1>
         <div>
             <div id="order">
                 <table>
                     <tr>
                         <th class="username">用户名</th>
-                        <th class="bybookid">商品详情</th>
-                        <th class="booknum">购买数量</th>
-                        <th class="money">消费金额</th>
                         <th class="email">邮箱</th>
                         <th class="adress">地址</th>
                         <th class="phone">电话</th>
                     </tr>
-                    <c:forEach var="order"  items="${orderList}" >
                     <tr>
-                        <td class="username"> ${order.user.username}</td>
-                        <td class="bookid">${order.bookid}</td>
-                        <td class="booknum">${order.booknum}</td>
-                        <td class="money">${order.money}</td>
-                        <td class="email">${order.user.email}</td>
-                        <td class="address">${order.user.address}</td>
-                        <td class="phone">${order.user.phone}</td>
-                    </tr>
-                    </c:forEach>
-                    <!--<tr>
                         <td class="username">张三</td>
                         <td class="email">22222222.@qq.com</td>
                         <td class="adress">山西省</td>
@@ -151,7 +137,7 @@
                         <td class="email">1113.@qq.com</td>
                         <td class="adress">山西省</td>
                         <td class="phone">12365414635</td>
-                    </tr>-->
+                    </tr>
                 </table>
                 <div class="sikp">
                     <p>

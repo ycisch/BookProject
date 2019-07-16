@@ -14,14 +14,14 @@ public interface ShopService {
     public List<Shop> listShop(User user);
 
     //用户添加商品到购物车
-    public boolean addShop(Book book,User user);
+    public boolean addShop(Book book, User user);
 
     //用户删除购物车商品
-    public boolean deleteShop(Shop shop,User user);
+    public boolean deleteShop(Shop shop, User user);
 
     //用户修改购物车商品
-    public boolean updateShop(Shop shop,User user);
+    public boolean updateShop(Shop shop, User user);
 
     //用户结算购物车
-    public boolean sumMoney(User user,String ids[]);
+    public boolean sumMoney(User user, String ids[]);
 }

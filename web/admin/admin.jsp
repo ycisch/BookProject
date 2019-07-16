@@ -105,13 +105,14 @@
                                 <hr/> -->
                     <dt>用户管理</dt>
                     <dd><a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=1"><span id="userList">用户列表</span></a></dd>
-                    <dd><a href="${pageContext.request.contextPath}/OrderServlet?opr=showAllusersorder"><span id="onlineList">用户订单</span></a></dd>
+                    <dd><a href="${pageContext.request.contextPath}/admin/admin_order.jsp"><span id="onlineList">用户订单</span></a></dd>
 
                     <hr/>
 
                     <dt>图书管理</dt>
                     <dd><a href="${pageContext.request.contextPath}/BookServlet?opr=welcome&page=1"><span id="bookList">查询图书</span></a></dd>
                     <dd><a href="${pageContext.request.contextPath}/admin/admin_insert.jsp"><span id="insertBook">添加图书</span></a></dd>
+                    <dd><a href="${pageContext.request.contextPath}/admin/admin_insertstyle.jsp"><span id="insertStyle">添加分类</span></a></dd>
                 </dl>
             </div>
             <div id="display">
