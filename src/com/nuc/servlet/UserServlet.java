@@ -82,12 +82,12 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
             boolean exists = service.exist(username);
             response.setContentType("text/html;charset=utf-8");
             if (exists){
-                printWriter.print("用户名已存在");
+                printWriter.print("true");
                 printWriter.flush();
                 printWriter.close();
 
             }else {
-                printWriter.print("用户名可以使用");
+                printWriter.print("false");
                 printWriter.flush();
                 printWriter.close();
             }
