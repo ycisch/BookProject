@@ -7,7 +7,10 @@ import java.util.Map;
 
 public class OrderServlet extends javax.servlet.http.HttpServlet {
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        //opr=list
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+
+
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
