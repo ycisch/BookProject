@@ -16,6 +16,8 @@
     <script src="${pageContext.request.contextPath}/static/js/admin.js"></script>
     <script>
         $(function () {
+
+
             $(".btn").click(function () {
                 console.log("@@@@");
                 var formData = new FormData(document.getElementById("tf"));

@@ -122,14 +122,9 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
             if (request.getParameter("style").equals("id")){
                 book.setBookStyle("id");
                 book.setBookid(Integer.parseInt(request.getParameter("id")));
-                System.out.println("servlet:book,page"+book+"******"+page);
                 bookList = bookService.listBookKey(book,page);
                 book = bookList.get(0);
-                System.out.println("输出list的第一个book"+book);
                 request.setAttribute("book",book);
-                System.out.println("查询完成1");
-                System.out.println(bookList);
-                System.out.println("查询完成2");
                 request.getRequestDispatcher("admin/admin_update.jsp").forward(request,response);
             }
 
