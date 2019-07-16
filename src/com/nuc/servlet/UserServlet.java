@@ -19,6 +19,11 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
             user.setUsername(request.getParameter("username"));
             user.setPassword(request.getParameter("password"));
             user = service.login(user);
+            if (user == null)
+            {
+                request.setAttribute("message","用户名或密码错误！");
+                request.getRequestDispatcher("system/login.jsp").forward(request,response);;
+            }
             request.getSession().setAttribute("user",user);
             request.getRequestDispatcher("system/menu.jsp").forward(request,response);
         }else if ("regist".equals(opr)){        //注册

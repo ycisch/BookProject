@@ -78,7 +78,7 @@
                 <!-- <i id="mark"></i> -->
                 <ul>
                     <li>
-                        <a href="${pageContext.request.contextPath}/AdminServlet?opr=show&id=${admin.adminId}">
+                        <a href="${pageContext.request.contextPath}/AdminServlet?opr=show">
                             <i id="home"></i>
                             个人信息
                         </a>
@@ -105,7 +105,7 @@
                                 <hr/> -->
                     <dt>用户管理</dt>
                     <dd><a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=1"><span id="userList">用户列表</span></a></dd>
-                    <dd><a href="${pageContext.request.contextPath}/admin/admin_online.jsp"><span id="onlineList">在线用户</span></a></dd>
+                    <dd><a href="${pageContext.request.contextPath}/admin/admin_order.jsp"><span id="onlineList">用户订单</span></a></dd>
 
                     <hr/>
 

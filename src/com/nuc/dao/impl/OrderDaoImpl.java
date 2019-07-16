@@ -1,11 +1,17 @@
 package com.nuc.dao.impl;
 
+import com.nuc.dao.BookDao;
 import com.nuc.dao.OrderDao;
+import com.nuc.dao.UserDao;
+import com.nuc.entiy.Book;
 import com.nuc.entiy.Order;
 import com.nuc.entiy.Style;
 import com.nuc.entiy.User;
+import com.nuc.service.UserService;
+import com.nuc.service.impl.UserServiceImpl;
 import com.nuc.util.BaseDao;
 import com.nuc.util.DatabaseUtil;
+import com.nuc.util.Page;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,18 +22,33 @@ public class OrderDaoImpl implements OrderDao {
 
     BaseDao baseDao = new BaseDao();
 
+    //修改订单
     @Override
     public boolean updateOrder(Order order, User uer) {
-        return false;
+        boolean result = false;
+        String sql = "update order set booknum=?,money=?";
+        if (0 != baseDao.executeUpdate(sql, order.getBooknum(), order.getMoney())){
+            baseDao.commit();
+            result = true;
+        }
+        return result;
     }
 
+    //删除订单
     @Override
     public boolean deleteOrder(Order order, User user) {
-        return false;
+        boolean result = false;
+        String sql = "delete from order where orderid=?";
+        if (0!=baseDao.executeUpdate(sql,order.getOrderId())){
+            baseDao.commit();
+            result = true;
+        }
+        return result;
     }
 
+    //查看个人订单
     @Override
-    public List<Order> listOrder(User user) {
+    public List<Order> listOrder(User user, Page page) {
         String sql = "select * from order where userid = ?";
         Object params[] = {user.getId()};
         ResultSet rs = baseDao.executeQuery(sql,params);
@@ -46,10 +67,83 @@ public class OrderDaoImpl implements OrderDao {
             }
         }catch (SQLException e){
             e.printStackTrace();
+        }finally {
+            DatabaseUtil.closeAll(null,null,rs);
         }
         return null;
     }
 
+    //查看所有订单
+    @Override
+    public List<Order> listOrder(Page page) {
+        List<Order> orderList = new ArrayList<Order>();
+        ResultSet resultSet = null;
+        String sql = "select * from order";
+        resultSet = baseDao.executeQuery(sql);
+        Order order = null;
+        try{
+            while (resultSet.next()){
+                order = new Order();
+                order.setOrderId(resultSet.getInt("orderid"));
+                order.setBookId(resultSet.getInt("bookid"));
+                order.setBooknum(resultSet.getInt("booknum"));
+                order.setMoney(resultSet.getFloat("money"));
+                order.setUserId(resultSet.getInt("userid"));
+                order.setCtdate(resultSet.getDate("ctdate"));
+                order.setUser(this.setUser(order.getUserId()));
+                order.setBook(this.setBook(order.getBookId()));
+                orderList.add(order);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DatabaseUtil.closeAll(null,null,resultSet);
+        }
+
+    return orderList;
+    }
+
+    public User setUser(int userid){
+        UserDao userDao = new UserDaoImpl();
+        User user = new User();
+        user.setId(userid);
+        user = userDao.getUser(user);
+        return user;
+    }
+
+    public Book setBook(int bookid){
+        BookDao bookDao = new BookDaoImpl();
+        Book book = new Book();
+        book.setBookid(bookid);
+        return book;
+    }
+
+    //按个人查询所有订单总数
+    @Override
+    public int sumOrder(Order order) {
+        return 0;
+    }
+
+    //查询订单总数
+    @Override
+    public int sumOrder() {
+        int result = 0;
+        ResultSet resultSet = null;
+        String sql = "select count(*) from order";
+        try{
+            resultSet = baseDao.executeQuery(sql);
+            while(resultSet.next()){
+                result = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DatabaseUtil.closeAll(null,null,resultSet);
+        }
+        return result;
+    }
+
+    //查看所有类别
     @Override
     public List<Style> listStyle() {
         String sql = "select * from style";
@@ -95,53 +189,5 @@ public class OrderDaoImpl implements OrderDao {
 
         baseDao.executeUpdate(sql,params);
 
-    }
-
-    @Override
-    public int sumOrder(User user) {
-        String sql = "select * from order where userid = ?";
-        Object params[] = null;
-        BaseDao baseDao = new BaseDao();
-        if ("id".equals(user.getList_order())){
-            sql = "select COUNT(*) FROM order where userid = ?";
-        }else if ("name".equals(user.getList_order())){
-            sql = "select COUNT(*) FROM order where bookname = ?";
-        }else if ("date".equals(user.getList_order())){
-            sql = "select COUNT(*) FROM order where ctdate = ?";
-        }
-        params = new Object[]{user.getList_order()};
-        ResultSet rs = baseDao.executeQuery(sql,params);
-        int ans = 0;
-        try {
-            while (rs.next()){
-                ans = rs.getInt(1);
-            }
-            baseDao.commit();
-        }catch (SQLException e){
-            e.printStackTrace();
-        }finally {
-            DatabaseUtil.closeAll(null,null,rs);
-        }
-        return ans;
-    }
-
-    @Override
-    public int sumOrder() {
-        int result = 0;
-        ResultSet resultSet = null;
-        String sql = "select count(*) from order";
-        BaseDao baseDao = new BaseDao();
-        try {
-            resultSet = baseDao.executeQuery(sql);
-            while (resultSet.next()){
-                result = resultSet.getInt(1);
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }finally {
-            DatabaseUtil.closeAll(null,null,resultSet);
-        }
-
-        return result;
     }
 }

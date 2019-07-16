@@ -45,4 +45,9 @@ public class AdmainServiceImpl implements AdminService {
         userCount = dao.userCount();
         return userCount;
     }
+
+    @Override
+    public boolean deleteUser(User user) {
+        return dao.deleteUser(user);
+    }
 }

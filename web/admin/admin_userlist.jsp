@@ -100,7 +100,7 @@
 
             <dt>用户管理</dt>
             <dd><a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=1"><span id="userList">用户列表</span></a></dd>
-            <dd><a href="${pageContext.request.contextPath}/admin/admin_online.jsp"><span id="onlineList">在线用户</span></a></dd>
+            <dd><a href="${pageContext.request.contextPath}/admin/admin_order.jsp"><span id="onlineList">用户订单</span></a></dd>
 
             <hr/>
 
@@ -127,8 +127,8 @@
                             <td class="email">${list.email}</td>
                             <td class="adress">${list.address}</td>
                             <td class="phone">${list.phone}</td>
-                            <td class="update"><span>修改</span></td>
-                            <td class="delete"><span>删除</span></td>
+<%--                            <td class="update"><span><a href="${pageContext.request.contextPath}/UserServlet?opr=update">修改</a></span></td>--%>
+                            <td class="delete"><span><a href="${pageContext.request.contextPath}/AdminServlet?opr=delete&id=${list.id}">删除</a></span></td>
                         </tr>
                     </c:forEach>
 

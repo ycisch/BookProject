@@ -7,6 +7,7 @@ import com.nuc.entiy.Style;
 import com.nuc.entiy.User;
 import com.nuc.service.OrderService;
 import com.nuc.util.Date;
+import com.nuc.util.Page;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,21 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> listOrder(User user) {
         return null;
+    }
+
+    @Override
+    public List<Order> listOrder(Page page) {
+        return null;
+    }
+
+    @Override
+    public int sumOrder(Order order) {
+        return 0;
+    }
+
+    @Override
+    public int sumOrder() {
+        return 0;
     }
 
     @Override

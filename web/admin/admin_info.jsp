@@ -54,7 +54,7 @@
 
             <dt>用户管理</dt>
             <dd><a href="${pageContext.request.contextPath}/AdminServlet?opr=list&currPageNo=1"><span id="userList">用户列表</span></a></dd>
-            <dd><a href="${pageContext.request.contextPath}/admin/admin_online.jsp"><span id="onlineList">在线用户</span></a></dd>
+            <dd><a href="${pageContext.request.contextPath}/admin/admin_order.jsp"><span id="onlineList">用户订单</span></a></dd>
 
             <hr/>
 
@@ -67,10 +67,10 @@
         <h1>管理员信息</h1>
         <div id="admin_info">
             <table>
-                <form action="${pageContext.request.contextPath}/AdminServlet?opr=update&adminid=${admin.adminId}" id="update_form"  method="post">
+                <form action="${pageContext.request.contextPath}/AdminServlet?opr=update" id="update_form"  method="post">
                     <tr>
                         <th>用户名：</th>
-                        <td colspan="3"><input type="text" name="adminname" value="${admin.adminName}"></td>
+                        <td colspan="3"><input type="text" name="adminname" value="${admin.adminName}" disabled="disabled"></td>
                     </tr>
                     <tr>
                         <th>原密码：</th>
