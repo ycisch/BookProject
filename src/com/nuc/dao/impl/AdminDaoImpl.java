@@ -112,4 +112,25 @@ public class AdminDaoImpl implements AdminDao {
         baseDao.commit();
         return result > 0;
     }
+
+    @Override
+    public boolean testPwd(String adminname, String prepwd) {
+        boolean result = false;
+        BaseDao baseDao = new BaseDao();
+        String sql = "SELECT * FROM admin WHERE adminname=?";
+        ResultSet rs = baseDao.executeQuery(sql, adminname);
+        try{
+            while (rs.next()){
+                String pwd = rs.getString(3);
+                if (pwd.equals(prepwd)){
+                    result = true;
+                }else {
+                    result = false;
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return result;
+    }
 }

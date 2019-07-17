@@ -5,11 +5,11 @@
 .modOrderInfo{
     position:absolute;
     top:20%;
-    left: 35%;
+    left:3%;
     font-size: 18px;
     border: 1px solid darkgrey;
     width: 600px;
-    height: 450px;
+    height: 600px;
     border-radius: 3px;
     background-color: white;
 }

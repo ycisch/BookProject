@@ -53,7 +53,8 @@ public class ShopServlet extends javax.servlet.http.HttpServlet {
             //添加书籍到购物车
             book.setBookid(Integer.parseInt(request.getParameter("bookid")));
             book.setBookNum(1);
-//            shopService.addShop(book,user);
+            shopService.addShop(book,user);
+            request.getRequestDispatcher("BookServlet?opr=keyList&style1=style&style=2&page=1").forward(request,response);
         }else if(opr.equals("delete")){
 
             //删除购物某一栏

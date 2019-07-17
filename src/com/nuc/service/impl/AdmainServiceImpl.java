@@ -50,4 +50,9 @@ public class AdmainServiceImpl implements AdminService {
     public boolean deleteUser(User user) {
         return dao.deleteUser(user);
     }
+
+    @Override
+    public boolean testPwd(String adminname, String prepwd) {
+        return dao.testPwd(adminname, prepwd);
+    }
 }

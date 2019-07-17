@@ -106,9 +106,9 @@
         </dl>
     </div>
     <div id="display">
-        <h1>修改图书</h1>${book.bookimg}
+        <h1>修改订单</h1>${book.bookimg}
         <div>
-            <div id="update">
+            <div id="updateorder">
                 <table>
                     <form action="${pageContext.request.contextPath}/BookServlet?opr=update" id="update_form" method="post">
                         <tr>

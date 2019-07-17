@@ -14,6 +14,109 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin.css">
     <script src="${pageContext.request.contextPath}/static/js/jquery-1.11.3.min.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/admin.js"></script>
+    <script>
+        $(function () {
+            var prepwdOk = false;
+            var newpwdOk = false;
+            var repwdOk = false;
+            $("#prepwd").focus(function () {
+                $("#prepwdError").html("");
+            });
+            $("#prepwd").blur(function () {
+                var adminname = $("#adminname").val();
+                var prepwd =  $("#prepwd").val();
+
+                console.log(adminname+"  "+prepwd);
+
+                $.ajax({
+                    url:"${pageContext.request.contextPath}/AdminServlet",
+                    data:"opr=test&adminname="+adminname+"&adminpwd="+prepwd,
+                    type:"get",
+                    dataType:"text",
+                    success:callBack,
+                });
+                function callBack(data) {
+                    console.log(data);
+                    if (data == "true"){
+                        prepwdOk = true;
+                        $("#prepwdError").html("");
+                        $("#prepwdSuccess").html("密码正确");
+                    }
+                    else {
+
+                        $("#prepwdError").html("原密码错误");
+                        $("#prepwdSuccess").html("");
+                    }
+                }
+                $("#newpwd").focus(function () {
+                    $("#newpwdError").html("");
+                });
+                $("#newpwd").blur(function () {
+                    var newpwd = $("#newpwd").val();
+                    if (newpwd.length < 3) {
+                        $("#newpwdSuccess").html("");
+                        $("#newpwdError").html("密码长度小于3");
+                    }else {
+                        newpwdOk = true;
+                        $("#newpwdSuccess").html("密码可用");
+                        $("#newpwdError").html("");
+                    }
+                });
+                $("#repwd").focus(function () {
+                    $("#repwdError").html("");
+                });
+                $("#repwd").blur(function () {
+                    var newpwd = $("#newpwd").val();
+                    var repwd = $("#repwd").val();
+                    console.log(newpwd+"  "+repwd)
+                    if (newpwd == repwd){
+                        repwdOk = true;
+                        $("#repwdSuccess").html("输入正确");
+                        $("#repwdError").html("");
+                    } else {
+                        $("#repwdSuccess").html("");
+                        $("#repwdError").html("两次输入不一致");
+                    }
+                });
+                $("#login_button").click(function () {
+                    if (prepwdOk && newpwdOk && repwdOk){
+                        $("#login_button").submit();
+                    } else {
+                        return false;
+                    }
+                })
+            })
+        })
+    </script>
+    <style>
+        #prepwdError{
+            font-size: 14px;
+            color: red;
+        }
+        #prepwdSuccess{
+            font-size: 14px;
+            color: green;
+        }
+        #newpwdError{
+            font-size: 14px;
+            color: red;
+        }
+        #newpwdSuccess{
+            font-size: 14px;
+            color: green;
+        }
+        #repwdError{
+            font-size: 14px;
+            color: red;
+        }
+        #repwdSuccess{
+            font-size: 14px;
+            color: green;
+        }
+
+
+
+    </style>
 </head>
 <body>
 <div id="header">
@@ -71,19 +174,22 @@
                 <form action="${pageContext.request.contextPath}/AdminServlet?opr=update" id="update_form"  method="post">
                     <tr>
                         <th>用户名：</th>
-                        <td colspan="3"><input type="text" name="adminname" value="${admin.adminName}" disabled="disabled"></td>
+                        <td colspan="3"><input id="adminname" type="text" name="adminname" value="${admin.adminName}" readonly="readonly"></td>
                     </tr>
                     <tr>
                         <th>原密码：</th>
-                        <td colspan="3"><input type="password" name="adminpwd" value=""></td>
+                        <td colspan="3"><input type="password" name="adminpwd" value="" id="prepwd"></td>
+                        <td><span id="prepwdError"></span> <span id="prepwdSuccess"></span></td>
                     </tr>
                     <tr>
                         <th>新密码：</th>
-                        <td colspan="3"><input type="password" name="newpwd" value=""></td>
+                        <td colspan="3"><input type="password" name="newpwd" value="" id="newpwd"></td>
+                        <td><span id="newpwdError"></span> <span id="newpwdSuccess"></span></td>
                     </tr>
                     <tr>
                         <th>确认密码：</th>
-                        <td colspan="3"><input type="password" name="repwd" value=""></td>
+                        <td colspan="3"><input type="password" name="repwd" value="" id="repwd"></td>
+                        <td><span id="repwdError"></span> <span id="repwdSuccess"></span></td>
                     </tr>
                     <tr>
                         <td colspan="3">

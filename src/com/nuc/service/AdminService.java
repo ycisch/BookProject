@@ -28,4 +28,6 @@ public interface AdminService {
 
     //删除用户
     public boolean deleteUser(User user);
+
+    public boolean testPwd(String adminname, String prepwd);
 }

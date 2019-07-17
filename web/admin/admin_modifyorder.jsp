@@ -58,7 +58,9 @@
             width: 150px;
             height: 150px;
         }
+
     </style>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/modifyOrderInfo.css">
 </head>
 <body>
 <div id="header">
@@ -110,7 +112,7 @@
             <dd><a href="${pageContext.request.contextPath}/admin/admin_insertstyle.jsp"><span id="insertStyle">添加分类</span></a></dd>
         </dl>
     </div>
-    <div class="modOrderInfo" style="margin-left: 600px">
+    <div class="modOrderInfo">
         <div class="newOrder">修改订单信息</div>
         <div class="newOrder_from" name="newOrder_from">
             <form action="${pageContext.request.contextPath}/OrderServlet?opr=updateorder" method="post">

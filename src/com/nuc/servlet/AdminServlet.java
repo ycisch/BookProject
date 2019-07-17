@@ -11,6 +11,7 @@ import com.nuc.util.FileUpload;
 import com.nuc.util.Page;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -94,6 +95,25 @@ public class AdminServlet extends javax.servlet.http.HttpServlet {
             System.out.println(request.getParameter("id"));
             service.deleteUser(user);
             request.getRequestDispatcher("/AdminServlet?opr=list&currPageNo=1").forward(request,response);
+        }else if ("test".equals(opr)){
+            String adminname = request.getParameter("adminname");
+            String adminpwd = request.getParameter("adminpwd");
+            //System.out.println( request.getParameter("adminpwd"));
+            PrintWriter printWriter = response.getWriter();
+            response.setContentType("textml;charset=utf-8");
+            boolean testPwd = service.testPwd(adminname, adminpwd);
+
+            System.out.println(adminname+"   "+adminpwd+"   "+testPwd);
+            if (testPwd){
+                printWriter.print("true");
+                printWriter.flush();
+                printWriter.close();
+            }else {
+                printWriter.print("false");
+                printWriter.flush();
+                printWriter.close();
+            }
         }
+
     }
 }

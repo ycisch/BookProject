@@ -201,10 +201,15 @@ dd:hover{
     cursor: pointer;
 }
 
-#books,#update,#order,#users,#inserts,#admin_info{
+#books,#update,#order,#users,#inserts,#admin_info,#order,#updateorder,.newOrder_from{
     width: 1150px;
     height: 700px;
     border:1px solid #DFDFDF;
+
+}
+
+.newOrder_from form{
+
 
 }
 
@@ -213,11 +218,11 @@ table,th,td{
     text-align: center;
 }
 
-#users table,#order table,#inserts table,#update table,#admin_info table{
+#users table,#order table,#inserts table,#update table,#admin_info table,#updateorder table,.newOrder_from form{
     margin: 10px auto;
 }
 
-#users th,#onlines th{
+#users th,#onlines th,#updateorder th{
     font-size: 18px;
 }
 
