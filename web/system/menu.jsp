@@ -34,7 +34,8 @@
     <div class="top-info">
 
         <a href="${pageContext.request.contextPath}/user/personalCenter.jsp" class="top-info-1">我的文轩</a>
-        <a></a>
+        <a href="${pageContext.request.contextPath}/system/login.jsp">登录</a>
+        <a href="${pageContext.request.contextPath}/system/regist.jsp">注册</a>
         <div class="top-info-2">
             <a href="#">购物车</a>
             <div class="top-info-21"></div>

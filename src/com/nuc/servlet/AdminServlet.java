@@ -12,6 +12,7 @@ import com.nuc.util.Page;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class AdminServlet extends javax.servlet.http.HttpServlet {
@@ -39,6 +40,8 @@ public class AdminServlet extends javax.servlet.http.HttpServlet {
             }
             else
             {
+                Date.MAP = new ArrayList<>();
+                Date.MAP_TWO = new HashMap<>();
                 OrderService orderService = new OrderServiceImpl();
                 orderService.listStyle();
                 request.getSession().setAttribute("admin",admin);

@@ -1,14 +1,19 @@
 package com.nuc.servlet;
 
 import com.nuc.entiy.Book;
+import com.nuc.entiy.Style;
 import com.nuc.service.BookService;
+import com.nuc.service.OrderService;
 import com.nuc.service.impl.BookServiceImpl;
+import com.nuc.service.impl.OrderServiceImpl;
+import com.nuc.util.Date;
 import com.nuc.util.FileUpload;
 import com.nuc.util.Page;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class BookServlet extends javax.servlet.http.HttpServlet {
@@ -132,6 +137,12 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
             }else{
                 book.setBookStyle("style");
                 book.setBookName(request.getParameter("style"));//取得查询条件
+
+
+                Date.MAP = new ArrayList<>();
+                Date.MAP_TWO = new HashMap<>();
+                OrderService orderService = new OrderServiceImpl();
+                orderService.listStyle();
 
                 page.setTotalCount(bookService.sumBook(book));
                 bookList = bookService.listBookKey(book,page);                                       //查询所有放到bookList
