@@ -1,13 +1,12 @@
 <%--
   Created by IntelliJ IDEA.
-  User: W
-  Date: 2019/7/15
-  Time: 10:33
+  User: Administrator
+  Date: 2019/7/16 0016
+  Time: 下午 4:49
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -111,52 +110,21 @@
             <dd><a href="${pageContext.request.contextPath}/admin/admin_insertstyle.jsp"><span id="insertStyle">添加分类</span></a></dd>
         </dl>
     </div>
-    <div id="display">
-        <h1>图书列表</h1>
-        <div>
-            <div id="order">
-                <table>
-                    <tr id="title">
-                        <th>订单号</th>
-                        <th>图片</th>
-                        <th>图书编号</th>
-                        <th>图书数量</th>
-                        <th>消费金额</th>
-                        <th>买家姓名</th>
-                        <th>购买日期</th>
-                        <th>地址</th>
-                        <th>操作</th>
-                    </tr>
-                    <c:forEach items="${orderlist}" var="orderlist">
-                        <tr>
-                            <td>${orderlist.orderId}</td>
-                            <td><img src="${pageContext.request.contextPath}${orderlist.book.bookimg}"></td>
-                            <td>${orderlist.bookId}</td>
-                            <td>${orderlist.booknum}</td>
-                            <td>${orderlist.money}</td>
-                            <td>${orderlist.user.username}</td>
-                            <td>${orderlist.ctdate}</td>
-                            <td>${orderlist.user.address}</td>
-                            <td>
-                                <a href="${pageContext.request.contextPath}/OrderServlet?opr=updateto&id=${orderlist.orderId}">修改</a>&nbsp;
-                                <a href="${pageContext.request.contextPath}/OrderServlet?opr=deleteorder&id=${orderlist.orderId}&userid=${orderlist.userId}&money=${orderlist.money}">删除</a></td>
-                        </tr>
-                    </c:forEach>
-                </table>
-                <div class="sikp">
-                    <p>
-                        <a href="#"><span>首页</span></a>
-                        &nbsp;|&nbsp;
-                        <a href="#"><span>下一页</span></a>
-                        &nbsp;|&nbsp;
-                        <a href="#"><span>尾页</span></a>
-                        &nbsp;|&nbsp;
-                        <a></a><span>当前第页</span>
-                        &nbsp;|&nbsp;
-                        <a></a><span>总共页</span>
-                    </p>
-                </div>
-            </div>
+    <div class="modOrderInfo" style="margin-left: 600px">
+        <div class="newOrder">修改订单信息</div>
+        <div class="newOrder_from" name="newOrder_from">
+            <form action="${pageContext.request.contextPath}/OrderServlet?opr=updateorder" method="post">
+                <p><strong>订单号：</strong><input type="text" value="${requestScope.orderup.orderId}" name="orderid" id="orderid"></p>
+                <p><strong>图书编号：</strong><input type="text" value="${requestScope.orderup.bookId}" name="bookid" id="bookid"></p>
+                <p><strong>图书数量：</strong><input type="text" value="${requestScope.orderup.booknum}" name="booknum" id="booknum"></p>
+                <p><strong>消费金额：</strong><input type="text" value="${requestScope.orderup.money}" name="money" id="money"></p>
+                <p><strong>买家ID：</strong><input type="text" value="${requestScope.orderup.userId}" name="userid" id="userid"></p>
+                <p><strong>购买日期：</strong><input type="text" value="${requestScope.orderup.ctdate}" name="ctdate" id="ctdate"></p>
+                <p><strong>地址：</strong><input type="text" value="${requestScope.orderup.user.address}" name="address" id="address"></p>
+                <p>
+                    <input type="submit" name="modify" id="modify_button" value="确认修改">
+                </p>
+            </form>
         </div>
     </div>
     <div id="copyright">
@@ -165,3 +133,29 @@
 </div>
 </body>
 </html>
+
+
+<%--<html>--%>
+<%--<head>--%>
+<%--    <title>Title</title>--%>
+<%--</head>--%>
+<%--<body>--%>
+<%--<div class="modOrderInfo">--%>
+<%--    <div class="newOrder">修改订单信息</div>--%>
+<%--    <div class="newOrder_from" name="newOrder_from">--%>
+<%--        <form action="${pageContext.request.contextPath}/UserServlet?opr=update" method="post">--%>
+<%--            <p><strong>订单号：</strong><input type="text" value="${requestScope.orderup.orderId}" name="orderid" id="orderid" disabled="disabled"></p>--%>
+<%--            <p><strong>图书编号：</strong><input type="text" value="${requestScope.orderup.bookId}" name="bookid" id="bookid"></p>--%>
+<%--            <p><strong>图书数量：</strong><input type="text" value="${requestScope.orderup.booknum}" name="booknum" id="booknum"></p>--%>
+<%--            <p><strong>消费金额：</strong><input type="text" value="${requestScope.orderup.money}" name="money" id="money"></p>--%>
+<%--            <p><strong>买家ID：</strong><input type="text" value="${requestScope.orderup.userId}" name="userid" id="userid" disabled="disabled"></p>--%>
+<%--            <p><strong>购买日期：</strong><input type="text" value="${requestScope.orderup.ctdate}" name="ctdate" id="ctdate"></p>--%>
+<%--            <p><strong>地址：</strong><input type="text" value="${requestScope.orderup.user.address}" name="address" id="address"></p>--%>
+<%--            <p>--%>
+<%--                <input type="submit" name="modify" id="modify_button" value="确认修改">--%>
+<%--            </p>--%>
+<%--        </form>--%>
+<%--    </div>--%>
+<%--</div>--%>
+<%--</body>--%>
+<%--</html>--%>

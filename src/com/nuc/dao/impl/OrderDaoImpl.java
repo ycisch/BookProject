@@ -12,6 +12,7 @@ import com.nuc.service.impl.UserServiceImpl;
 import com.nuc.util.BaseDao;
 import com.nuc.util.DatabaseUtil;
 import com.nuc.util.Page;
+import com.sun.org.apache.xpath.internal.operations.Or;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -88,20 +89,63 @@ public class OrderDaoImpl implements OrderDao {
         return result;
     }
 
+    @Override
+    public Order selectOrder(Order order1) {
+
+        Order order = new Order();
+
+        String sql = "select * from bookshop.order where orderid=?";
+        ResultSet resultSet = baseDao.executeQuery(sql,order1.getOrderId());
+        try {
+            BookDao bookDao = new BookDaoImpl();
+            UserDao userDao = new UserDaoImpl();
+            while (resultSet.next()){
+
+                order.setOrderId(resultSet.getInt("orderid"));
+                order.setBookId(resultSet.getInt("bookid"));
+                order.setBooknum(resultSet.getInt("booknum"));
+                Book book = new Book();
+                book.setBookid(order.getBookId());
+                bookDao.selectBook(book);
+                System.out.println(book+"@@@@!!!!!!!");
+                order.setBook(book);
+                order.setMoney(resultSet.getFloat("money"));
+                order.setUserId(resultSet.getInt("userid"));
+                User user = new User();
+                user.setId(order.getUserId());
+                userDao.getUser(user);
+                order.setUser(user);
+                order.setCtdate(resultSet.getDate("ctdate"));
+//                order.setUser(this.setUser(order.getUserId()));
+//                order.setBook(this.setBook(order.getBookId()));
+                System.out.println(order);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return order;
+    }
+
     //查看个人订单
     @Override
     public List<Order> listOrder(User user, Page page) {
-        String sql = "select * from order where userid = ?";
+        String sql = "select * from bookshop.order where userid = ?";
         Object params[] = {user.getId()};
         ResultSet rs = baseDao.executeQuery(sql,params);
         List<Order> list = new ArrayList<>();
         baseDao.commit();
         try{
+            BookDao bookDao = new BookDaoImpl();
             while (rs.next()){
                 Order order = new Order();
                 order.setOrderId(rs.getInt(1));
                 order.setBookId(rs.getInt(2));
                 order.setBooknum(rs.getInt(3));
+                Book book = new Book();
+                book.setBookid(order.getBookId());
+                bookDao.selectBook(book);
+                order.setBook(book);
                 order.setMoney(rs.getFloat(4));
                 order.setUserId(rs.getInt(5));
                 order.setCtdate(rs.getDate(6));
@@ -117,24 +161,36 @@ public class OrderDaoImpl implements OrderDao {
 
     //查看所有订单
     @Override
-    public List<Order> listOrder(Page page) {
+    public List<Order> listOrder() {
         List<Order> orderList = new ArrayList<Order>();
         ResultSet resultSet = null;
-        String sql = "select * from order";
+        String sql = "select * from bookshop.order";
         resultSet = baseDao.executeQuery(sql);
         Order order = null;
         try{
+            BookDao bookDao = new BookDaoImpl();
+            UserDao userDao = new UserDaoImpl();
             while (resultSet.next()){
                 order = new Order();
                 order.setOrderId(resultSet.getInt("orderid"));
                 order.setBookId(resultSet.getInt("bookid"));
                 order.setBooknum(resultSet.getInt("booknum"));
+                Book book = new Book();
+                book.setBookid(order.getBookId());
+                bookDao.selectBook(book);
+                System.out.println(book+"@@@@");
+                order.setBook(book);
                 order.setMoney(resultSet.getFloat("money"));
                 order.setUserId(resultSet.getInt("userid"));
+                User user = new User();
+                user.setId(order.getUserId());
+                userDao.getUser(user);
+                order.setUser(user);
                 order.setCtdate(resultSet.getDate("ctdate"));
-                order.setUser(this.setUser(order.getUserId()));
-                order.setBook(this.setBook(order.getBookId()));
+//                order.setUser(this.setUser(order.getUserId()));
+//                order.setBook(this.setBook(order.getBookId()));
                 orderList.add(order);
+                System.out.println(order);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -164,7 +220,7 @@ public class OrderDaoImpl implements OrderDao {
     public int sumOrder(Order order) {
         int result = 0;
         ResultSet resultSet = null;
-        String sql = "select count(*) from order where userid=?";
+        String sql = "select count(*) from bookshop.order where userid=?";
         try {
             resultSet = baseDao.executeQuery(sql,order.getUserId());
             while (resultSet.next()){
@@ -183,7 +239,7 @@ public class OrderDaoImpl implements OrderDao {
     public int sumOrder() {
         int result = 0;
         ResultSet resultSet = null;
-        String sql = "select count(*) from order";
+        String sql = "select count(*) from bookshop.order";
         try{
             resultSet = baseDao.executeQuery(sql);
             while(resultSet.next()){

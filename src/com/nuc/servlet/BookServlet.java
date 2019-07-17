@@ -126,28 +126,29 @@ public class BookServlet extends javax.servlet.http.HttpServlet {
                 book.setBookid(Integer.parseInt(request.getParameter("id")));
                 bookList = bookService.listBookKey(book,page);
                 book = bookList.get(0);
+                System.out.println(book);
                 request.setAttribute("book",book);
                 request.getRequestDispatcher("admin/admin_update.jsp").forward(request,response);
+            }else{
+                book.setBookStyle("style");
+                book.setBookName(request.getParameter("style"));//取得查询条件
+
+                page.setTotalCount(bookService.sumBook(book));
+                bookList = bookService.listBookKey(book,page);                                       //查询所有放到bookList
+                request.setAttribute("type",book.getBookStyle());
+                request.setAttribute("style",book.getBookName());
+                request.setAttribute("style1",request.getParameter("style1"));
+                request.setAttribute("page",page);
+                request.setAttribute("bookList",bookList);                             //存放所有图书到request
+
+                for (Book book2:bookList) {
+                    System.out.println(book2);
+                }
+
+
+                request.getRequestDispatcher("system/menu1.jsp").forward(request,response);
             }
 
-
-
-            book.setBookStyle("style");
-            book.setBookName(request.getParameter("style"));//取得查询条件
-
-            page.setTotalCount(bookService.sumBook(book));
-            bookList = bookService.listBookKey(book,page);                                       //查询所有放到bookList
-            request.setAttribute("type",book.getBookStyle());
-            request.setAttribute("style",book.getBookName());
-            request.setAttribute("page",page);
-            request.setAttribute("bookList",bookList);                             //存放所有图书到request
-
-            for (Book book2:bookList) {
-                System.out.println(book2);
-            }
-
-
-            request.getRequestDispatcher("system/menu1.jsp").forward(request,response);
 //            response.sendRedirect("./system/menu1.jsp");
 
         }else{

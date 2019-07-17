@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <html>
 <head>
     <title>订单</title>
@@ -16,40 +18,27 @@
     <table id="order" >
         <tr id="title">
             <th>订单号</th>
+            <th>图片</th>
             <th>图书编号</th>
             <th>图书数量</th>
             <th>消费金额</th>
-            <th>买家ID</th>
+            <th>买家姓名</th>
             <th>购买日期</th>
             <th>地址</th>
         </tr>
-        <tr>
-            <td>20190712001</td>
-            <td>010001</td>
-            <td>1</td>
-            <td>￥35.0</td>
-            <td>天猫用户1</td>
-            <td>2019.7.12</td>
-            <td>北京白洋淀</td>
-        </tr>
-        <tr>
-            <td>20190712003</td>
-            <td>010002</td>
-            <td>1</td>
-            <td>￥36.0</td>
-            <td>天猫用户2</td>
-            <td>2019.7.13</td>
-            <td>北京朝阳区</td>
-        </tr>
-        <tr>
-            <td>20190712006</td>
-            <td>010003</td>
-            <td>1</td>
-            <td>￥65.0</td>
-            <td>天猫用户3</td>
-            <td>2019.7.13</td>
-            <td>陕西西安</td>
-        </tr>
+        <c:forEach items="${orderlist}" var="orderlist">
+            <tr>
+                <td>${orderlist.orderId}</td>
+                <td><img src="${pageContext.request.contextPath}${orderlist.book.bookimg}"></td>
+                <td>${orderlist.bookId}</td>
+                <td>${orderlist.booknum}</td>
+                <td>${orderlist.money}</td>
+                <td>${orderlist.user.username}</td>
+                <td>${orderlist.ctdate}</td>
+                <td>${orderlist.user.address}</td>
+            </tr>
+        </c:forEach>
+
     </table>
 </form>
 </body>

@@ -19,11 +19,14 @@ public interface OrderDao {
     //删除订单
     public  boolean deleteOrder(Order order, User user);
 
+    //根据订单id查找信息
+    public Order selectOrder(Order order);
+
     //查看个人订单
     public List<Order> listOrder(User user, Page page);
 
     //查看所有订单
-    public List<Order> listOrder(Page page);
+    public List<Order> listOrder();
 
     //按个人查询所有订单总数
     public int sumOrder(Order order);

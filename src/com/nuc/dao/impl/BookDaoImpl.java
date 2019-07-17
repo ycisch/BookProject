@@ -29,7 +29,7 @@ public class BookDaoImpl implements BookDao {
                 book.setBookStyle(rs.getString(7));
                 book.setBookCategory(rs.getString(8));
                 book.setBookimg(rs.getString(9));
-//                System.out.println(book+"@####");
+                System.out.println(book+"@####");
             }
         }catch (SQLException e){
             e.printStackTrace();

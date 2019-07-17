@@ -12,6 +12,25 @@ public class Book {
     private String bookCategory;
 
 
+    private String bookStyle_value;
+    private String bookCategory_value;
+
+    public String getBookStyle_value() {
+        return bookStyle_value;
+    }
+
+    public void setBookStyle_value(String bookStyle_value) {
+        this.bookStyle_value = bookStyle_value;
+    }
+
+    public String getBookCategory_value() {
+        return bookCategory_value;
+    }
+
+    public void setBookCategory_value(String bookCategory_value) {
+        this.bookCategory_value = bookCategory_value;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -24,6 +43,8 @@ public class Book {
                 ", bookMoney=" + bookMoney +
                 ", bookimg='" + bookimg + '\'' +
                 ", bookCategory='" + bookCategory + '\'' +
+                ", bookStyle_value='" + bookStyle_value + '\'' +
+                ", bookCategory_value='" + bookCategory_value + '\'' +
                 '}';
     }
 

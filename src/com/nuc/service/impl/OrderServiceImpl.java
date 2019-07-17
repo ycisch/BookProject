@@ -35,11 +35,16 @@ public class OrderServiceImpl implements OrderService {
         return result;
     }
 
+    @Override
+    public Order selectOrder(Order order) {
+        return orderDao.selectOrder(order);
+    }
+
     //查看所有订单
     @Override
-    public List<Order> listOrder(Page page) {
+    public List<Order> listOrder() {
         List<Order> orderList = new ArrayList<Order>();
-        orderList = orderDao.listOrder(page);
+        orderList = orderDao.listOrder();
         return orderList;
     }
 

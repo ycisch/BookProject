@@ -34,6 +34,7 @@
     <div class="top-info">
 
         <a href="${pageContext.request.contextPath}/user/personalCenter.jsp" class="top-info-1">我的文轩</a>
+        <a></a>
         <div class="top-info-2">
             <a href="#">购物车</a>
             <div class="top-info-21"></div>
@@ -442,11 +443,11 @@
     </div>
     <div class="center-new1">
         <h2>新书预售</h2>
-        <img src="../static/img/book/10.jpg">
+        <img src="${pageContext.request.contextPath}/static/img/book/10.jpg">
         <p><a href="#">师道</a></p>
         <span>姚卫伟</span>
         <p style="color: #cc3300">¥27.60</p>
-        <img src="../static/img/1.png" width="150px" height="100px">
+        <img src="${pageContext.request.contextPath}/static/img/1.png" width="150px" height="100px">
     </div>
     <div class="center-new">
         <h2>新书</h2>

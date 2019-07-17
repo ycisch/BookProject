@@ -36,7 +36,6 @@
                     console.log(data+"@@@@");
                     $(".img1").show();
                     $(".img1").css({"background":"url("+data+")"});
-                    alert(data);
                     $(".img_data").val(data);
                 }
             })

@@ -46,51 +46,6 @@
         })
     </script>
 
-    <script type="text/javascript">
-        $(function() {
-            //ajax实现二级联动
-            $.post("${pageContext.request.contextPath}/OrderServlet?opr=style",function(data){
-                var field = "";
-                console.log("@@@@")
-                console.log(data+"   "+data.length)
-                for(var i=0;i<data.length;i++){
-                    <c:if test="${book.bookStyle == data[i].booksName}">
-                    field += "<option value=" + data[i].id+" selected = selected>" + data[i].booksName + "</option>";
-                    </c:if>
-
-                    <c:if test="${book.bookStyle != data[i].booksName}">
-                    field += "<option value=" + data[i].id+ ">" + data[i].booksName + "</option>";
-                    </c:if>
-
-                }
-                $("#field").append(field);
-                //选中一级学科触发函数,异步获取二级学科
-                $("#field").change(function() {
-                    var field = $("#field option:selected").val();//获取下拉列表中的选中项
-                    var textfield = $("#field option:selected").text();//获取下拉列表中的内容
-                    $("#profession > option:gt(0)").each(function(){//避免option累加
-                        $("#profession").empty();
-                    });
-                    $.post("${pageContext.request.contextPath}/OrderServlet?opr=category",{field:field},function(data){
-
-                        console.log(data);
-
-                        var profession = "";
-                        for(var i=0;i<data.length;i++){
-                            <c:if test="${book.bookCategory == data[i].booksName}">
-                            profession += "<option value=" + data[i].id+" selected = selected>" + data[i].booksName + "</option>";
-                            </c:if>
-
-                            <c:if test="${book.bookCategory != data[i].booksName}">
-                            profession += "<option value=" + data[i].id+ ">" + data[i].booksName + "</option>";
-                            </c:if>
-                        }
-                        $("#profession").append(profession);
-                    },"json");
-                });
-            },"json");
-        });
-    </script>
 
     <style>
         .img1{
@@ -185,16 +140,16 @@
                             <td colspan="3">
                                 类型:
                                 <select class="form-control" id="field" name="bookStyle">
-                                    <option>----请选择类型----</option>
+                                    <option value="${book.bookStyle}">${book.bookStyle_value}</option>
                                 </select>
                                 <br>
                                 标签:
                                 <select class="form-control" id="profession" name="bookCategory">
-                                    <option>----请选择标签----</option>
+                                    <option value="${book.bookCategory}">${book.bookCategory_value}</option>
                                 </select>
                             </td>
                         </tr>
-                        <input type="hidden" name="bookImg" class="img_data" value="../${book.bookimg}">
+                        <input type="hidden" name="bookImg" class="img_data" value="..${book.bookimg}">
                     </form>
                     <tr>
                         <form action="" enctype="multipart/form-data" method="post" id="tf_update">
