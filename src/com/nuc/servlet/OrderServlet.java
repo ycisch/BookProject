@@ -17,6 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * ClassName: OrderServlet
+ * Function:  查看所有订单   查询个人订单  修改订单  删除订单
+ * Date:      2019/7/17 21:01
+ * author     yinchen&wy&ry&wcr
+ * version    V1.0
+ */
 public class OrderServlet extends javax.servlet.http.HttpServlet {
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         //opr=list
@@ -32,6 +39,12 @@ public class OrderServlet extends javax.servlet.http.HttpServlet {
         List<Order> orderList = new ArrayList<Order>();
         Order order = null;
         String opr = request.getParameter("opr");
+
+        System.out.println(opr+"@@@@");
+
+        /**
+         * @description             二级关联---先取出一级标签
+         */
         if(opr.equals("style")){
             response.setContentType("text/html;charset=utf-8");
             PrintWriter out=response.getWriter();
@@ -39,71 +52,64 @@ public class OrderServlet extends javax.servlet.http.HttpServlet {
             out.println(str);
             out.flush();
             out.close();
-//            request.getSession().setAttribute("style", Date.MAP);
-//            request.getSession().setAttribute("category",Date.MAP_TWO);
-        }else if(opr.equals("category")){
+        }
+
+        /**
+         * @description             二级关联---取出二级标签
+         */
+        if(opr.equals("category")){
             String json = request.getParameter("field");
-            System.out.println(request.getParameter("field"));
             List<Style> list = Date.MAP_TWO.get(json);
+            for (Style style:list){
+                System.out.println(style);
+            }
             response.setContentType("text/html;charset=utf-8");
             PrintWriter out=response.getWriter();
             String str = JSON.toJSONString(list);
             out.println(str);
             out.flush();
             out.close();
-        }else if(opr.equals("list")){
+        }
+        /**
+         * @description             根据用户查询所有订单
+         */
+        if(opr.equals("list")){
 
             User user = (User) request.getSession().getAttribute("user");
-            Page page = new Page();
-            List<Order> list = orderService.listOrder(user,page);
+            List<Order> list = orderService.listOrder(user);
 
             for(Order order1:list){
                 order1.setUser(user);
                 String name = order1.getBook().getBookimg().substring(2,order1.getBook().getBookimg().length());
                 order1.getBook().setBookimg(name);
-                System.out.println(order1);
             }
             request.setAttribute("orderlist",list);
-            request.getRequestDispatcher("user/order.jsp").forward(request,response);
-        }else if ("showAllusersorder".equals(opr)){                                          //展示所有人的订单
-
-            System.out.println("Test");
+            request.getRequestDispatcher("/WEB-INF/order/order-user-list.jsp").forward(request,response);
+        }
+        /**
+         * @description             查看所有用户的订单
+         */
+        if ("showAllusersorder".equals(opr)){
             orderList = orderService.listOrder();
-            request.setAttribute("orderlist",orderList);
+            request.setAttribute("orderList",orderList);
             for(Order order1:orderList){
                 String name = order1.getBook().getBookimg().substring(2,order1.getBook().getBookimg().length());
                 order1.getBook().setBookimg(name);
-                System.out.println(order1);
             }
-            request.getRequestDispatcher("admin/admin_order.jsp").forward(request,response);
+            request.getRequestDispatcher("/WEB-INF/views/order/order-list.jsp").forward(request,response);
 
-        }else if ("showMyorder".equals(opr)){                                         //展示自己的订单
-           /* int currPageNo = Integer.parseInt(request.getParameter("page"));
-            Page page = new Page();
-            page.setTotalCount(orderService.sumOrder());
-            if (currPageNo>= page.getTotalCount()){
-                currPageNo = page.getTotalPageCout();
-            }else if (currPageNo<=1){
-                currPageNo = 1;
-            }
-            page.setCurrPageNo(currPageNo-1);
-            order = new Order();*/
-            orderList = orderService.listOrder();
-            request.setAttribute("orderList",orderList);
-            request.getRequestDispatcher("user/order.jsp").forward(request,response);
-
-
-        }else if ("updateorder".equals(opr)){                                      //修改订单
+        }
+        /**
+         * description              修改订单
+         */
+        if ("updateorder".equals(opr)){
             order = new Order();
             User user = (User) request.getSession().getAttribute("user");
             order.setOrderId(Integer.parseInt(request.getParameter("orderid")));
-            //order.setBookId(Integer.parseInt(request.getParameter("bookId")));
-            //order.setUserId(Integer.parseInt(request.getParameter("userId")));
             order.setBooknum(Integer.parseInt(request.getParameter("booknum")));
             order.setMoney(Float.parseFloat(request.getParameter("money")));
             order.setUserId(Integer.parseInt(request.getParameter("userid")));
 
-            System.out.println(order+"@@@");
 
             if (orderService.updateOrder(order,user)){
                 request.setAttribute("massage","修改成功！");
@@ -114,7 +120,11 @@ public class OrderServlet extends javax.servlet.http.HttpServlet {
             request.getRequestDispatcher("OrderServlet?opr=showAllusersorder").forward(request,response);
 
 
-        }else if ("deleteorder".equals(opr)) {                                     //删除订单
+        }
+        /**
+         * 删除订单
+         */
+        if ("deleteorder".equals(opr)) {                                     //删除订单
             order = new Order();
             User user = (User) request.getSession().getAttribute("user");
             order.setOrderId(Integer.parseInt(request.getParameter("id")));
@@ -126,19 +136,16 @@ public class OrderServlet extends javax.servlet.http.HttpServlet {
                 request.setAttribute("message","删除失败！");
             }
             request.getRequestDispatcher("OrderServlet?opr=showAllusersorder").forward(request,response);
-        }else if("updateto".equals(opr)){
+        }
+        /**
+         * @description             修改跳转过渡
+         */
+        if("updateto".equals(opr)){
             Order orderup = new Order();
-
-            orderup.setOrderId(Integer.parseInt(request.getParameter("id")));
-
+            orderup.setOrderId(Integer.parseInt(request.getParameter("orderid")));
             orderup = orderService.selectOrder(orderup);
-
-
-            System.out.println(orderup);
-
             request.setAttribute("orderup",orderup);
-
-            request.getRequestDispatcher("admin/admin_modifyorder.jsp").forward(request,response);
+            request.getRequestDispatcher("/WEB-INF/views/order/order-update.jsp").forward(request,response);
         }
 
     }

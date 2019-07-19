@@ -74,22 +74,19 @@
 |            |	FileUpload
 |            |	MD5Tools
 └─web
-	├─admin
-	|	  admin.jsp
+    |
 	|─static
-	|	  ├─css	
-    	|	  |		省略
+	|	  css	
+    |	  |		省略
 	|	  ├─img	
 	|	  |		省略
 	|	  ├─js	
 	|	  |		省略
-	├─system
-	|	  login.jsp
-	|	  menu.jsp
-	|	  regist.jsp
 	├─upload
 	|	  省略
 	├─WEB-INF
-	|	  web.xml
+	|     ├─views  视图
+	|     | 
+	|	  ├─web.xml
 
 ```

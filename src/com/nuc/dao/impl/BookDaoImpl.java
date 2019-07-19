@@ -38,12 +38,12 @@ public class BookDaoImpl implements BookDao {
 
     //查看所有图书
     @Override
-    public List<Book> listBook(Page page) {
+    public List<Book> listBook() {
         List<Book> bookList = new ArrayList<Book>();
         ResultSet resultSet = null;
         BaseDao baseDao = new BaseDao();
-        String sql = "select * from book limit ?,?";
-        resultSet = baseDao.executeQuery(sql,page.getCurrPageNo()*page.getPageSize(),page.getPageSize());
+        String sql = "select * from book";
+        resultSet = baseDao.executeQuery(sql);
         Book book = null;
         try{
             while (resultSet.next()){
@@ -112,26 +112,22 @@ public class BookDaoImpl implements BookDao {
 
     //按条件查询图书
     @Override
-    public List<Book> listBookKey(Book book, Page page) {
+    public List<Book> listBookKey(Book book) {
         BaseDao baseDao = new BaseDao();
         List<Book> bookList = new ArrayList<Book>();
         ResultSet resultSet = null;
 
-        /*System.out.println(page.toString());*/
-        System.out.println("dao层book，page："+book+"******"+page);
-        System.out.println(book.getBookStyle());
 
         //条件判断
         if(book.getBookStyle().equals("name")){
-            String sql = "select * from book where bookname=? limit ?,?";
-            resultSet = baseDao.executeQuery(sql,book.getBookName(),page.getCurrPageNo()*page.getPageSize(),page.getPageSize());
+            String sql = "select * from book where bookname=?";
+            resultSet = baseDao.executeQuery(sql,book.getBookName());
         }else if(book.getBookStyle().equals("id")){
-            String sql = "select * from book where bookid=? limit ?,?";
-            resultSet = baseDao.executeQuery(sql,book.getBookid(),page.getCurrPageNo()*page.getPageSize(),page.getPageSize());
+            String sql = "select * from book where bookid=?";
+            resultSet = baseDao.executeQuery(sql,book.getBookid());
         }else if(book.getBookStyle().equals("style")){
-            String sql = "select * from book where bookstyle=? limit ?,?";
-            System.out.println(page.getCurrPageNo()+"  style "+page.getPageSize()+"######"+book.getBookName());
-            resultSet = baseDao.executeQuery(sql,book.getBookName(),page.getCurrPageNo()*page.getPageSize(),page.getPageSize());
+            String sql = "select * from book where bookstyle=?";
+            resultSet = baseDao.executeQuery(sql,book.getBookName());
         }
         Book keybook = null;
         try{

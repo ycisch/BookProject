@@ -44,8 +44,10 @@ public class FileUpload {
                         }
                     }else {  //文件表单字段
                         String fileName=item.getName();
+                        System.out.println(fieldName+"@@@");
                         List<String> filType= Arrays.asList("gif","bmp","jpg");
                         String ext=fileName.substring(fileName.lastIndexOf(".")+1);
+                        System.out.println(ext+"####");
                         if (!filType.contains(ext)){
                             //System.out.println("上传失败，文件类型只能是gif,bmp,jpg");
                         }else {
@@ -54,6 +56,7 @@ public class FileUpload {
                                 System.out.println(fullFile.getName());
                                 File saveFile=new File(uploadFilePath,fullFile.getName());
                                 path_ans = saveFile.getPath();
+                                System.out.println(path_ans+":@@@@");
                                 item.write(saveFile);
                                 uploadFileName=fullFile.getName();
                                 //System.out.println("上传成功后的文件名是："+uploadFileName);

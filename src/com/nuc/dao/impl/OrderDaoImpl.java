@@ -129,7 +129,7 @@ public class OrderDaoImpl implements OrderDao {
 
     //查看个人订单
     @Override
-    public List<Order> listOrder(User user, Page page) {
+    public List<Order> listOrder(User user) {
         String sql = "select * from bookshop.order where userid = ?";
         Object params[] = {user.getId()};
         ResultSet rs = baseDao.executeQuery(sql,params);

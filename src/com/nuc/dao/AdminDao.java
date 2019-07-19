@@ -21,7 +21,7 @@ public interface AdminDao {
     public Admin updateUser(Admin admin);
 
     //查看所有用户
-    public List<User> listUser(Page page);
+    public List<User> listUser();
 
     //得到总用户数
     public int userCount();

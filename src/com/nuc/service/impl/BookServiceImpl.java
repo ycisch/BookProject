@@ -26,12 +26,29 @@ public class BookServiceImpl implements BookService {
 
     //查看所有图书
     @Override
-    public List<Book> listBook(Page page) {
+    public List<Book> listBook() {
         List<Book> booklist = new ArrayList<Book>();
         BookDao bookDao = new BookDaoImpl();
-        booklist = bookDao.listBook(page);
+        booklist = bookDao.listBook();
 
+//获取当前的字符串
+        for(Book book1:booklist){
+            //遍历Date中的数据
+            for(Style style1: Date.MAP){
+                if(style1.getBookStyle().equals(book1.getBookStyle())){
+                    book1.setBookStyle_value(style1.getBooksName());
+                    break;
+                }
+            }
 
+            List<Style> list = Date.MAP_TWO.get(book1.getBookStyle());
+            for(Style style1: list){
+                if(style1.getBookStyle().equals(book1.getBookCategory())){
+                    book1.setBookCategory_value(style1.getBooksName());
+                }
+            }
+            System.out.println(book1);
+        }
 
 
         return booklist;
@@ -66,10 +83,10 @@ public class BookServiceImpl implements BookService {
 
     //按条件查询图书
     @Override
-    public List<Book> listBookKey(Book book, Page page) {
+    public List<Book> listBookKey(Book book) {
         List<Book> bookList = new ArrayList<Book>();
         BookDao bookDao = new BookDaoImpl();
-        bookList = bookDao.listBookKey(book,page);
+        bookList = bookDao.listBookKey(book);
 
         //获取当前的字符串
         for(Book book1:bookList){

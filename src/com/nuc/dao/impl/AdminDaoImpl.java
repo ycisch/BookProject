@@ -59,11 +59,11 @@ public class AdminDaoImpl implements AdminDao {
     }
 
     @Override
-    public List<User> listUser(Page page) {
+    public List<User> listUser() {
         BaseDao baseDao = new BaseDao();
-        String sql = "SELECT * FROM user LIMIT ?,?";
+        String sql = "SELECT * FROM user";
         List<User> list = new ArrayList<>();
-        ResultSet rs = baseDao.executeQuery(sql, (page.getCurrPageNo() - 1) * page.getPageSize(), page.getPageSize());
+        ResultSet rs = baseDao.executeQuery(sql);
         try{
             while (rs.next())
             {

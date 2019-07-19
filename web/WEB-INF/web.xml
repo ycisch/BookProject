@@ -4,7 +4,6 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-
     <!--创建过滤器-->
     <filter>
         <filter-name>Login</filter-name>
@@ -14,6 +13,9 @@
         <filter-name>Login</filter-name>
         <url-pattern>/</url-pattern>
     </filter-mapping>
+
+
+
 
     <!--监听器-->
     <listener>
@@ -68,7 +70,17 @@
         <servlet-name>PayServlet</servlet-name>
         <url-pattern>/PayServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>WelcomServlet</servlet-name>
+        <servlet-class>com.nuc.servlet.WelcomServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WelcomServlet</servlet-name>
+        <url-pattern>/WelcomServlet</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+
+
 </web-app>

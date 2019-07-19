@@ -23,7 +23,7 @@ public interface OrderDao {
     public Order selectOrder(Order order);
 
     //查看个人订单
-    public List<Order> listOrder(User user, Page page);
+    public List<Order> listOrder(User user);
 
     //查看所有订单
     public List<Order> listOrder();

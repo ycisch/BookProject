@@ -12,7 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+/**
+ * ClassName: PayServlet
+ * Function:  模拟支付接口---支付宝(沙箱版)
+ * Date:      2019/7/17 21:01
+ * author     yinchen&wy&ry&wcr
+ * version    V1.0
+ */
 public class PayServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
@@ -27,7 +33,6 @@ public class PayServlet extends HttpServlet {
         alipayRequest.setNotifyUrl(AlipayConfig.notify_url);
 
         //商户订单号，商户网站订单系统中唯一订单号，必填
-        System.out.println(request.getParameter("WIDout_trade_no")+"@@@@"+request.getParameter("addmoney"));
         String out_trade_no = request.getParameter("WIDout_trade_no");
         //付款金额，必填
         String total_amount = request.getParameter("total_amount");

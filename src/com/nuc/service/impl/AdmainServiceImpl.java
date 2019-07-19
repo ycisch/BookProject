@@ -34,9 +34,9 @@ public class AdmainServiceImpl implements AdminService {
     }
 
     @Override
-    public List<User> listUser(Page page) {
+    public List<User> listUser() {
         List<User> list = new ArrayList<>();
-        list = dao.listUser(page);
+        list = dao.listUser();
         return list;
     }
 

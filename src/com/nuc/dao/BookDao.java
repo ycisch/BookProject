@@ -14,7 +14,7 @@ public interface BookDao {
     public void selectBook(Book book);
 
     //查看所有图书
-    public List<Book> listBook(Page page);
+    public List<Book> listBook();
 
     //修改图书
     public boolean updateBook(Book book);
@@ -26,7 +26,7 @@ public interface BookDao {
     public boolean addBook(Book book);
 
     //按条件查询图书
-    public List<Book> listBookKey(Book book, Page page);
+    public List<Book> listBookKey(Book book);
 
 
     //按条件查询所有书籍总数

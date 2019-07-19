@@ -50,9 +50,9 @@ public class OrderServiceImpl implements OrderService {
 
     //查看个人订单
     @Override
-    public List<Order> listOrder(User user, Page page) {
+    public List<Order> listOrder(User user) {
         List<Order> orderList = new ArrayList<Order>();
-        orderList = orderDao.listOrder(user,page);
+        orderList = orderDao.listOrder();
         return orderList;
     }
 

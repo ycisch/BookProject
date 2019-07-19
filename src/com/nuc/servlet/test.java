@@ -21,7 +21,7 @@ public class test {
 
         User user = new User();
         user.setId(1);
-        List<Order> list = orderService.listOrder(user,new Page());
+        List<Order> list = orderService.listOrder(user);
 
         for(Order order:list){
             System.out.println(order);
